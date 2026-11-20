@@ -12,7 +12,7 @@ To turn AI visibility into a defensible KPI, the methodology enforces three cont
 
 1. **Locked query sets for longitudinal tracking:** Month-over-month comparisons always re-run the exact same set of category queries, separating real progress from prompt drift.
 2. **Multi-run sampling (2–3 repetitions per query):** Instead of binary pass/fail, every query reports consistency (e.g., *"cited in 2/3 runs"*) and renders a **stability band** on trend charts.
-3. **Prompt-variant paraphrasing (1–3 formulations per intent):** Grounded in *Variance-Aware LLM Annotation* (arXiv 2601.02370), testing paraphrases of the same buyer intent surfaces **wording-sensitive ("fragile") gaps** — queries where a brand appears under one phrasing and disappears under another.
+3. **Prompt-variant paraphrasing (1–3 formulations per intent):** Borrowed from LLM annotation research (Camuffo, Gambardella et al., arXiv 2601.02370, which found that prompt phrasing alone can shift results by 12–85 points), testing paraphrases of the same buyer intent surfaces **wording-sensitive ("fragile") gaps** — queries where a brand appears under one phrasing and disappears under another.
 
 ---
 

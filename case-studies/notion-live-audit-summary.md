@@ -3,7 +3,8 @@
 **Audit date:** June 2026 (Italy market · Italian language queries)  
 **Engines queried with live web search:** Google Gemini · OpenAI GPT · Perplexity  
 **Competitive set:** Notion (target) vs. ClickUp, Airtable, Coda  
-**Queries evaluated:** 15 total (14 answered, 1 provider error transparently flagged); branded queries explicitly excluded from Share of Voice.
+**Queries evaluated:** 15 total (14 answered, 1 provider error transparently flagged); branded queries explicitly excluded from Share of Voice.  
+**Sample size:** 5 queries per engine, 15 answers in all. That is small: read the numbers as a direction, not a precise measurement. A client audit uses more queries and repeated runs.
 
 ---
 
@@ -12,7 +13,7 @@
 | Metric | Value | Definition |
 | --- | --- | --- |
 | **Non-Branded AI Share of Voice** | **53%** | Share of total competitor mentions on unbranded category queries |
-| **Non-Branded Visibility Rate** | **53%** | Share of unbranded queries where Notion appears |
+| **Non-Branded Visibility Rate** | **53%** | Share of unbranded queries where Notion appears (average of the three engines) |
 | **Average Mention Position** | **1.4** | Average rank when mentioned (`1.0` = top recommendation) |
 | **Direct Brand Domain Citations** | **2 answers** | Answers explicitly citing `notion.so` as a source |
 | **High-Priority Content Gaps** | **3 queries** | High-intent unbranded queries where Notion is absent |
@@ -27,12 +28,14 @@
 > **Operational takeaway:** A team checking only Google Gemini would assume Notion dominates at 80%. Checking Perplexity reveals only **33% non-branded visibility** — proving why multi-engine monitoring is mandatory.
 
 ### Competitive Share of Voice (Unbranded Queries)
-| Rank | Brand | Share of Voice | Mentions | Avg. Position |
+| Rank | Brand | Share of Voice | Mentions (all answers, branded included) | Avg. Position |
 | ---: | --- | ---: | ---: | ---: |
 | 1 | **Notion** | **53%** | 19 | 1.4 |
 | 2 | **ClickUp** | **27%** | 11 | 2.1 |
 | 3 | **Airtable** | **15%** | 6 | 2.8 |
 | 4 | **Coda** | **5%** | 2 | 3.5 |
+
+> **How share of voice is computed:** a brand's mentions in the non-branded answers ÷ the mentions of all four brands in those same answers (the formula in the audit tool). The mention column counts every answer, the branded query included, so it does not divide into the percentages.
 
 ---
 

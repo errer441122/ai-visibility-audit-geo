@@ -14,7 +14,7 @@
 
 Buyers increasingly ask **ChatGPT, Google Gemini, Perplexity, and Claude** for category recommendations (*"best workspace software for startups"*, *"best CRM for e-commerce"*) before clicking a traditional Google result. Yet most marketing teams face three blind spots:
 
-1. **Single-prompt vanity scores:** Asking an LLM once produces a lottery ticket. Research (*Variance-Aware LLM Annotation*, arXiv 2601.02370) shows minor prompt wording shifts move brand visibility results by **12–85 percentage points**.
+1. **Single-prompt vanity scores:** Asking an LLM once produces a lottery ticket. A 2026 paper on LLM text annotation (Camuffo, Gambardella et al., *Variance-Aware LLM Annotation for Strategy Research*, arXiv 2601.02370) found that small design choices such as prompt phrasing or model selection shift results by **12–85 percentage points**. It does not measure brand visibility, but brand-recommendation answers come from the same models, so I treat one answer as one sample, not a score.
 2. **Missing the Source Layer:** B2B buyers validate AI answers on third-party sources (*Forrester, The State of Business Buying 2026*). Appearing in the **third-party domains the AI cites** matters as much as being named in the text.
 3. **GA4 is blind to AI crawlers:** AI retrieval and training bots (`OAI-SearchBot`, `Claude-SearchBot`, `PerplexityBot`, `GPTBot`) do not execute JavaScript, so GA4 records zero visits from them — only server logs and `robots.txt` audits reveal whether AI engines can actually read your key pages.
 
@@ -41,10 +41,10 @@ Full specification: [`methodology/geo-measurement-framework.md`](methodology/geo
 ### 1. Live Multi-Engine Audit Readout: Notion vs. ClickUp, Airtable & Coda
 Full readout: [`case-studies/notion-live-audit-summary.md`](case-studies/notion-live-audit-summary.md)
 
-- **Scope:** 15 live queries across **Google Gemini, OpenAI GPT, and Perplexity** (Italian market, productivity & knowledge management category), excluding branded queries from Share of Voice.
+- **Scope:** 15 live queries across **Google Gemini, OpenAI GPT, and Perplexity** (Italian market, productivity & knowledge management category), excluding branded queries from Share of Voice. **Small sample:** 5 queries per engine, 15 answers in all (1 provider error): read it as a direction, not a precise measurement.
 - **Headline findings:**
-  - **Non-branded AI Share of Voice:** Notion **53%** (avg. position **1.4**) vs. ClickUp **27%** (avg. 2.1), Airtable **15%** (avg. 2.8), Coda **5%** (avg. 3.5).
-  - **Engine divergence:** Gemini **80%** · OpenAI GPT **60%** · Perplexity **50%** — proving why single-engine audits mislead.
+  - **Non-branded AI Share of Voice** (each brand's share of the brand mentions inside non-branded answers): Notion **53%** (avg. position **1.4**) vs. ClickUp **27%** (avg. 2.1), Airtable **15%** (avg. 2.8), Coda **5%** (avg. 3.5).
+  - **Engine divergence** (Notion named, all 5 queries per engine): Gemini **80%** · OpenAI GPT **60%** · Perplexity **50%**; on non-branded queries only, 75% · 50% · 33%. A single-engine audit would mislead.
   - **Source Gap:** `notion.so` was cited directly in only **2 answers**; third-party domains (`zapier.com` 6×, `pcmag.com` 4×, `techradar.com` 3×, `g2.com` 2×, `capterra.it` 1×) drove the majority of AI consensus.
   - **Actionable Gaps:** Completely absent on high-intent unbranded queries (*"come centralizzare le informazioni del team"*, where ClickUp won; *"automazione task ripetitivi per team"*, open whitespace; *"quanto costa un software di knowledge management"*, missing clear pricing/FAQ markup).
 
@@ -63,12 +63,12 @@ Full audit & raw CSV (verified live on **2026-11-20**): [`case-studies/saas-ai-c
 
 ---
 
-## What We Deliberately Refused to Build (Anti-Roadmap)
+## What I Deliberately Left Out (Anti-Roadmap)
 
 Methodological honesty is what makes GEO reporting defensible in executive meetings:
 
 1. **No fake "Prompt Volume" estimates:** AI platforms do not publish prompt search volumes. Reporting invented volume numbers breaks trust.
-2. **No `llms.txt` hype score:** Independent crawl studies (Ahrefs, June 2026) found ~97% of `llms.txt` files receive zero bot discovery requests; we log it as an informational observation, never as a primary ranking KPI.
+2. **No `llms.txt` hype score:** Independent crawl studies (Ahrefs, June 2026) found ~97% of `llms.txt` files receive zero bot discovery requests; I log it as an informational observation, never as a primary ranking KPI.
 3. **No autonomous AI CMS publishing:** Publishing unreviewed AI articles damages B2B brand authority; the output is structured editorial briefs and 4-week execution plans reviewed by humans.
 4. **Honest measurement boundaries:** API responses with live web search closely reflect real citation sources, but differ slightly from personalized consumer chat sessions; GA4 AI referral traffic is always reported as a **minimum floor** (many AI surfaces strip referrers).
 
