@@ -1,0 +1,21 @@
+name: Validate Showcase
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify CSV benchmark integrity and required assets
+        run: |
+          python3 -c "import csv; rows=list(csv.DictReader(open('case-studies/saas-ai-crawler-benchmark.csv'))); assert len(rows)==5, rows"
+          test -f assets/ui-landing.png
+          test -f assets/ui-report-top.png
+          test -f docs/index.html
+          test ! -f .env
+          test ! -f PLAYBOOK.md

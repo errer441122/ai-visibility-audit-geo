@@ -1,0 +1,6 @@
+brand,domain,verified_date,robots_status,robots_rule_count,explicit_ai_agent_rules,oai_searchbot,perplexitybot,claude_searchbot,gptbot,amazonbot,utm_params_blocked,llms_txt_status,llms_txt_bytes,sitemap_count
+Asana,asana.com,2026-11-20,200,55,yes (17 bots),allow_public,allow_public,allow_public,allow_public,allow_public,no,200,24683,1
+Notion,notion.so,2026-11-20,200,34,partial (Amazonbot),allow_wildcard,allow_wildcard,allow_wildcard,allow_wildcard,disallow,no,200,6776,11
+ClickUp,clickup.com,2026-11-20,200,42,no,allow_wildcard,allow_wildcard,allow_wildcard,allow_wildcard,allow_wildcard,yes,200,8826,1
+Airtable,airtable.com,2026-11-20,200,6,no,allow_wildcard,allow_wildcard,allow_wildcard,allow_wildcard,allow_wildcard,no,404,0,1
+Coda,coda.io,2026-11-20,200,6,no,allow_wildcard,allow_wildcard,allow_wildcard,allow_wildcard,allow_wildcard,no,404,0,1
