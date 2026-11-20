@@ -6,6 +6,8 @@
 
 [![The showcase page: Notion named in 75% of Gemini answers, 50% on GPT and 33% on Perplexity for the same questions](assets/page.png)](https://errer441122.github.io/ai-visibility-audit-geo/)
 
+> **Live Testing & Scope:** Both real-brand datasets in this repository were collected **live**: the Notion multi-engine Share of Voice & Source Gap readout ran through the private *AI Visibility Audit* application against Google Gemini, OpenAI GPT, and Perplexity live web search; the 5-brand SaaS `robots.txt` & `/llms.txt` benchmark (`case-studies/saas-ai-crawler-benchmark.csv`) was verified live via HTTP on 2026-11-20. Commercial application source code stays private.
+
 ---
 
 ## The Business Problem
