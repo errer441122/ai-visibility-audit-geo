@@ -4,6 +4,8 @@
 
 **[Explore the interactive showcase page](https://errer441122.github.io/ai-visibility-audit-geo/)**
 
+[![The showcase page: how often AI engines name a brand, next to the AI Visibility Audit app](assets/page.png)](https://errer441122.github.io/ai-visibility-audit-geo/)
+
 ---
 
 ## The Business Problem
