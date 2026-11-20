@@ -5,33 +5,34 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <title>AI Visibility Audit: GEO showcase</title>
-<meta name="description" content="A multi-engine GEO audit of Notion against ClickUp, Airtable and Coda, a live robots.txt benchmark of five SaaS brands, and the measurement rules behind them.">
+<meta name="description" content="A multi-engine GEO audit of Notion against ClickUp, Airtable and Coda, a robots.txt builder for AI crawlers, a live benchmark of five SaaS brands and the measurement rules behind them.">
 <link rel="preload" href="fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-@font-face { font-family: "Archivo"; src: url("fonts/archivo-latin-wdth-normal.woff2") format("woff2"); font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; }
+@font-face { font-family: "Archivo"; src: url("fonts/archivo-latin-wdth-normal.woff2") format("woff2"); font-weight: 100 900; font-stretch: 62% 125%; font-style: normal; font-display: swap; }
+@font-face { font-family: "Archivo"; src: url("fonts/archivo-latin-wdth-italic.woff2") format("woff2"); font-weight: 100 900; font-stretch: 62% 125%; font-style: italic; font-display: swap; }
 @font-face { font-family: "Geist Mono"; src: url("fonts/geist-mono-400.woff2") format("woff2"); font-weight: 400; font-display: swap; }
 
 :root {
   color-scheme: light;
-  --page: #f1f5f5; --panel: #fbfdfd; --sunk: #e6eded;
-  --ink: #0f1b1d; --ink-2: #33464a; --muted: #536569;
-  --line: #d2dcdd; --line-soft: #e2e9ea;
-  --accent: #0d7264; --accent-ink: #f2fbf9; --accent-soft: #dcefeb; --accent-line: #9ccfc6;
-  --data-2: #9aabae;
-  --shadow: 0 1px 2px rgb(15 27 29 / .05), 0 18px 40px -22px rgb(15 27 29 / .28);
-  --r: 12px;
+  --page: #f2f4f1; --panel: #fbfcfa; --sunk: #e6ebe6; --term: #0f1a18;
+  --ink: #0d1715; --ink-2: #2e3c39; --muted: #55625e;
+  --line: #d2d9d4; --line-soft: #e2e7e3;
+  --accent: #0a7363; --accent-ink: #f1faf7; --accent-soft: #d8ebe5; --accent-line: #93c8bc;
+  --quiet: #a3b0ac;
+  --shadow: 0 1px 2px rgb(13 23 21 / .05), 0 22px 48px -26px rgb(13 23 21 / .32);
+  --r: 14px;
   --sans: "Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "Geist Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
 }
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: dark;
-    --page: #0b1214; --panel: #111b1d; --sunk: #172426;
-    --ink: #e8f1f1; --ink-2: #c3d2d3; --muted: #8fa3a6;
-    --line: #233335; --line-soft: #1b292b;
-    --accent: #4cd0bb; --accent-ink: #062520; --accent-soft: rgb(76 208 187 / .12); --accent-line: rgb(76 208 187 / .42);
-    --data-2: #5d7275;
-    --shadow: 0 1px 2px rgb(0 0 0 / .4), 0 18px 40px -22px rgb(0 0 0 / .85);
+    --page: #0a1110; --panel: #101a18; --sunk: #16221f; --term: #070d0c;
+    --ink: #e6efec; --ink-2: #bfccc8; --muted: #8a9b97;
+    --line: #22302d; --line-soft: #1a2724;
+    --accent: #52d1b8; --accent-ink: #04221c; --accent-soft: rgb(82 209 184 / .12); --accent-line: rgb(82 209 184 / .4);
+    --quiet: #4d5f5b;
+    --shadow: 0 1px 2px rgb(0 0 0 / .4), 0 22px 48px -26px rgb(0 0 0 / .9);
   }
 }
 
@@ -43,168 +44,228 @@ a:hover { color: var(--accent); }
 code { font-family: var(--mono); font-size: .82em; background: var(--sunk); padding: 1px 6px; border-radius: 5px; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 .wrap { max-width: 1240px; margin: 0 auto; padding: 0 28px; }
-h1, h2, h3 { margin: 0; }
-h2 { font-stretch: 116%; font-weight: 700; font-size: clamp(26px, 2.7vw, 36px); line-height: 1.12; letter-spacing: -0.025em; max-width: 26em; }
-.sub2 { color: var(--muted); max-width: 62ch; margin: 12px 0 0; }
+h1, h2, h3, p { margin: 0; }
+h2 { font-stretch: 112%; font-weight: 700; font-size: clamp(30px, 3.4vw, 46px); line-height: 1.06; letter-spacing: -0.035em; max-width: 20em; }
+.sub2 { color: var(--muted); max-width: 60ch; margin-top: 14px; }
+.eyebrow { font: 13px var(--mono); color: var(--accent); margin-bottom: 18px; }
+.num { font-variant-numeric: tabular-nums; }
 
 /* nav */
 .nav .wrap { display: flex; align-items: center; gap: 28px; height: 68px; }
-.brand { display: inline-flex; align-items: center; gap: 10px; font-stretch: 112%; font-weight: 700; font-size: 16px; letter-spacing: -0.01em; text-decoration: none; white-space: nowrap; }
-.brand i { width: 26px; height: 26px; border-radius: 8px; background: var(--accent); color: var(--accent-ink); font: 700 11px/26px var(--sans); text-align: center; font-style: normal; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-stretch: 108%; font-weight: 700; font-size: 16px; letter-spacing: -0.01em; text-decoration: none; white-space: nowrap; }
+.brand i { width: 28px; height: 28px; border-radius: 8px; background: var(--accent); color: var(--accent-ink); font: 700 11px/28px var(--sans); text-align: center; font-style: normal; }
 .nav-links { display: flex; gap: 24px; margin-left: auto; font-size: 15px; white-space: nowrap; }
 .nav-links a { text-decoration: none; color: var(--ink-2); }
 .nav-links a:hover { color: var(--accent); }
 
 /* hero */
-.hero { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 56px; align-items: center; padding-top: 56px; padding-bottom: 72px; }
-.eyebrow { font: 13px var(--mono); color: var(--accent); margin: 0 0 18px; }
-h1 { font-stretch: 104%; font-weight: 760; font-size: clamp(36px, 4vw, 52px); line-height: 1.04; letter-spacing: -0.035em; }
-.lede { font-size: 19px; color: var(--ink-2); max-width: 44ch; margin: 22px 0 32px; }
+.hero { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 56px; align-items: center; padding-top: 64px; padding-bottom: 96px; }
+h1 { font-stretch: 104%; font-weight: 760; font-size: clamp(38px, 4.1vw, 54px); line-height: 1.04; letter-spacing: -0.045em; }
+h1 em { font-style: italic; font-weight: 640; color: var(--accent); padding-right: .04em; }
+.lede { font-size: 19px; color: var(--ink-2); max-width: 42ch; margin: 24px 0 34px; }
 .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
-.btn { display: inline-flex; align-items: center; height: 50px; padding: 0 22px; border-radius: 10px; font: 650 16px var(--sans); text-decoration: none; white-space: nowrap; background: var(--accent); color: var(--accent-ink); border: 1px solid var(--accent); transition: transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s; }
-.btn:hover { color: var(--accent-ink); transform: translateY(-1px); box-shadow: 0 12px 26px -14px var(--accent); }
+.btn { display: inline-flex; align-items: center; height: 52px; padding: 0 24px; border-radius: 12px; font: 650 16px var(--sans); text-decoration: none; white-space: nowrap; background: var(--ink); color: var(--page); border: 1px solid var(--ink); transition: transform .25s cubic-bezier(.16,1,.3,1), background-color .25s, border-color .25s; }
+.btn:hover { color: var(--accent-ink); background: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
 .btn:active { transform: translateY(0) scale(.98); }
 .btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
-.btn.ghost:hover { color: var(--accent); border-color: var(--accent-line); box-shadow: none; }
-.app { margin: 0; }
-.app button { display: block; width: 100%; padding: 0; border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; background: var(--panel); box-shadow: var(--shadow); cursor: zoom-in; }
-.app img { display: block; width: 100%; height: auto; }
-.app figcaption { font-size: 14px; color: var(--muted); margin-top: 12px; }
+.btn.ghost:hover { color: var(--accent); border-color: var(--accent-line); background: transparent; }
 
-/* audit */
-section.band { padding-top: 104px; }
-.meta { font: 12.5px var(--mono); color: var(--muted); margin-top: 16px; display: flex; flex-wrap: wrap; gap: 6px 18px; }
-.board { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 20px; margin-top: 36px; }
-.tile { background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 24px 26px; }
-.tile h3 { font-stretch: 110%; font-weight: 650; font-size: 17px; letter-spacing: -0.01em; }
-.tile .q { color: var(--muted); font-size: 14.5px; margin: 4px 0 18px; }
-.hero-stat { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); display: flex; flex-direction: column; justify-content: space-between; gap: 28px; }
-.hero-stat .big { font-stretch: 118%; font-weight: 750; font-size: clamp(64px, 8vw, 104px); line-height: .9; letter-spacing: -0.05em; }
-.hero-stat p { margin: 10px 0 0; font-size: 16.5px; max-width: 30ch; }
-.hero-stat dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 0; border-top: 1px solid color-mix(in srgb, var(--accent-ink) 30%, transparent); padding-top: 16px; }
-.hero-stat dt { font-size: 13.5px; opacity: .85; }
-.hero-stat dd { margin: 2px 0 0; font-stretch: 112%; font-weight: 700; font-size: 26px; }
-
-.chart { width: 100%; display: block; overflow: visible; }
-.chart text { font: 13px var(--sans); fill: var(--ink-2); }
-.chart .v { font: 600 13px var(--mono); fill: var(--ink); }
-.chart .lab { font-size: 14px; fill: var(--ink); }
-.chart .tick { font: 11px var(--mono); fill: var(--muted); }
-.chart .grid { stroke: var(--line-soft); stroke-width: 1; }
-.chart .conn { stroke: var(--data-2); stroke-width: 2; }
-.chart .dot-all { fill: var(--panel); stroke: var(--data-2); stroke-width: 2.5; }
-.chart .dot-nb { fill: var(--accent); }
-.chart .bar { fill: var(--data-2); }
-.chart .bar.hi { fill: var(--accent); }
-.legend { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 13.5px; color: var(--muted); margin-top: 10px; }
-.legend span { display: inline-flex; align-items: center; gap: 8px; }
-.legend i { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
-.legend .a { background: var(--panel); border: 2.5px solid var(--data-2); }
-.legend .b { background: var(--accent); }
-.legend .s { width: 16px; height: 9px; border-radius: 2px; }
-.takeaway { margin: 16px 0 0; padding-top: 14px; border-top: 1px solid var(--line-soft); font-size: 15px; color: var(--ink-2); }
-.grow { transform-box: fill-box; transform-origin: left center; animation: grow 1s cubic-bezier(.16,1,.3,1) both; }
+.instrument { margin: 0; background: var(--panel); border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow); padding: 30px 32px 26px; }
+.ins-head { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; padding-bottom: 18px; border-bottom: 1px solid var(--line-soft); }
+.ins-head b { font-stretch: 106%; font-weight: 650; font-size: 17px; letter-spacing: -0.01em; }
+.ins-head span { font: 12.5px var(--mono); color: var(--muted); white-space: nowrap; }
+.eng { display: grid; grid-template-columns: 96px minmax(0, 1fr) 148px; gap: 14px; align-items: center; padding: 18px 0 14px; border-bottom: 1px solid var(--line-soft); }
+.eng .name { font: 13px var(--mono); color: var(--ink-2); }
+.eng .bar { height: 12px; width: calc(var(--v) * 1%); border-radius: 0 6px 6px 0; background: var(--accent); transform-origin: left center; animation: grow 1.1s cubic-bezier(.16,1,.3,1) both; animation-delay: var(--d, 0s); }
+.eng .big { justify-self: end; font-stretch: 125%; font-weight: 760; font-size: clamp(40px, 4.4vw, 60px); line-height: 1; letter-spacing: -0.04em; }
+.eng .big small { font-size: .5em; font-weight: 600; margin-left: 2px; color: var(--muted); }
+.ins-foot { margin-top: 18px; font-size: 15.5px; color: var(--ink-2); }
+.ins-foot span { display: block; font: 12.5px var(--mono); color: var(--muted); margin-top: 6px; }
 @keyframes grow { from { transform: scaleX(0); } }
 
-/* gaps */
-.gaps { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 48px; margin-top: 36px; align-items: start; }
-.gap-list { display: grid; gap: 26px; }
-.gq { font-stretch: 108%; font-weight: 650; font-size: clamp(21px, 2vw, 26px); line-height: 1.2; letter-spacing: -0.02em; margin: 0; }
+section.band { padding-top: 120px; }
+
+/* method */
+.method { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 64px; align-items: start; }
+.method .lead { font-stretch: 108%; font-weight: 650; font-size: clamp(24px, 2.4vw, 32px); line-height: 1.2; letter-spacing: -0.025em; margin-top: 20px; }
+.method .lead span { color: var(--accent); }
+.controls { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.controls li { display: grid; grid-template-columns: 176px minmax(0, 1fr); gap: 28px; padding: 24px 0; border-bottom: 1px solid var(--line); align-items: start; }
+.controls h3 { font-stretch: 108%; font-weight: 700; font-size: 19px; letter-spacing: -0.015em; }
+.controls p { color: var(--ink-2); font-size: 16px; margin-top: 4px; }
+.glyph { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 4px; }
+.runs i { width: 22px; height: 22px; border-radius: 50%; background: var(--accent); }
+.runs i.miss { background: transparent; box-shadow: inset 0 0 0 2px var(--quiet); }
+.runs b { font: 12px var(--mono); color: var(--muted); font-weight: 400; width: 100%; }
+.qchip { font: 11.5px var(--mono); padding: 3px 8px; border-radius: 999px; background: var(--sunk); white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
+.qchip.alt { background: transparent; box-shadow: inset 0 0 0 1px var(--line); color: var(--muted); }
+.qchip.no { background: transparent; color: var(--muted); text-decoration: line-through; box-shadow: inset 0 0 0 1px var(--line); }
+
+/* audit */
+.meta { font: 12.5px var(--mono); color: var(--muted); margin-top: 18px; display: flex; flex-wrap: wrap; gap: 6px 22px; }
+.split { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 56px; margin-top: 48px; align-items: start; }
+.split .shot { position: sticky; top: 24px; }
+.board { background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 26px 28px 20px; }
+.board h3, .cites-h { font-stretch: 108%; font-weight: 700; font-size: 19px; letter-spacing: -0.015em; }
+.board .q { color: var(--muted); font-size: 15px; margin-top: 4px; }
+.rank { list-style: none; margin: 22px 0 0; padding: 0; }
+.rank li { display: grid; grid-template-columns: 22px 34px 92px minmax(0, 1fr) 54px 64px; gap: 12px; align-items: center; padding: 12px 0; border-top: 1px solid var(--line-soft); }
+.rank .rk { font: 13px var(--mono); color: var(--muted); }
+.rank .badge { width: 34px; height: 34px; border-radius: 9px; background: var(--ink); color: var(--page); font: 700 14px/34px var(--sans); text-align: center; }
+.rank li.me .badge { background: var(--accent); color: var(--accent-ink); }
+.rank .bn { font-weight: 650; }
+.rank .bar { height: 10px; width: calc(var(--v) / 53 * 100%); border-radius: 0 5px 5px 0; background: var(--quiet); transform-origin: left center; animation: grow 1s cubic-bezier(.16,1,.3,1) both; }
+.rank li.me .bar { background: var(--accent); }
+.rank .pct { font: 600 15px var(--mono); text-align: right; }
+.rank .pos { font: 13px var(--mono); color: var(--muted); text-align: right; }
+.rank .head { border-top: 0; padding: 0 0 6px; font: 11.5px var(--mono); color: var(--muted); }
+.rank .head span:nth-last-child(-n+2) { text-align: right; }
+.shot { margin: 0; }
+.shot button { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: 16px; }
+.shot img { display: block; width: 100%; height: auto; border-radius: 16px; box-shadow: var(--shadow); border: 1px solid var(--line); }
+.shot figcaption { font-size: 14px; color: var(--muted); margin-top: 14px; }
+
+.cites { margin-top: 56px; }
+.cites-row { display: flex; flex-wrap: wrap; gap: 24px 26px; margin-top: 24px; align-items: flex-end; }
+.cg .sqs { display: flex; gap: 5px; }
+.cg .sqs i { width: 30px; height: 30px; border-radius: 6px; background: var(--quiet); animation: pop .5s cubic-bezier(.16,1,.3,1) both; }
+.cg.own .sqs i { background: var(--accent); }
+.cg span { display: block; margin-top: 10px; font: 13px var(--mono); color: var(--ink-2); }
+.cg span b { font-weight: 400; color: var(--muted); margin-left: 6px; }
+.cg.own span { color: var(--accent); }
+@keyframes pop { from { transform: scale(.4); opacity: 0; } }
+.cites-take { margin-top: 24px; font-size: 17px; color: var(--ink-2); max-width: 64ch; }
+.cites-take b { color: var(--ink); }
+
+.gaps { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 56px; margin-top: 88px; align-items: start; }
+.gap-list { display: grid; gap: 30px; margin-top: 26px; }
+.gap-item .pri { font: 12px var(--mono); color: var(--accent); }
+.gq { font-stretch: 104%; font-weight: 650; font-size: clamp(21px, 2vw, 27px); line-height: 1.2; letter-spacing: -0.025em; margin-top: 4px; }
 .gq::before { content: "\201C"; color: var(--accent); }
 .gq::after { content: "\201D"; color: var(--accent); }
-.gap-item p { margin: 6px 0 0; color: var(--ink-2); font-size: 15.5px; }
-.gap-item .pri { font: 12px var(--mono); color: var(--accent); }
-.weeks { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin-top: 56px; border-top: 2px solid var(--ink); }
-.wk { padding: 16px 20px 0 0; position: relative; }
+.gap-item p { margin-top: 6px; color: var(--ink-2); font-size: 16px; }
+.weeks { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 64px; border-top: 2px solid var(--ink); }
+.wk { padding: 18px 22px 0 0; position: relative; }
 .wk::before { content: ""; position: absolute; top: -7px; left: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--page); border: 2px solid var(--ink); }
 .wk:last-child::before { background: var(--accent); border-color: var(--accent); }
 .wk small { font: 12.5px var(--mono); color: var(--muted); }
-.wk b { display: block; font-stretch: 108%; font-weight: 650; font-size: 17px; line-height: 1.25; margin: 4px 0 6px; }
-.wk p { margin: 0; font-size: 15px; color: var(--ink-2); }
+.wk b { display: block; font-stretch: 104%; font-weight: 650; font-size: 17px; line-height: 1.25; margin: 4px 0 6px; }
+.wk p { font-size: 15px; color: var(--ink-2); }
 
-/* crawlers */
-.brands { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 30px; }
-.bbtn { font: 600 15px var(--sans); color: var(--ink-2); background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px; cursor: pointer; transition: border-color .2s, background-color .2s; }
-.bbtn:hover { border-color: var(--accent-line); }
-.bbtn[aria-pressed="true"] { background: var(--ink); color: var(--page); border-color: var(--ink); }
-.matrix-wrap { margin-top: 18px; overflow-x: auto; border: 1px solid var(--line); border-radius: var(--r); background: var(--panel); }
-.matrix { border-collapse: collapse; width: 100%; min-width: 820px; font-size: 14px; }
-.matrix th, .matrix td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--line-soft); vertical-align: top; }
-.matrix thead th { font: 500 12px var(--mono); color: var(--muted); vertical-align: bottom; }
-.matrix tbody th { font-weight: 650; white-space: nowrap; }
-.matrix tbody th small { display: block; font: 12px var(--mono); color: var(--muted); font-weight: 400; }
-.matrix tbody tr:last-child th, .matrix tbody tr:last-child td { border-bottom: 0; }
-.matrix tbody tr { transition: background-color .25s, opacity .25s; cursor: pointer; }
-.matrix tbody tr.sel { background: var(--accent-soft); }
-.matrix .num { font: 14px var(--mono); }
-.tag { display: inline-block; font: 12px var(--mono); padding: 2px 8px; border-radius: 6px; background: var(--sunk); color: var(--ink-2); white-space: nowrap; }
+/* crawler builder */
+.builder { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 0; margin-top: 48px; border: 1px solid var(--line); border-radius: 20px; overflow: hidden; background: var(--panel); box-shadow: var(--shadow); }
+.toggles { padding: 28px 30px; display: grid; gap: 22px; align-content: start; }
+.tg h3 { font-stretch: 106%; font-weight: 700; font-size: 17px; letter-spacing: -0.01em; }
+.tg p { font-size: 14.5px; color: var(--muted); margin: 2px 0 10px; }
+.seg { display: inline-flex; background: var(--sunk); border-radius: 999px; padding: 4px; }
+.seg button { font: 600 14.5px var(--sans); color: var(--ink-2); background: none; border: 0; border-radius: 999px; padding: 7px 16px; cursor: pointer; transition: background-color .2s, color .2s; }
+.seg button[aria-pressed="true"] { background: var(--panel); color: var(--ink); box-shadow: 0 1px 3px rgb(13 23 21 / .2); }
+.seg button.block[aria-pressed="true"] { background: var(--ink); color: var(--page); }
+.opts { display: grid; gap: 10px; padding-top: 18px; border-top: 1px solid var(--line-soft); }
+.opt { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; cursor: pointer; }
+.opt input { width: 18px; height: 18px; margin: 3px 0 0; accent-color: var(--accent); }
+.opt small { display: block; color: var(--muted); font-size: 13.5px; }
+.out { background: var(--term); color: #dbe7e3; padding: 26px 28px; display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+.out-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.out-head span { font: 12.5px var(--mono); color: #8fa6a0; }
+.copy { font: 600 13px var(--sans); color: #dbe7e3; background: rgb(255 255 255 / .08); border: 1px solid rgb(255 255 255 / .14); border-radius: 8px; padding: 6px 12px; cursor: pointer; }
+.copy:hover { background: rgb(255 255 255 / .14); }
+.robots { margin: 0; font: 12.5px/1.65 var(--mono); white-space: pre-wrap; overflow-wrap: anywhere; max-height: 380px; overflow: auto; }
+.robots .c { color: #7f948f; }
+.robots .k { color: #7fe0cb; }
+.robots .d { color: #f2b8a2; }
+.effects { list-style: none; margin: 0; padding: 16px 0 0; border-top: 1px solid rgb(255 255 255 / .12); display: grid; gap: 8px; font-size: 15px; }
+.effects li { padding-left: 22px; position: relative; color: #dbe7e3; }
+.effects li::before { content: ""; position: absolute; left: 0; top: .55em; width: 10px; height: 10px; border-radius: 50%; background: #7fe0cb; }
+.effects li.warn::before { background: #f2b8a2; }
+
+.brands { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; margin-top: 30px; }
+.brands > * { grid-column: span 2; }
+.brands > :nth-child(n+4) { grid-column: span 3; }
+.bcard { background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 22px 22px 18px; display: flex; flex-direction: column; gap: 10px; }
+.bcard h3 { font-stretch: 108%; font-weight: 700; font-size: 19px; letter-spacing: -0.015em; }
+.bcard h3 small { display: block; font: 12px var(--mono); color: var(--muted); font-weight: 400; letter-spacing: 0; }
+.bcard .verdict { font-weight: 650; font-size: 15px; line-height: 1.3; }
+.bcard dl { margin: 0; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 7px 12px; font-size: 14px; padding-top: 10px; border-top: 1px solid var(--line-soft); }
+.bcard dt { color: var(--muted); }
+.bcard dd { margin: 0; text-align: right; }
+.tag { display: inline-block; font: 12px var(--mono); padding: 1px 7px; border-radius: 6px; background: var(--sunk); color: var(--ink-2); white-space: nowrap; }
 .tag.good { background: var(--accent); color: var(--accent-ink); }
 .tag.block { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink); }
 .tag.none { background: transparent; color: var(--muted); box-shadow: inset 0 0 0 1px var(--line); }
-.take { margin-top: 18px; display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); gap: 24px; align-items: baseline; }
-.take b { font-stretch: 112%; font-weight: 700; font-size: 22px; letter-spacing: -0.02em; }
-.take p { margin: 0; font-size: 16.5px; color: var(--ink-2); }
-.note { font-size: 13.5px; color: var(--muted); margin: 14px 0 0; }
+.bcard .take { font-size: 14px; color: var(--ink-2); margin-top: auto; padding-top: 10px; border-top: 1px solid var(--line-soft); }
+.note { font-size: 14px; color: var(--muted); margin-top: 16px; max-width: 80ch; }
+.skel { height: 260px; border-radius: var(--r); background: var(--sunk); animation: pulse 1.4s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: .5; } }
 
-/* method */
-.chain { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-top: 36px; }
-.layer { position: relative; padding: 24px 28px 26px; background: var(--panel); border: 1px solid var(--line); }
-.layer:first-child { border-radius: var(--r) 0 0 var(--r); }
-.layer:last-child { border-radius: 0 var(--r) var(--r) 0; }
-.layer + .layer { border-left: 0; }
-.layer:nth-child(2) { background: var(--accent-soft); }
-.layer h3 { font-stretch: 112%; font-weight: 700; font-size: 19px; letter-spacing: -0.015em; }
-.layer > small { font: 12px var(--mono); color: var(--accent); }
-.layer p { margin: 8px 0 0; font-size: 15px; color: var(--ink-2); }
-.bots { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 14px; }
-.bots span { font: 11.5px var(--mono); padding: 2px 7px; border-radius: 5px; background: var(--sunk); }
-.refuse-h { margin-top: 72px; font-stretch: 116%; font-weight: 700; font-size: 22px; letter-spacing: -0.02em; }
-.refuse { margin-top: 26px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 56px; }
-.refuse h3 { font-stretch: 112%; font-weight: 700; font-size: 22px; letter-spacing: -0.02em; }
+/* chain, cost, refusals */
+.chain { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 48px; border-top: 2px solid var(--ink); }
+.layer { padding: 22px 28px 0 0; position: relative; }
+.layer + .layer { padding-left: 28px; border-left: 1px solid var(--line); }
+.layer small { font: 12.5px var(--mono); color: var(--accent); }
+.layer h3 { font-stretch: 108%; font-weight: 700; font-size: 21px; letter-spacing: -0.02em; margin-top: 4px; }
+.layer p { margin-top: 8px; color: var(--ink-2); font-size: 15.5px; }
+.costs { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 64px; margin-top: 96px; align-items: start; }
+.cost-table { margin-top: 24px; display: grid; gap: 0; border-top: 1px solid var(--line); }
+.cost-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 16px; padding: 16px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.cost-row b { font-weight: 650; }
+.cost-row small { grid-column: 1; font: 12.5px var(--mono); color: var(--muted); }
+.cost-row .eur { grid-row: span 2; font-stretch: 116%; font-weight: 750; font-size: 26px; letter-spacing: -0.03em; white-space: nowrap; }
+.cost-row.pick .eur { color: var(--accent); }
+.formula { margin-top: 18px; font: 13px var(--mono); color: var(--muted); }
+.refuse { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 40px; margin-top: 24px; }
+.refuse h3 { font-stretch: 108%; font-weight: 700; font-size: 20px; letter-spacing: -0.02em; }
 .refuse h3 s { text-decoration-thickness: 2px; text-decoration-color: var(--accent); color: var(--muted); }
-.refuse p { margin: 6px 0 0; color: var(--ink-2); font-size: 15.5px; }
-.cost { margin-top: 56px; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 32px; align-items: center; padding: 26px 30px; border-radius: var(--r); background: var(--ink); color: var(--page); }
-.cost b { font-stretch: 118%; font-weight: 750; font-size: clamp(34px, 4vw, 48px); letter-spacing: -0.04em; white-space: nowrap; }
-.cost p { margin: 0; font-size: 16px; opacity: .88; }
-.cost a { color: inherit; }
-@media (prefers-color-scheme: dark) { .cost { background: var(--sunk); color: var(--ink); border: 1px solid var(--line); } }
+.refuse p { margin-top: 6px; color: var(--ink-2); font-size: 15.5px; }
+.costs h3.sec { font-stretch: 112%; font-weight: 700; font-size: 26px; letter-spacing: -0.03em; }
 
 /* files */
 .files { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 30px; }
-.files a { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 14px; padding: 16px 18px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); text-decoration: none; transition: border-color .2s; }
+.files a { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 14px; padding: 16px 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); text-decoration: none; transition: border-color .2s; }
 .files a:hover { border-color: var(--accent-line); color: inherit; }
 .files .p { font: 13px var(--mono); overflow-wrap: anywhere; }
 .files .d { grid-column: 1; color: var(--muted); font-size: 15px; }
 .files .go { grid-row: span 2; align-self: center; font: 13px var(--mono); color: var(--accent); }
 
 dialog { border: 0; padding: 0; background: transparent; max-width: min(1540px, 94vw); }
-dialog::backdrop { background: rgb(6 14 15 / .82); }
-dialog img { display: block; max-width: 100%; max-height: 88vh; border-radius: 10px; }
+dialog::backdrop { background: rgb(5 12 11 / .84); }
+dialog img { display: block; max-width: 100%; max-height: 88vh; border-radius: 12px; }
 dialog button { position: absolute; top: 10px; right: 10px; font: 600 14px var(--sans); border: 0; border-radius: 8px; padding: 8px 12px; background: var(--panel); color: var(--ink); cursor: pointer; }
 
-footer { margin-top: 110px; border-top: 1px solid var(--line); }
+footer { margin-top: 120px; border-top: 1px solid var(--line); }
 footer .wrap { display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; padding-top: 28px; padding-bottom: 44px; font-size: 15px; color: var(--muted); }
-footer .who { color: var(--ink); font-stretch: 112%; font-weight: 700; margin-right: auto; }
+footer .who { color: var(--ink); font-stretch: 108%; font-weight: 700; margin-right: auto; }
 footer a { color: var(--ink-2); text-decoration: none; }
 footer a:hover { color: var(--accent); }
 
+@media (max-width: 1080px) {
+  .brands { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .brands > *, .brands > :nth-child(n+4) { grid-column: auto; }
+}
 @media (max-width: 1020px) {
-  .hero, .board, .gaps { grid-template-columns: minmax(0, 1fr); gap: 36px; }
-  .board { gap: 16px; }
+  .hero, .method, .split, .gaps, .builder, .costs { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .builder { gap: 0; }
   .nav-links .proj { display: none; }
   .chain { grid-template-columns: minmax(0, 1fr); }
-  .layer, .layer:first-child, .layer:last-child { border-radius: 0; }
-  .layer:first-child { border-radius: var(--r) var(--r) 0 0; }
-  .layer:last-child { border-radius: 0 0 var(--r) var(--r); }
-  .layer + .layer { border-left: 1px solid var(--line); border-top: 0; }
+  .layer + .layer { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); padding-top: 22px; margin-top: 22px; }
+  .shot { max-width: 520px; }
+  .split .shot { position: static; }
 }
 @media (max-width: 720px) {
   .wrap { padding-left: 18px; padding-right: 18px; }
-  .hero { padding-top: 36px; }
-  .weeks { grid-template-columns: 1fr 1fr; row-gap: 26px; }
-  .refuse, .files, .take, .cost { grid-template-columns: minmax(0, 1fr); }
-  .tile { padding: 20px; }
-  section.band { padding-top: 76px; }
+  .hero { padding-top: 36px; padding-bottom: 72px; }
+  .instrument { padding: 22px 18px 20px; }
+  .eng { grid-template-columns: 78px minmax(0, 1fr) 100px; gap: 10px; }
+  .controls li { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .rank li { grid-template-columns: 16px 30px 74px minmax(0, 1fr) 44px; gap: 8px; }
+  .rank .pos, .rank .head span:last-child { display: none; }
+  .rank .badge { width: 30px; height: 30px; line-height: 30px; }
+  .weeks { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 28px; }
+  .brands { grid-template-columns: minmax(0, 1fr); }
+  .cg .sqs i { width: 26px; height: 26px; }
+  .refuse, .files { grid-template-columns: minmax(0, 1fr); }
+  .board, .toggles, .out { padding-left: 18px; padding-right: 18px; }
+  section.band { padding-top: 88px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition-duration: .01ms !important; animation: none !important; }
@@ -225,115 +286,168 @@ footer a:hover { color: var(--accent); }
 <main id="top">
   <section class="wrap hero">
     <div>
-      <p class="eyebrow">Generative engine optimisation</p>
-      <h1>How often AI engines name your brand.</h1>
-      <p class="lede">Multi-engine audits across Gemini, GPT, Perplexity and Claude, with repeat runs and the third-party sources AI engines cite.</p>
+      <p class="eyebrow">AI search visibility (GEO)</p>
+      <h1>Measure AI visibility, not one <em>lucky</em> answer.</h1>
+      <p class="lede">Unbranded buyer questions, asked more than once on Gemini, GPT, Perplexity and Claude, with the sources each answer cites.</p>
       <div class="ctas">
-        <a class="btn" href="#notion">See the Notion audit</a>
-        <a class="btn ghost" href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/methodology/geo-measurement-framework.md">Read the methodology</a>
+        <a class="btn" href="#audit">See the Notion audit</a>
+        <a class="btn ghost" href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/methodology/geo-measurement-framework.md">Read the method</a>
       </div>
     </div>
-    <figure class="app">
-      <button type="button" data-full="assets/ui-landing.png" aria-label="Enlarge the AI Visibility Audit screenshot"><img src="assets/ui-landing.png" alt="AI Visibility Audit running locally: the Notion result, 53% non-branded share of voice, the split by engine and the competitor ranking" width="1540" height="1000" fetchpriority="high"></button>
-      <figcaption>The tool running on a laptop with the Notion audit loaded. Its source code is private; this repository holds the method and the case studies.</figcaption>
+    <figure class="instrument" aria-labelledby="ins-t">
+      <div class="ins-head"><b id="ins-t">Is Notion named in the answer?</b><span>live web search</span></div>
+      <div class="eng" style="--v:75"><span class="name">Gemini</span><span class="bar"></span><b class="big num" data-v="75">75<small>%</small></b></div>
+      <div class="eng" style="--v:50;--d:.12s"><span class="name">GPT</span><span class="bar"></span><b class="big num" data-v="50">50<small>%</small></b></div>
+      <div class="eng" style="--v:33;--d:.24s"><span class="name">Perplexity</span><span class="bar"></span><b class="big num" data-v="33">33<small>%</small></b></div>
+      <figcaption class="ins-foot">Same brand, same unbranded questions. A team that checks only Gemini reports 75%; Perplexity says 33%.<span>unbranded questions only, Italian market, June 2026</span></figcaption>
     </figure>
   </section>
 
-  <section class="wrap band" id="notion">
-    <h2>Notion against ClickUp, Airtable and Coda in AI answers</h2>
-    <p class="sub2">Unbranded productivity and knowledge-management questions, asked in Italian with live web search. Branded questions are left out of share of voice.</p>
-    <div class="meta"><span>June 2026</span><span>15 queries, 14 answered, 1 provider error flagged</span><span>Gemini, GPT, Perplexity</span></div>
-    <div class="board">
-      <div class="tile hero-stat">
-        <div>
-          <div class="big">53%</div>
-          <p>Notion's share of all brand mentions on unbranded questions. The top pick when it is named.</p>
-        </div>
-        <dl>
-          <div><dt>average position</dt><dd>1.4</dd></div>
-          <div><dt>answers citing notion.so</dt><dd>2</dd></div>
-        </dl>
+  <section class="wrap band" id="method">
+    <div class="method">
+      <div>
+        <h2>One answer is not a measurement</h2>
+        <p class="lead">AI answers change with the engine, the day and the wording. <span>So every audit controls all three.</span></p>
       </div>
-      <div class="tile">
-        <h3>One engine is not enough</h3>
-        <p class="q">Visibility by engine, all questions against unbranded only.</p>
-        <svg class="chart" id="engines" viewBox="0 0 640 210" preserveAspectRatio="xMinYMin meet" role="img" aria-labelledby="engines-t"><title id="engines-t">Gemini 80% overall and 75% unbranded; GPT 60% and 50%; Perplexity 50% and 33%.</title></svg>
-        <div class="legend"><span><i class="a"></i>all questions</span><span><i class="b"></i>unbranded questions</span></div>
-        <p class="takeaway">Checking only Gemini says 75%. Perplexity says 33% for the same brand and the same questions.</p>
-      </div>
-      <div class="tile">
-        <h3>Share of voice</h3>
-        <p class="q">Share of brand mentions on unbranded questions.</p>
-        <svg class="chart" id="sov" viewBox="0 0 460 200" role="img" aria-labelledby="sov-t"><title id="sov-t">Notion 53% (19 mentions), ClickUp 27% (11), Airtable 15% (6), Coda 5% (2).</title></svg>
-        <p class="takeaway">Average position when named: Notion 1.4, ClickUp 2.1, Airtable 2.8, Coda 3.5. ClickUp takes over half of what Notion leaves.</p>
-      </div>
-      <div class="tile">
-        <h3>Who the answers actually cite</h3>
-        <p class="q">Domains cited as sources, owned domain highlighted.</p>
-        <svg class="chart" id="sources" viewBox="0 0 640 250" role="img" aria-labelledby="sources-t"><title id="sources-t">zapier.com 6 citations, pcmag.com 4, techradar.com 3, notion.so 2, g2.com 2, capterra.it 1.</title></svg>
-        <p class="takeaway">Third-party pages are cited 16 times, notion.so twice. Comparison guides and review sites carry the consensus.</p>
-      </div>
+      <ol class="controls">
+        <li><div class="glyph" aria-hidden="true"><span class="qchip">quanto costa...</span><span class="qchip">come centralizzare...</span><span class="qchip">automazione...</span></div>
+          <div><h3>A locked set of questions</h3><p>Every month re-runs the exact same unbranded questions, so a change in the result is a change in the market, not in the prompt.</p></div></li>
+        <li><div class="glyph runs" aria-hidden="true"><i></i><i></i><i class="miss"></i><b>cited in 2 of 3</b></div>
+          <div><h3>Two to three runs per question</h3><p>Results read "cited in 2 of 3 runs", with a stability band on the trend, instead of a single pass or fail.</p></div></li>
+        <li><div class="glyph" aria-hidden="true"><span class="qchip">migliore wiki aziendale...</span><span class="qchip alt">wiki per il team...</span><span class="qchip no">recensioni Notion</span></div>
+          <div><h3>Paraphrases, and no brand names</h3><p>One to three wordings per intent flag answers that flip with the phrasing. Branded questions never count in share of voice.</p></div></li>
+      </ol>
     </div>
   </section>
 
-  <section class="wrap band" id="gaps">
-    <h2>Where Notion is missing, and the four weeks to fix it</h2>
-    <div class="gaps">
-      <div class="gap-list">
-        <div class="gap-item"><span class="pri">high priority: a competitor wins</span><p class="gq">come centralizzare le informazioni del team</p><p>Only ClickUp is cited. Action: an Italian, answer-first team-wiki guide with real templates and a comparison table.</p></div>
-        <div class="gap-item"><span class="pri">high priority: nobody owns it</span><p class="gq">automazione task ripetitivi per team</p><p>None of the four brands is cited. Action: a workflow-automation guide for team operations, first to the topic.</p></div>
-        <div class="gap-item"><span class="pri">medium priority: no price in the snippets</span><p class="gq">quanto costa un software di knowledge management</p><p>Pricing terms are missing from what the engines retrieve. Action: an Italian pricing and cost page with <code>FAQPage</code> markup.</p></div>
+  <section class="wrap band" id="audit">
+    <h2>Notion against ClickUp, Airtable and Coda</h2>
+    <p class="sub2">A live audit of the Italian productivity and knowledge-management category, with web search on, run with the AI Visibility Audit app.</p>
+    <div class="meta"><span>June 2026</span><span>Gemini, GPT, Perplexity</span><span>15 queries, 14 answered, 1 provider error flagged</span></div>
+
+    <div class="split">
+      <div>
+      <div class="board">
+        <h3>Share of voice on unbranded questions</h3>
+        <p class="q">Each brand's share of all brand mentions, and its average position when named.</p>
+        <ol class="rank">
+          <li class="head" aria-hidden="true"><span></span><span></span><span>brand</span><span></span><span>share</span><span>position</span></li>
+          <li class="me" style="--v:53"><span class="rk">1</span><span class="badge" aria-hidden="true">N</span><span class="bn">Notion</span><span class="bar"></span><span class="pct">53%</span><span class="pos">1.4</span></li>
+          <li style="--v:27"><span class="rk">2</span><span class="badge" aria-hidden="true">C</span><span class="bn">ClickUp</span><span class="bar"></span><span class="pct">27%</span><span class="pos">2.1</span></li>
+          <li style="--v:15"><span class="rk">3</span><span class="badge" aria-hidden="true">A</span><span class="bn">Airtable</span><span class="bar"></span><span class="pct">15%</span><span class="pos">2.8</span></li>
+          <li style="--v:5"><span class="rk">4</span><span class="badge" aria-hidden="true">C</span><span class="bn">Coda</span><span class="bar"></span><span class="pct">5%</span><span class="pos">3.5</span></li>
+        </ol>
       </div>
-      <figure class="app">
-        <button type="button" data-full="assets/ui-report-top.png" aria-label="Enlarge the report screenshot"><img src="assets/ui-report-top.png" alt="The audit report: per-query outcomes, strategic recommendations and the prioritised content gaps" loading="lazy" width="1540" height="1000"></button>
-        <figcaption>The same gaps in the tool's report, with the recommendations it generates.</figcaption>
+      <div class="cites">
+      <h3 class="cites-h">Who the answers cite as sources</h3>
+      <p class="q" style="color:var(--muted);font-size:15px;margin-top:4px">One square per citation, across all answers.</p>
+      <div class="cites-row" role="img" aria-label="Citations: zapier.com 6, pcmag.com 4, techradar.com 3, g2.com 2, capterra.it 1, notion.so 2">
+        <div class="cg"><div class="sqs"><i></i><i></i><i></i><i></i><i></i><i></i></div><span>zapier.com<b>6</b></span></div>
+        <div class="cg"><div class="sqs"><i></i><i></i><i></i><i></i></div><span>pcmag.com<b>4</b></span></div>
+        <div class="cg"><div class="sqs"><i></i><i></i><i></i></div><span>techradar.com<b>3</b></span></div>
+        <div class="cg"><div class="sqs"><i></i><i></i></div><span>g2.com<b>2</b></span></div>
+        <div class="cg"><div class="sqs"><i></i></div><span>capterra.it<b>1</b></span></div>
+        <div class="cg own"><div class="sqs"><i></i><i></i></div><span>notion.so<b>2, owned</b></span></div>
+      </div>
+      <p class="cites-take"><b>16 of 18 citations go to other people's pages.</b> Comparison guides and review sites carry the consensus, so they are where the next month of work goes.</p>
+    </div>
+
+      </div>
+      <figure class="shot">
+        <button type="button" data-full="assets/ui-landing.png" aria-label="Open the full app screenshot"><img src="assets/app-result-card.png" alt="The result card in the AI Visibility Audit app: 53% AI share of voice, visibility by engine and the competitor ranking" width="538" height="720" loading="lazy"></button>
+        <figcaption>The same result in the app. Open it for the full screen.</figcaption>
       </figure>
     </div>
+
+    <div class="gaps">
+      <div>
+        <h3 class="cites-h">Where Notion is missing</h3>
+        <div class="gap-list">
+          <div class="gap-item"><span class="pri">high priority: a competitor wins</span><p class="gq">come centralizzare le informazioni del team</p><p>Only ClickUp is named. Action: an Italian, answer-first team-wiki guide with real templates and a comparison table.</p></div>
+          <div class="gap-item"><span class="pri">high priority: nobody owns it</span><p class="gq">automazione task ripetitivi per team</p><p>None of the four brands is named. Action: a workflow-automation guide for team operations, first to the topic.</p></div>
+          <div class="gap-item"><span class="pri">medium priority: no price in the snippets</span><p class="gq">quanto costa un software di knowledge management</p><p>Pricing terms are missing from what the engines retrieve. Action: an Italian pricing page with <code>FAQPage</code> markup.</p></div>
+        </div>
+      </div>
+      <figure class="shot">
+        <button type="button" data-full="assets/ui-report-top.png" aria-label="Open the full report screenshot"><img src="assets/app-query-outcomes.png" alt="Per-question outcomes in the app's report: absent on automazione task ripetitivi per team, cited on migliore wiki aziendale per startup, branded questions excluded from share of voice, one provider error" width="532" height="222" loading="lazy"></button>
+        <figcaption>Per-question outcomes in the app's report, including the branded question left out of share of voice and the provider error.</figcaption>
+      </figure>
+    </div>
+
     <div class="weeks">
       <div class="wk"><small>week 1, SEO and content</small><b>Answer-first FAQs and the wiki guide</b><p>Structured FAQs and schema on the key Italian pages.</p></div>
       <div class="wk"><small>week 2, content</small><b>A clear pricing page</b><p>Answers the cost question in plain Italian.</p></div>
       <div class="wk"><small>week 3, digital PR</small><b>Outreach to the cited domains</b><p>Updated comparisons on zapier.com, g2.com and capterra.it.</p></div>
-      <div class="wk"><small>week 4, marketing ops</small><b>Re-audit, same locked questions</b><p>Same query set on the same engines, for a real before and after.</p></div>
+      <div class="wk"><small>week 4, marketing ops</small><b>Re-audit, same locked questions</b><p>Same questions on the same engines, for a real before and after.</p></div>
     </div>
   </section>
 
   <section class="wrap band" id="crawlers">
-    <p class="eyebrow">verified live on 2026-11-20</p>
-    <h2>Can AI crawlers read these sites? robots.txt and llms.txt for five SaaS brands</h2>
-    <p class="sub2">Search and user-fetch bots feed live answers; training bots feed the models. Blocking the first kind by accident removes a brand from AI answers. Pick a brand.</p>
-    <div class="brands" id="brands" role="group" aria-label="Brands"></div>
-    <div class="matrix-wrap"><table class="matrix" id="matrix"><tbody><tr><td>Loading the benchmark CSV...</td></tr></tbody></table></div>
-    <div class="take" id="take" aria-live="polite"></div>
-    <p class="note"><span class="tag good">named</span> listed by name in robots.txt and allowed on public pages. <span class="tag">via *</span> allowed by the catch-all rule. Read from <a href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/case-studies/saas-ai-crawler-benchmark.csv"><code>case-studies/saas-ai-crawler-benchmark.csv</code></a>, checked with live HTTP requests to each production domain.</p>
+    <p class="eyebrow">layer 1: can the engines read the site?</p>
+    <h2>Decide which AI crawlers may read your site</h2>
+    <p class="sub2">Search and user-fetch bots feed live answers; training bots feed future models. Blocking the first kind by accident removes a brand from AI answers. Set a policy and read the robots.txt it needs.</p>
+    <div class="builder">
+      <div class="toggles" id="toggles">
+        <div class="tg" data-g="search"><h3>AI search</h3><p>OAI-SearchBot, Claude-SearchBot, PerplexityBot, DuckAssistBot, Google-CloudVertexBot</p><div class="seg" role="group" aria-label="AI search bots"><button type="button" data-v="allow" aria-pressed="true">Allow</button><button type="button" class="block" data-v="block" aria-pressed="false">Block</button></div></div>
+        <div class="tg" data-g="fetch"><h3>Live user fetch</h3><p>ChatGPT-User, Claude-User, Perplexity-User, Meta-ExternalFetcher, MistralAI-User</p><div class="seg" role="group" aria-label="User fetch bots"><button type="button" data-v="allow" aria-pressed="true">Allow</button><button type="button" class="block" data-v="block" aria-pressed="false">Block</button></div></div>
+        <div class="tg" data-g="train"><h3>Model training</h3><p>GPTBot, ClaudeBot, Google-Extended, Applebot-Extended, Meta-ExternalAgent, Amazonbot, Bytespider, CCBot</p><div class="seg" role="group" aria-label="Training bots"><button type="button" data-v="allow" aria-pressed="false">Allow</button><button type="button" class="block" data-v="block" aria-pressed="true">Block</button></div></div>
+        <div class="opts">
+          <label class="opt"><input type="checkbox" id="opt-gated" checked><span>Keep gated pages out<small>thank-you and download pages behind a form</small></span></label>
+          <label class="opt"><input type="checkbox" id="opt-utm" checked><span>Block campaign URLs<small>utm, gclid and fbclid links that duplicate pages</small></span></label>
+        </div>
+      </div>
+      <div class="out">
+        <div class="out-head"><span>robots.txt</span><button type="button" class="copy" id="copy">Copy</button></div>
+        <pre class="robots" id="robots" aria-live="polite"></pre>
+        <ul class="effects" id="effects" aria-live="polite"></ul>
+      </div>
+    </div>
+
+    <h3 class="cites-h" style="margin-top:88px">What five SaaS brands chose, checked live on 2026-11-20</h3>
+    <div class="brands" id="brands"><div class="skel"></div><div class="skel"></div><div class="skel"></div><div class="skel"></div><div class="skel"></div></div>
+    <p class="note"><span class="tag good">named</span> listed by name and allowed on public pages. <span class="tag">via *</span> allowed by the catch-all rule. Read from <a href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/case-studies/saas-ai-crawler-benchmark.csv"><code>case-studies/saas-ai-crawler-benchmark.csv</code></a>, checked with live HTTP requests to each production domain.</p>
   </section>
 
-  <section class="wrap band" id="method">
-    <h2>The measurement chain: crawled, cited, visited</h2>
-    <p class="sub2">Each layer answers a different question, and each one has a known blind spot that the reports state.</p>
+  <section class="wrap band" id="chain">
+    <h2>Crawled, cited, visited</h2>
+    <p class="sub2">The robots.txt check is the first of three layers. Each answers a different question, and each has a blind spot the reports state.</p>
     <div class="chain">
-      <div class="layer"><small>server logs and robots.txt</small><h3>Can the engines read the page?</h3><p>AI crawlers run no JavaScript, so GA4 never sees them. 19 vendor-documented bots, classified by purpose:</p>
-        <div class="bots"><span>OAI-SearchBot</span><span>Claude-SearchBot</span><span>PerplexityBot</span><span>ChatGPT-User</span><span>Claude-User</span><span>GPTBot</span><span>ClaudeBot</span><span>Google-Extended</span><span>CCBot</span></div></div>
-      <div class="layer"><small>multi-engine answers</small><h3>Do the answers name the brand?</h3><p>Unbranded questions only, 2 to 3 runs each and 1 to 3 paraphrases, so a result reads "cited in 2 of 3 runs" instead of one lucky answer. Plus the domains cited as sources.</p></div>
-      <div class="layer"><small>Search Console and GA4</small><h3>Do people arrive?</h3><p>AI referral traffic in GA4 is reported as a floor, because many AI apps strip the referrer. Search Console sits beside it with the same branded and unbranded split.</p></div>
+      <div class="layer"><small>server logs and robots.txt</small><h3>Can the engines read the page?</h3><p>AI crawlers run no JavaScript, so GA4 never sees them. Server logs are sorted into search, user-fetch and training bots by their declared user agent.</p></div>
+      <div class="layer"><small>multi-engine answers</small><h3>Do the answers name the brand?</h3><p>Unbranded questions on several engines, with repeat runs and paraphrases, plus the domains each answer cites.</p></div>
+      <div class="layer"><small>Search Console and GA4</small><h3>Do people arrive?</h3><p>AI referral traffic in GA4 is a floor, because many AI apps strip the referrer. Search Console sits beside it with the same branded and unbranded split.</p></div>
     </div>
-    <h3 class="refuse-h">What the reports refuse to fake</h3>
-    <div class="refuse">
-      <div><h3><s>Prompt volume</s></h3><p>No AI platform publishes how often a question is asked. Tools that show a number are guessing.</p></div>
-      <div><h3><s>An llms.txt score</s></h3><p>Ahrefs found about 97% of llms.txt files get no bot requests (June 2026). It is logged as a note, not a KPI.</p></div>
-      <div><h3><s>Auto-published AI articles</s></h3><p>The output is an editorial brief and a four-week plan for people to review.</p></div>
-      <div><h3><s>API answers equal chat answers</s></h3><p>API search results reflect real sources, but consumer chats add personalisation and memory. Every report says so.</p></div>
+
+    <div class="costs">
+      <div>
+        <h3 class="sec">What an audit costs</h3>
+        <div class="cost-table">
+          <div class="cost-row"><b>Standard baseline</b><span class="eur num">&euro;0.60-1.60</span><small>15 questions, 1 run</small></div>
+          <div class="cost-row pick"><b>Decision-grade</b><span class="eur num">&euro;1.80-4.80</span><small>15 questions, 3 runs, stability checked</small></div>
+          <div class="cost-row"><b>Deep competitive</b><span class="eur num">&euro;2.40-6.40</span><small>30 questions, 2 runs</small></div>
+        </div>
+        <p class="formula">engines x questions x runs. The search fee per call, not the tokens, drives the cost. Ceiling at public list prices, 3 or 4 engines. <a href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/methodology/api-unit-economics.md">Unit economics</a></p>
+      </div>
+      <div>
+        <h3 class="sec">What the reports refuse to fake</h3>
+        <div class="refuse">
+          <div><h3><s>Prompt volume</s></h3><p>No AI platform publishes how often a question is asked. Tools that show a number are guessing.</p></div>
+          <div><h3><s>An llms.txt score</s></h3><p>Ahrefs found about 97% of llms.txt files get no bot requests (June 2026). It is a note, not a KPI.</p></div>
+          <div><h3><s>Auto-published AI articles</s></h3><p>The output is an editorial brief and a four-week plan for people to review.</p></div>
+          <div><h3><s>API answers equal chat answers</s></h3><p>API search reflects real sources, but consumer chats add personalisation and memory. Every report says so.</p></div>
+        </div>
+      </div>
     </div>
-    <div class="cost"><b>&euro;1.80-4.80</b><p>List-price cost of a decision-grade audit: 15 queries, 3 runs each, on 3 or 4 engines. The search fee per call, not the tokens, drives it. <a href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/methodology/api-unit-economics.md">Unit economics</a></p></div>
   </section>
 
   <section class="wrap band" id="files">
     <h2>The files</h2>
     <div class="files">
-      <a href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/methodology/geo-measurement-framework.md"><span class="p">methodology/geo-measurement-framework.md</span><span class="go">open</span><span class="d">Variance controls, the 19-bot taxonomy, the GA4 and Search Console layer</span></a>
+      <a href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/methodology/geo-measurement-framework.md"><span class="p">methodology/geo-measurement-framework.md</span><span class="go">open</span><span class="d">Variance controls, the crawler taxonomy, the GA4 and Search Console layer</span></a>
       <a href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/methodology/api-unit-economics.md"><span class="p">methodology/api-unit-economics.md</span><span class="go">open</span><span class="d">Cost per audit at public list prices</span></a>
       <a href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/case-studies/notion-live-audit-summary.md"><span class="p">case-studies/notion-live-audit-summary.md</span><span class="go">open</span><span class="d">The full Notion readout and the four-week plan</span></a>
       <a href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/case-studies/saas-ai-crawler-benchmark.md"><span class="p">case-studies/saas-ai-crawler-benchmark.md</span><span class="go">open</span><span class="d">The robots.txt and llms.txt audit, with the raw CSV</span></a>
     </div>
+    <p class="note">The app's source code is private. This repository holds the method, the case studies and the screenshots.</p>
   </section>
 </main>
 
@@ -354,101 +468,105 @@ const BASE = location.hostname.endsWith("github.io")
   : "../";
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-const NS = "http://www.w3.org/2000/svg";
-function el(parent, tag, attrs, text) {
-  const e = document.createElementNS(NS, tag);
-  for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
-  if (text !== undefined) e.textContent = text;
-  parent.append(e);
-  return e;
-}
+const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-// Numbers from case-studies/notion-live-audit-summary.md
-const ENGINES = [["Google Gemini", 80, 75], ["OpenAI GPT", 60, 50], ["Perplexity", 50, 33]];
-const SOV = [["Notion", 53, 19, 1.4], ["ClickUp", 27, 11, 2.1], ["Airtable", 15, 6, 2.8], ["Coda", 5, 2, 3.5]];
-const SOURCES = [["zapier.com", 6, false], ["pcmag.com", 4, false], ["techradar.com", 3, false], ["notion.so", 2, true], ["g2.com", 2, false], ["capterra.it", 1, false]];
-
-// Charts are drawn at the size they are shown, so the text stays at its real pixel size.
-const widthOf = (svg) => Math.max(Math.round(svg.getBoundingClientRect().width) || 600, 280);
-function engines() {
-  const svg = $("#engines"); svg.replaceChildren(svg.querySelector("title"));
-  const W = widthOf(svg), narrow = W < 460;
-  svg.setAttribute("viewBox", `0 0 ${W} 210`);
-  const x0 = narrow ? 92 : 130, x1 = W - 44, xs = (v) => x0 + (x1 - x0) * v / 100;
-  for (const t of [0, 25, 50, 75, 100]) {
-    el(svg, "line", { class: "grid", x1: xs(t), x2: xs(t), y1: 10, y2: 178 });
-    el(svg, "text", { class: "tick", x: xs(t), y: 200, "text-anchor": "middle" }, t + "%");
-  }
-  ENGINES.forEach(([name, all, nb], i) => {
-    const y = 38 + i * 56;
-    el(svg, "text", { class: "lab", x: 0, y: y + 5 }, narrow ? name.replace(/^(Google|OpenAI) /, "") : name);
-    el(svg, "line", { class: "conn", x1: xs(nb), x2: xs(all), y1: y, y2: y });
-    el(svg, "circle", { class: "dot-all", cx: xs(all), cy: y, r: 7 });
-    el(svg, "circle", { class: "dot-nb", cx: xs(nb), cy: y, r: 8 });
-    el(svg, "text", { class: "v", x: xs(all) + 14, y: y + 5 }, all + "%");
-    el(svg, "text", { class: "v", x: xs(nb) - 14, y: y + 5, "text-anchor": "end" }, nb + "%");
+// Count the hero numbers up once, in step with the bars.
+if (!still) {
+  document.querySelectorAll(".eng .big").forEach((el, i) => {
+    const end = Number(el.dataset.v), t0 = performance.now() + i * 120, dur = 1000;
+    const tick = (t) => {
+      const k = Math.min(Math.max((t - t0) / dur, 0), 1), e = 1 - Math.pow(1 - k, 3);
+      el.firstChild.nodeValue = String(Math.round(end * e));
+      if (k < 1) requestAnimationFrame(tick);
+    };
+    el.firstChild.nodeValue = "0";
+    requestAnimationFrame(tick);
   });
 }
 
-function bars(svg, rows, { x0, max, h, gap, value }) {
-  svg.replaceChildren(svg.querySelector("title"));
-  const w = widthOf(svg);
-  svg.setAttribute("viewBox", `0 0 ${w} ${rows.length * (h + gap) + 6}`);
-  rows.forEach((r, i) => {
-    const y = 6 + i * (h + gap), len = (w - x0 - 64) * r[1] / max;
-    el(svg, "text", { class: "lab", x: 0, y: y + h / 2 + 5 }, r[0]);
-    const path = `M${x0},${y} h${Math.max(len - 4, 0)} a4,4 0 0 1 4,4 v${h - 8} a4,4 0 0 1 -4,4 h${-Math.max(len - 4, 0)} z`;
-    const p = el(svg, "path", { d: path, class: "bar grow" + (r.hi ? " hi" : "") });
-    p.style.animationDelay = i * 80 + "ms";
-    el(svg, "text", { class: "v", x: x0 + len + 8, y: y + h / 2 + 5 }, value(r));
-  });
-}
-function charts() {
-  engines();
-  bars($("#sov"), SOV.map((r, i) => Object.assign([...r], { hi: i === 0 })), { x0: 92, max: 53, h: 22, gap: 26, value: (r) => r[1] + "%" });
-  bars($("#sources"), SOURCES.map((r) => Object.assign([...r], { hi: r[2] })), { x0: 112, max: 6, h: 20, gap: 21, value: (r) => r[1] + (r[2] ? ", owned" : "") });
-}
-charts();
-let rt, lastW = innerWidth;
-addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => { if (innerWidth !== lastW) { lastW = innerWidth; charts(); } }, 150); });
-
-// ---- crawler benchmark, read from the CSV ----
-const TAKE = {
-  Asana: "The clearest AI-crawler policy of the five: 17 named agents, so training and live search can be allowed or blocked separately. Gated pages such as /ebook/ stay out.",
-  Notion: "Eleven segmented sitemaps, one of them in Markdown, and SEO scrapers blocked. Amazonbot is the only AI agent named, and it is disallowed.",
-  ClickUp: "The best crawl-budget hygiene: utm, fbclid, gclid, msclkid and mc_cid URLs are disallowed, so paid links do not split citations.",
-  Airtable: "Six rules that protect /studio/ and /api/. No AI-agent rules, no parameter rules, no llms.txt.",
-  Coda: "Six rules that keep user documents (/docs, /d/) out of the index. No AI-agent rules and no llms.txt.",
+// ---- robots.txt builder ----
+const BOTS = {
+  search: ["OAI-SearchBot", "Claude-SearchBot", "PerplexityBot", "DuckAssistBot", "Google-CloudVertexBot"],
+  fetch: ["ChatGPT-User", "Claude-User", "Perplexity-User", "Meta-ExternalFetcher", "MistralAI-User"],
+  train: ["GPTBot", "ClaudeBot", "Google-Extended", "Applebot-Extended", "Meta-ExternalAgent", "Amazonbot", "Bytespider", "CCBot"],
 };
-const access = (v) => v === "disallow" ? '<span class="tag block">blocked</span>' : v === "allow_public" ? '<span class="tag good" title="Named in robots.txt, allowed on public pages">named</span>' : '<span class="tag" title="Covered by User-agent: *">via *</span>';
+const LABEL = { search: "AI search: feeds live answers and their citations", fetch: "Live user fetch: a person asked an assistant to open a page", train: "Model training: feeds future models" };
+const policy = { search: "allow", fetch: "allow", train: "block" };
+
+function robots() {
+  const extra = [];
+  if ($("#opt-gated").checked) extra.push("/thank-you/", "/download/");
+  if ($("#opt-utm").checked) extra.push("/*utm_", "/*gclid=", "/*fbclid=");
+  const lines = [];
+  for (const g of ["search", "fetch", "train"]) {
+    lines.push(["c", "# " + LABEL[g]]);
+    BOTS[g].forEach((b) => lines.push(["k", "User-agent: " + b]));
+    if (policy[g] === "block") lines.push(["d", "Disallow: /"]);
+    else { lines.push(["k", "Allow: /"]); extra.forEach((p) => lines.push(["d", "Disallow: " + p])); }
+    lines.push(["", ""]);
+  }
+  lines.push(["c", "# Everyone else, including Googlebot"]);
+  lines.push(["k", "User-agent: *"]);
+  if (extra.length) extra.forEach((p) => lines.push(["d", "Disallow: " + p])); else lines.push(["k", "Allow: /"]);
+  $("#robots").innerHTML = lines.map(([c, t]) => (c ? `<span class="${c}">${esc(t)}</span>` : esc(t))).join("\n");
+
+  const fx = [];
+  if (policy.search === "block") fx.push(["warn", "Search bots blocked: the site drops out of live AI answers and their source lists."]);
+  else fx.push(["", "Search bots can read public pages, so the brand can be named and cited in live answers."]);
+  if (policy.fetch === "block") fx.push(["warn", "User fetch blocked: when someone asks an assistant to open a page, it cannot."]);
+  if (policy.train === "block") fx.push(["", policy.search === "allow" ? "Training blocked, search open: the brand can still be cited in live answers. Naming agents one by one, as Asana does, is what makes this split possible." : "Training blocked: future models learn less from the site."]);
+  else fx.push(["", "Training open: the site can end up in future model training data."]);
+  if ($("#opt-utm").checked) fx.push(["", "Campaign links do not create duplicate pages that split citations, as ClickUp does."]);
+  fx.push(["", "Every named group repeats the extra rules: a bot that finds its own group ignores the catch-all one."]);
+  $("#effects").innerHTML = fx.map(([c, t]) => `<li class="${c}">${esc(t)}</li>`).join("");
+}
+document.querySelectorAll(".tg").forEach((tg) => tg.addEventListener("click", (e) => {
+  const b = e.target.closest("button"); if (!b) return;
+  policy[tg.dataset.g] = b.dataset.v;
+  tg.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+  robots();
+}));
+["#opt-gated", "#opt-utm"].forEach((id) => $(id).addEventListener("change", robots));
+$("#copy").addEventListener("click", async () => {
+  try { await navigator.clipboard.writeText($("#robots").innerText); $("#copy").textContent = "Copied"; }
+  catch { $("#copy").textContent = "Select and copy"; }
+  setTimeout(() => ($("#copy").textContent = "Copy"), 1600);
+});
+robots();
+
+// ---- five brands, read from the CSV ----
+const VERDICT = {
+  Asana: ["Names 17 AI agents one by one", "Training and live search can be allowed or blocked separately; gated pages such as /ebook/ stay out."],
+  Notion: ["Blocks Amazonbot, publishes 11 sitemaps", "One sitemap is in Markdown; SEO scrapers are blocked too."],
+  ClickUp: ["Keeps campaign URLs out", "utm, fbclid, gclid, msclkid and mc_cid links are disallowed, so paid traffic does not split citations."],
+  Airtable: ["Six rules, no AI policy", "Protects /studio/ and /api/; no AI-agent rules and no llms.txt."],
+  Coda: ["Six rules, no AI policy", "Keeps user documents (/docs, /d/) out; no AI-agent rules and no llms.txt."],
+};
+const access = (v) => v === "disallow" ? '<span class="tag block">blocked</span>' : v === "allow_public" ? '<span class="tag good">named</span>' : '<span class="tag">via *</span>';
 function parseCSV(text) {
   const [head, ...rows] = text.trim().split(/\r?\n/).map((l) => l.split(","));
   return rows.map((r) => Object.fromEntries(head.map((h, i) => [h, r[i] || ""])));
 }
-function drawBench(rows) {
-  const head = `<thead><tr><th>Brand</th><th>robots.txt rules</th><th>AI agents named</th><th>OAI-SearchBot</th><th>PerplexityBot</th><th>GPTBot</th><th>Amazonbot</th><th>UTM URLs blocked</th><th>/llms.txt</th><th>Sitemaps</th></tr></thead>`;
-  const body = rows.map((r) => `<tr data-b="${esc(r.brand)}"><th>${esc(r.brand)}<small>${esc(r.domain)}</small></th>
-    <td class="num">${esc(r.robots_rule_count)}</td>
-    <td>${r.explicit_ai_agent_rules.startsWith("yes") ? `<span class="tag good">${esc(r.explicit_ai_agent_rules.replace(/^yes \((.*)\)$/, "$1"))}</span>` : r.explicit_ai_agent_rules.startsWith("partial") ? `<span class="tag">${esc(r.explicit_ai_agent_rules.replace(/^partial \((.*)\)$/, "only $1"))}</span>` : '<span class="tag none">none</span>'}</td>
-    <td>${access(r.oai_searchbot)}</td><td>${access(r.perplexitybot)}</td><td>${access(r.gptbot)}</td><td>${access(r.amazonbot)}</td>
-    <td>${r.utm_params_blocked === "yes" ? '<span class="tag good">yes</span>' : '<span class="tag none">no</span>'}</td>
-    <td>${r.llms_txt_status === "200" ? `<span class="tag">200, ${(Number(r.llms_txt_bytes) / 1000).toFixed(1)} KB</span>` : `<span class="tag none">${esc(r.llms_txt_status)}</span>`}</td>
-    <td class="num">${esc(r.sitemap_count)}</td></tr>`).join("");
-  $("#matrix").innerHTML = head + `<tbody>${body}</tbody>`;
-  const pick = (name) => {
-    document.querySelectorAll("#brands .bbtn").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.b === name)));
-    document.querySelectorAll("#matrix tbody tr").forEach((tr) => tr.classList.toggle("sel", tr.dataset.b === name));
-    $("#take").innerHTML = `<b>${esc(name)}</b><p>${esc(TAKE[name] || "")}</p>`;
-  };
-  $("#brands").innerHTML = rows.map((r) => `<button type="button" class="bbtn" data-b="${esc(r.brand)}" aria-pressed="false">${esc(r.brand)}</button>`).join("");
-  $("#brands").addEventListener("click", (e) => { const b = e.target.closest(".bbtn"); if (b) pick(b.dataset.b); });
-  $("#matrix").addEventListener("click", (e) => { const tr = e.target.closest("tbody tr"); if (tr) pick(tr.dataset.b); });
-  pick(rows[0].brand);
+function drawBrands(rows) {
+  $("#brands").innerHTML = rows.map((r) => {
+    const [verdict, take] = VERDICT[r.brand] || ["", ""];
+    const named = r.explicit_ai_agent_rules.startsWith("yes") ? `<span class="tag good">${esc(r.explicit_ai_agent_rules.replace(/^yes \((.*)\)$/, "$1"))}</span>`
+      : r.explicit_ai_agent_rules.startsWith("partial") ? `<span class="tag">${esc(r.explicit_ai_agent_rules.replace(/^partial \((.*)\)$/, "only $1"))}</span>` : '<span class="tag none">none</span>';
+    return `<article class="bcard"><h3>${esc(r.brand)}<small>${esc(r.domain)}</small></h3><p class="verdict">${esc(verdict)}</p>
+      <dl><dt>AI agents named</dt><dd>${named}</dd>
+      <dt>Search bots</dt><dd>${access(r.oai_searchbot)}</dd>
+      <dt>Training bots</dt><dd>${access(r.gptbot)}</dd>
+      <dt>Amazonbot</dt><dd>${access(r.amazonbot)}</dd>
+      <dt>Campaign URLs blocked</dt><dd>${r.utm_params_blocked === "yes" ? '<span class="tag good">yes</span>' : '<span class="tag none">no</span>'}</dd>
+      <dt>/llms.txt</dt><dd>${r.llms_txt_status === "200" ? `<span class="tag">${(Number(r.llms_txt_bytes) / 1000).toFixed(1)} KB</span>` : `<span class="tag none">${esc(r.llms_txt_status)}</span>`}</dd>
+      <dt>robots.txt rules</dt><dd class="num">${esc(r.robots_rule_count)}</dd></dl>
+      <p class="take">${esc(take)}</p></article>`;
+  }).join("");
 }
 fetch(BASE + "case-studies/saas-ai-crawler-benchmark.csv")
   .then((r) => (r.ok ? r.text() : Promise.reject(new Error("HTTP " + r.status))))
-  .then((t) => drawBench(parseCSV(t)))
-  .catch(() => { $("#matrix").innerHTML = `<tbody><tr><td>The CSV did not load. <a href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/case-studies/saas-ai-crawler-benchmark.csv">Open it on GitHub</a>.</td></tr></tbody>`; });
+  .then((t) => drawBrands(parseCSV(t)))
+  .catch(() => { $("#brands").innerHTML = `<p class="note">The CSV did not load. <a href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/case-studies/saas-ai-crawler-benchmark.csv">Open it on GitHub</a>.</p>`; });
 
 // ---- lightbox ----
 const box = $("#lightbox"), boxImg = $("#lightbox-img");
