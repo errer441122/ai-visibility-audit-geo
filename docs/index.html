@@ -4,184 +4,530 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<title>AI Visibility Audit — GEO Methodology &amp; Real-Brand Showcase</title>
-<meta name="description" content="Multi-engine Generative Engine Optimization (GEO) methodology, live Notion AI Share of Voice audit, and live-verified 5-brand AI crawler benchmark.">
+<title>AI Visibility Audit (GEO) &mdash; Interactive Case Study &amp; Benchmark</title>
+<meta name="description" content="Interactive GEO / AEO methodology showcase: live Notion multi-engine Share of Voice & Source Gap explorer, plus interactive live-verified 5-brand AI crawler benchmark.">
 <style>
 :root {
   color-scheme: light;
-  --page: #f4f7f5; --surface: #ffffff; --surface-2: #f8fbf9; --ink: #101915; --ink-2: #44534c; --muted: #697870;
-  --line: #d9e3dd; --accent: #0b6e4f; --accent-ink: #ffffff; --tint: #e6f4ee;
-  --warn: #945600; --warn-tint: #fef5e5; --bad: #a8281b; --bad-tint: #fdece9;
+  --bg: #f4f7f5; --card: #ffffff; --sub: #f8fbf9; --ink: #101915; --ink2: #44534c; --muted: #697870;
+  --line: #d9e3dd; --accent: #0b6e4f; --accent-ink: #ffffff; --accent-soft: #e6f4ee;
+  --ok: #0b6e4f; --ok-bg: #e6f4ee; --ok-bd: #9fd9be;
+  --warn: #a15c00; --warn-bg: #fff8e6; --warn-bd: #f7d78c;
+  --bad: #b42318; --bad-bg: #fef2f2; --bad-bd: #fecaca;
+  --bar-bg: #e5ede8; --bar-alt: #64748b;
 }
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: dark;
-    --page: #0a100d; --surface: #111a16; --surface-2: #16221c; --ink: #edf4f0; --ink-2: #b9c8c0; --muted: #84968d;
-    --line: #23332b; --accent: #4dd09d; --accent-ink: #06130e; --tint: #13281f;
-    --warn: #f5be5b; --warn-tint: #2c2211; --bad: #ff8e80; --bad-tint: #2e1715;
+    --bg: #0a100d; --card: #111a16; --sub: #16221c; --ink: #edf4f0; --ink2: #b9c8c0; --muted: #84968d;
+    --line: #23332b; --accent: #4dd09d; --accent-ink: #06130e; --accent-soft: #13281f;
+    --ok: #4dd09d; --ok-bg: #11291f; --ok-bd: #1d4d38;
+    --warn: #fbbf24; --warn-bg: #2c210b; --warn-bd: #5c4212;
+    --bad: #f87171; --bad-bg: #2f1417; --bad-bd: #632227;
+    --bar-bg: #1e2d26; --bar-alt: #64748b;
   }
 }
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--page); color: var(--ink); font: 15.5px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15.5px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; }
 a { color: var(--accent); text-underline-offset: 3px; }
-code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 0.9em; }
-.wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
-header.nav { position: sticky; top: 0; z-index: 5; background: var(--page); border-bottom: 1px solid var(--line); }
-header.nav .wrap { display: flex; align-items: center; gap: 22px; height: 60px; }
-.brand { font-weight: 700; color: var(--ink); text-decoration: none; letter-spacing: -0.02em; }
-.nav nav { display: flex; gap: 18px; font-size: 14px; }
-.nav nav a { color: var(--ink-2); text-decoration: none; }
-.nav .src { margin-left: auto; font-size: 14px; }
+code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 0.87em; background: var(--sub); padding: 1px 5px; border-radius: 4px; border: 1px solid var(--line); }
+.wrap { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
 
-.hero { padding: 52px 0 32px; }
-.eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin: 0 0 10px; }
-h1 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.08; letter-spacing: -0.03em; margin: 0 0 14px; max-width: 24ch; }
-.lead { font-size: 17.5px; color: var(--ink-2); max-width: 70ch; margin: 0 0 18px; }
-.chips { display: flex; flex-wrap: wrap; gap: 8px; }
-.chip { font-size: 12.5px; font-weight: 600; padding: 4px 11px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); color: var(--ink-2); }
+header.nav { position: sticky; top: 0; z-index: 10; background: var(--bg); border-bottom: 1px solid var(--line); }
+header.nav .wrap { display: flex; align-items: center; gap: 18px; min-height: 58px; flex-wrap: wrap; padding-top: 8px; padding-bottom: 8px; }
+.brand { font-weight: 800; color: var(--ink); text-decoration: none; letter-spacing: -0.02em; font-size: 15.5px; }
+.nav-links { display: flex; gap: 14px; font-size: 13.5px; margin-left: auto; flex-wrap: wrap; }
+.nav-links a { color: var(--ink2); text-decoration: none; font-weight: 600; }
+.nav-links a:hover { color: var(--accent); }
 
-section.card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 28px 30px; margin: 0 0 26px; }
-section.card h2 { font-size: 24px; letter-spacing: -0.02em; margin: 0 0 8px; }
-section.card > p { color: var(--ink-2); margin: 0 0 18px; max-width: 78ch; }
-.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 16px 0 22px; }
-.kpi { background: var(--surface-2); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
-.kpi span { display: block; font-size: 12.5px; color: var(--muted); }
-.kpi b { display: block; font-size: 28px; line-height: 1.15; margin-top: 3px; color: var(--accent); }
-.kpi small { display: block; font-size: 12px; color: var(--ink-2); margin-top: 3px; }
+.hero { padding: 44px 0 26px; }
+.kicker { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin: 0 0 10px; }
+h1 { font-size: clamp(28px, 4.1vw, 43px); line-height: 1.09; letter-spacing: -0.03em; margin: 0 0 12px; max-width: 26ch; }
+.lead { font-size: 17px; color: var(--ink2); max-width: 74ch; margin: 0 0 20px; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 999px; font-weight: 600; font-size: 14px; text-decoration: none; border: 1px solid var(--accent); background: var(--accent); color: var(--accent-ink); cursor: pointer; }
+.btn.ghost { background: transparent; color: var(--accent); }
 
-.shot { margin: 18px 0 0; }
-.shot img { width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); display: block; }
-.shot figcaption { font-size: 13.5px; color: var(--muted); margin-top: 8px; }
+/* 3-Step Visual Explainer Strip */
+.steps3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.st3 { background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--accent); border-radius: 14px; padding: 16px 18px; }
+.st3 small { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); }
+.st3 h2 { font-size: 16px; margin: 4px 0 6px; letter-spacing: -0.01em; }
+.st3 p { margin: 0; font-size: 14px; color: var(--ink2); }
 
-.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
-.box { background: var(--surface-2); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; }
-.box h3 { margin: 0 0 6px; font-size: 16px; }
-.box p { margin: 0; font-size: 14.5px; color: var(--ink-2); }
+section.block { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 26px 28px; margin: 22px 0; }
+section.block h2 { font-size: 22px; letter-spacing: -0.02em; margin: 0 0 6px; }
+.subhead { color: var(--ink2); margin: 0 0 18px; font-size: 15px; max-width: 78ch; }
+
+.pill { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; }
+.pill.ok { background: var(--ok-bg); color: var(--ok); border: 1px solid var(--ok-bd); }
+.pill.warn { background: var(--warn-bg); color: var(--warn); border: 1px solid var(--warn-bd); }
+.pill.bad { background: var(--bad-bg); color: var(--bad); border: 1px solid var(--bad-bd); }
+
+/* Tabs */
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
+.tab-btn { font: inherit; font-size: 14px; font-weight: 600; padding: 9px 16px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--sub); color: var(--ink2); cursor: pointer; transition: all .15s; }
+.tab-btn:hover { border-color: var(--accent); color: var(--ink); }
+.tab-btn[aria-selected="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* KPI Strip */
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin-bottom: 20px; }
+.kpi { background: var(--sub); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+.kpi span { display: block; font-size: 12px; color: var(--muted); font-weight: 600; }
+.kpi b { display: block; font-size: 28px; line-height: 1.15; margin-top: 3px; color: var(--accent); letter-spacing: -0.02em; }
+.kpi small { display: block; font-size: 12px; color: var(--ink2); margin-top: 3px; }
+
+/* Visual Bar Charts */
+.charts { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.chart-card { background: var(--sub); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px; }
+.chart-card h3 { margin: 0; font-size: 15.5px; }
+.chart-card .note { font-size: 13px; color: var(--ink2); margin: 0; padding-top: 8px; border-top: 1px solid var(--line); }
+.bars { display: grid; gap: 11px; }
+.bar-row { display: grid; gap: 4px; }
+.bar-top { display: flex; justify-content: space-between; font-size: 13px; gap: 8px; }
+.bar-top span { color: var(--ink2); }
+.bar-top strong { color: var(--ink); }
+.track { height: 10px; background: var(--bar-bg); border-radius: 999px; overflow: hidden; }
+.fill { height: 100%; border-radius: 999px; background: var(--accent); }
+.fill.warn { background: #d97706; }
+.fill.bad { background: var(--bad); }
+.fill.muted { background: var(--bar-alt); opacity: .75; }
+
+/* Gaps & 4-Week Plan */
+.gap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 14px; margin-bottom: 20px; }
+.gap-card { background: var(--sub); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; display: grid; gap: 7px; }
+.gap-card blockquote { margin: 0; font-weight: 700; font-size: 14.5px; color: var(--ink); }
+.gap-card p { margin: 0; font-size: 13.5px; color: var(--ink2); }
+
+.weeks { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.wk { background: var(--sub); border: 1px solid var(--line); border-top: 3px solid var(--accent); border-radius: 11px; padding: 14px 15px; }
+.wk small { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--accent); }
+.wk b { display: block; font-size: 14px; margin: 3px 0 5px; }
+.wk p { margin: 0; font-size: 13px; color: var(--ink2); }
+
+/* App Screenshots + Lightbox */
+.shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 16px; }
+.shots figure { margin: 0; background: var(--sub); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; cursor: zoom-in; transition: border-color .15s; }
+.shots figure:hover { border-color: var(--accent); }
+.shots img { width: 100%; height: 240px; object-fit: cover; object-position: top; display: block; border-bottom: 1px solid var(--line); }
+.shots figcaption { font-size: 13.5px; color: var(--ink2); padding: 12px 15px; }
+.shots figcaption small { display: block; color: var(--accent); font-weight: 600; margin-top: 4px; font-size: 12px; }
+
+/* Interactive 5-Brand Crawler Switcher */
+.brand-picker { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin-bottom: 16px; }
+.br-btn { text-align: left; font: inherit; background: var(--sub); border: 2px solid var(--line); border-radius: 12px; padding: 11px 13px; cursor: pointer; color: var(--ink); transition: all .15s; }
+.br-btn:hover { border-color: var(--accent); }
+.br-btn[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); box-shadow: 0 2px 10px rgba(11,110,79,.12); }
+.br-btn b { display: block; font-size: 14.5px; }
+.br-btn span { display: block; font-size: 12px; color: var(--muted); }
+
+.crawler-panel { background: var(--sub); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; margin-bottom: 20px; display: grid; gap: 14px; }
+.crawler-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 10px; border-bottom: 1px solid var(--line); padding-bottom: 10px; }
+.crawler-head h3 { margin: 0; font-size: 18px; }
+.lights { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; }
+.light { border-radius: 10px; padding: 11px 13px; border: 1.5px solid var(--line); background: var(--card); }
+.light.ok { border-color: var(--ok-bd); background: var(--ok-bg); }
+.light.warn { border-color: var(--warn-bd); background: var(--warn-bg); }
+.light.bad { border-color: var(--bad-bd); background: var(--bad-bg); }
+.light small { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--muted); }
+.light strong { display: block; font-size: 14px; margin-top: 2px; }
+.light.ok strong { color: var(--ok); }
+.light.warn strong { color: var(--warn); }
+.light.bad strong { color: var(--bad); }
+.light p { margin: 3px 0 0; font-size: 12.5px; color: var(--ink2); }
+
+.takeaway-box { background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 10px; padding: 12px 15px; font-size: 14px; color: var(--ink2); }
+.takeaway-box strong { color: var(--ink); }
 
 .scroll { overflow-x: auto; }
 table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
-th, td { padding: 9px 11px; text-align: left; border-bottom: 1px solid var(--line); }
-thead th { font-size: 12px; color: var(--muted); font-weight: 600; white-space: nowrap; }
-.badge { display: inline-block; font-size: 11.5px; font-weight: 700; padding: 2px 8px; border-radius: 6px; }
-.badge.ok { background: var(--tint); color: var(--accent); }
-.badge.warn { background: var(--warn-tint); color: var(--warn); }
-.badge.bad { background: var(--bad-tint); color: var(--bad); }
+th, td { padding: 9px 10px; text-align: left; border-bottom: 1px solid var(--line); }
+thead th { font-size: 12px; color: var(--muted); font-weight: 600; }
 
-footer { border-top: 1px solid var(--line); padding: 24px 0 44px; color: var(--ink-2); font-size: 13.5px; }
-@media (max-width: 640px) { .wrap { padding: 0 16px; } .nav nav { display: none; } section.card { padding: 20px 16px; } }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+.rule-card { background: var(--sub); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
+.rule-card h3 { margin: 8px 0 6px; font-size: 15.5px; }
+.rule-card p { margin: 0; font-size: 14px; color: var(--ink2); }
+
+.modal { position: fixed; inset: 0; background: rgba(0,0,0,.82); display: none; align-items: center; justify-content: center; padding: 24px; z-index: 50; cursor: zoom-out; }
+.modal.open { display: flex; }
+.modal img { max-width: 96vw; max-height: 88vh; border-radius: 10px; box-shadow: 0 20px 60px rgba(0,0,0,.5); background: #fff; }
+
+footer { border-top: 1px solid var(--line); padding: 22px 0 40px; color: var(--muted); font-size: 13.5px; }
+@media (max-width: 900px) { .steps3, .weeks { grid-template-columns: 1fr; } .brand-picker { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .wrap { padding: 0 16px; } section.block { padding: 18px 16px; } .brand-picker { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
 <header class="nav"><div class="wrap">
   <a class="brand" href="#top">AI Visibility Audit (GEO)</a>
-  <nav>
-    <a href="#notion">Live Notion Audit</a>
-    <a href="#crawlers">5-Brand Crawler Audit</a>
-    <a href="#methodology">Methodology</a>
-    <a href="#anti-roadmap">Anti-Roadmap</a>
+  <nav class="nav-links">
+    <a href="https://github.com/errer441122">Portfolio Home</a>
+    <a href="https://errer441122.github.io/ai-inbound-lead-router/">2. Lead Router</a>
+    <a href="https://errer441122.github.io/ecommerce-cx-analytics/">3. CX Promo Guard</a>
+    <a href="https://errer441122.github.io/lifecycle-automation-lab/">4. CRM QA</a>
+    <a href="https://github.com/errer441122/ai-visibility-audit-geo">GitHub Repo &rarr;</a>
   </nav>
-  <a class="src" href="https://github.com/errer441122/ai-visibility-audit-geo">Repository on GitHub</a>
 </div></header>
 
 <main class="wrap" id="top">
   <section class="hero">
-    <p class="eyebrow">Generative Engine Optimization &middot; AEO &amp; AI Search Analytics</p>
-    <h1>Measuring brand visibility inside AI answers &mdash; with variance control, not single-prompt guesswork.</h1>
-    <p class="lead">Public case-study and methodology showcase for <strong>AI Visibility Audit</strong> (private commercial application). Covers multi-engine live grounding (<strong>Gemini, OpenAI GPT, Perplexity, Claude</strong>), Source Gap analysis, GA4/Search Console baselines, and AI crawler log governance.</p>
-    <div class="chips">
-      <span class="chip">Multi-Engine Live Search</span>
-      <span class="chip">Multi-Run &amp; Paraphrase Stability</span>
-      <span class="chip">Source Gap &amp; Digital PR</span>
-      <span class="chip">19 AI Crawlers (Server Logs)</span>
-      <span class="chip">GA4 + Search Console Baselines</span>
+    <p class="kicker">Generative Engine Optimization (GEO) &middot; AEO &middot; Real-Brand Showcase</p>
+    <h1>Measure how AI engines recommend your brand &mdash; without single-prompt guesswork.</h1>
+    <p class="lead">Public case-study and methodology showcase for <strong>AI Visibility Audit</strong> (commercial app source maintained privately). Explore a <strong>live multi-engine Notion audit</strong> and a <strong>live-verified 5-brand AI crawler benchmark</strong> below.</p>
+    <div class="cta-row">
+      <a class="btn" href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/methodology/geo-measurement-framework.md">Read GEO Methodology</a>
+      <a class="btn ghost" href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/methodology/api-unit-economics.md">API Unit Economics</a>
+      <a class="btn ghost" href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/case-studies/saas-ai-crawler-benchmark.csv">Download 5-Brand CSV</a>
+    </div>
+
+    <div class="steps3">
+      <div class="st3">
+        <small>Step 1 &middot; Can AI Read You?</small>
+        <h2>AI Crawler Governance</h2>
+        <p>Audit <code>robots.txt</code>, sitemaps, and server logs across <strong>19 AI bots</strong> to separate live AI search bots from training scrapers.</p>
+      </div>
+      <div class="st3">
+        <small>Step 2 &middot; Do AI Engines Cite You?</small>
+        <h2>Multi-Engine Stability</h2>
+        <p>Run unbranded buyer queries across <strong>Gemini, GPT, Perplexity &amp; Claude</strong> (2&ndash;3&times; repeat runs) to measure true Share of Voice.</p>
+      </div>
+      <div class="st3">
+        <small>Step 3 &middot; How Do You Win?</small>
+        <h2>Source Gap &amp; 4-Week Plan</h2>
+        <p>Map which <strong>3rd-party domains</strong> (Zapier, PCMag, G2) actually feed AI answers and execute targeted content + Digital PR.</p>
+      </div>
     </div>
   </section>
 
-  <section class="card" id="notion">
-    <h2>1. Live Product Interface &amp; Real Multi-Engine Audit: Notion</h2>
-    <p>Unbranded discovery benchmark across <strong>Google Gemini, OpenAI GPT, and Perplexity</strong> (Italian market, productivity &amp; knowledge management category vs. ClickUp, Airtable, and Coda). Branded queries are tracked separately and excluded from Share of Voice.</p>
-    <div class="kpis">
-      <div class="kpi"><span>Non-Branded AI Share of Voice</span><b>53%</b><small>vs. ClickUp 27% &middot; Airtable 15% &middot; Coda 5%</small></div>
-      <div class="kpi"><span>Avg. Mention Position</span><b>1.4</b><small>Top recommendation when cited</small></div>
-      <div class="kpi"><span>Engine Divergence</span><b>80% &rarr; 50%</b><small>Gemini 80% &middot; GPT 60% &middot; Perplexity 50%</small></div>
-      <div class="kpi"><span>Owned Domain Citations</span><b>2 answers</b><small>Third-party domains (Zapier, PCMag) drive consensus</small></div>
+  <!-- INTERACTIVE LIVE NOTION AUDIT EXPLORER -->
+  <section class="block" id="notion">
+    <h2>1. Live Multi-Engine Case Study: Notion (Italy Market)</h2>
+    <p class="subhead">Real unbranded benchmark across <strong>Google Gemini, OpenAI GPT, and Perplexity</strong> comparing Notion vs. ClickUp, Airtable, and Coda (branded queries explicitly excluded from Share of Voice). Switch tabs to inspect the visual charts, content gaps, or live app screenshots:</p>
+
+    <div class="tabs" role="tablist" aria-label="Notion live audit views">
+      <button type="button" class="tab-btn" role="tab" aria-selected="true" data-tab="t-score">Scorecard &amp; Visual Charts</button>
+      <button type="button" class="tab-btn" role="tab" aria-selected="false" data-tab="t-gaps">Content Gaps &amp; 4-Week Plan</button>
+      <button type="button" class="tab-btn" role="tab" aria-selected="false" data-tab="t-shots">Live App Screenshots (Zoomable)</button>
     </div>
-    <figure class="shot">
-      <img src="assets/ui-landing.png" alt="AI Visibility Audit live interface showing Notion multi-engine Share of Voice and competitor breakdown">
-      <figcaption>Live product interface showing Notion's non-branded Share of Voice, per-engine visibility split, and competitor ranking.</figcaption>
-    </figure>
-    <figure class="shot" style="margin-top:24px">
-      <img src="assets/ui-report-top.png" alt="AI Visibility Audit report showing query gaps and strategic recommendations">
-      <figcaption>Actionable output: prioritized content gaps, third-party Source Gap targets (zapier.com, pcmag.com), and a 4-week execution roadmap.</figcaption>
-    </figure>
+
+    <!-- TAB 1: SCORECARD & BARS -->
+    <div class="tab-panel active" id="t-score">
+      <div class="kpis">
+        <div class="kpi"><span>Non-Branded AI Share of Voice</span><b>53%</b><small>#1 vs. ClickUp (27%), Airtable (15%), Coda (5%)</small></div>
+        <div class="kpi"><span>Avg. Mention Position</span><b>1.4</b><small>1.0 = top recommendation when mentioned</small></div>
+        <div class="kpi"><span>Engine Divergence</span><b>80% &rarr; 50%</b><small>42-point non-branded drop on Perplexity</small></div>
+        <div class="kpi"><span>Owned Domain Citations</span><b>2 answers</b><small>Third-party publishers drive 8&times; more citations</small></div>
+      </div>
+
+      <div class="charts">
+        <div class="chart-card">
+          <h3>Why Checking 1 AI Engine Lies (Engine Split)</h3>
+          <div class="bars">
+            <div class="bar-row">
+              <div class="bar-top"><span>Google Gemini (Non-branded: 75%)</span><strong>80%</strong></div>
+              <div class="track"><div class="fill" style="width:80%"></div></div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-top"><span>OpenAI GPT (Non-branded: 50%)</span><strong>60%</strong></div>
+              <div class="track"><div class="fill warn" style="width:60%"></div></div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-top"><span>Perplexity (Non-branded: 33%)</span><strong>50%</strong></div>
+              <div class="track"><div class="fill bad" style="width:50%"></div></div>
+            </div>
+          </div>
+          <p class="note"><strong>Key insight:</strong> A team monitoring only Gemini would assume 80% dominance &mdash; missing that Perplexity drops to <strong>33%</strong> on unbranded queries.</p>
+        </div>
+
+        <div class="chart-card">
+          <h3>Unbranded Share of Voice vs. Competitors</h3>
+          <div class="bars">
+            <div class="bar-row">
+              <div class="bar-top"><span><strong>Notion</strong> (19 mentions &middot; Avg rank 1.4)</span><strong>53%</strong></div>
+              <div class="track"><div class="fill" style="width:53%"></div></div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-top"><span>ClickUp (11 mentions &middot; Avg rank 2.1)</span><strong>27%</strong></div>
+              <div class="track"><div class="fill muted" style="width:27%"></div></div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-top"><span>Airtable (6 mentions &middot; Avg rank 2.8)</span><strong>15%</strong></div>
+              <div class="track"><div class="fill muted" style="width:15%"></div></div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-top"><span>Coda (2 mentions &middot; Avg rank 3.5)</span><strong>5%</strong></div>
+              <div class="track"><div class="fill muted" style="width:5%"></div></div>
+            </div>
+          </div>
+          <p class="note"><strong>Key insight:</strong> Notion leads overall, but ClickUp captures over half of the remaining discovery demand.</p>
+        </div>
+
+        <div class="chart-card">
+          <h3>Source Gap: Who AI Engines Actually Cite</h3>
+          <div class="bars">
+            <div class="bar-row">
+              <div class="bar-top"><span><code>zapier.com</code> (3rd-party guide)</span><strong>6 citations</strong></div>
+              <div class="track"><div class="fill warn" style="width:100%"></div></div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-top"><span><code>pcmag.com</code> (Editorial review)</span><strong>4 citations</strong></div>
+              <div class="track"><div class="fill warn" style="width:67%"></div></div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-top"><span><code>techradar.com</code> (Editorial review)</span><strong>3 citations</strong></div>
+              <div class="track"><div class="fill warn" style="width:50%"></div></div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-top"><span><code>notion.so</code> <strong>(Owned domain)</strong></span><strong>2 citations</strong></div>
+              <div class="track"><div class="fill" style="width:33%"></div></div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-top"><span><code>g2.com</code> (2) &middot; <code>capterra.it</code> (1)</span><strong>3 citations</strong></div>
+              <div class="track"><div class="fill muted" style="width:50%"></div></div>
+            </div>
+          </div>
+          <p class="note"><strong>Key insight:</strong> AI engines pull consensus mostly from 3rd-party comparisons &mdash; Digital PR on Zapier, G2 &amp; Capterra.it moves the needle faster than blog volume alone.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: GAPS & 4-WEEK PLAN -->
+    <div class="tab-panel" id="t-gaps">
+      <div class="gap-grid">
+        <div class="gap-card">
+          <span class="pill bad" style="width:fit-content">HIGH PRIORITY &middot; Competitor Win</span>
+          <blockquote>&ldquo;come centralizzare le informazioni del team&rdquo;</blockquote>
+          <p><strong>Current result:</strong> Notion absent; <strong>ClickUp cited alone</strong>.</p>
+          <p><strong>Action:</strong> Publish an Italian answer-first team-wiki playbook with templates &amp; structured comparison tables.</p>
+        </div>
+        <div class="gap-card">
+          <span class="pill bad" style="width:fit-content">HIGH PRIORITY &middot; Whitespace</span>
+          <blockquote>&ldquo;automazione task ripetitivi per team&rdquo;</blockquote>
+          <p><strong>Current result:</strong> <strong>Zero</strong> of the 4 benchmarked brands cited.</p>
+          <p><strong>Action:</strong> First-mover workflow automation guide targeting Italian team operations.</p>
+        </div>
+        <div class="gap-card">
+          <span class="pill warn" style="width:fit-content">MEDIUM PRIORITY &middot; Missing Pricing</span>
+          <blockquote>&ldquo;quanto costa un software di knowledge management&rdquo;</blockquote>
+          <p><strong>Current result:</strong> Notion absent because pricing terms are missing from retrieved snippets.</p>
+          <p><strong>Action:</strong> Build transparent Italian pricing &amp; TCO page with <code>FAQPage</code> JSON-LD.</p>
+        </div>
+      </div>
+
+      <div class="weeks">
+        <div class="wk">
+          <small>Week 1 &middot; SEO / Content</small>
+          <b>On-Site FAQ &amp; Wiki Guide</b>
+          <p>Add answer-first FAQs &amp; schema to core Italian pages; publish the team-wiki playbook.</p>
+        </div>
+        <div class="wk">
+          <small>Week 2 &middot; Content</small>
+          <b>Pricing &amp; TCO Comparison</b>
+          <p>Publish clear Italian pricing breakdown answering buyer budget queries cleanly.</p>
+        </div>
+        <div class="wk">
+          <small>Week 3 &middot; Digital PR</small>
+          <b>Source Gap Outreach</b>
+          <p>Pitch updated feature comparisons &amp; Italian review refresh on <code>zapier.com</code>, <code>g2.com</code> &amp; <code>capterra.it</code>.</p>
+        </div>
+        <div class="wk">
+          <small>Week 4 &middot; Marketing Ops</small>
+          <b>Controlled Re-Audit</b>
+          <p>Re-run the <strong>exact same locked query set</strong> across Gemini, GPT &amp; Perplexity to verify real lift.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: LIVE APP SCREENSHOTS -->
+    <div class="tab-panel" id="t-shots">
+      <div class="shots">
+        <figure data-full="assets/ui-landing.png">
+          <img src="assets/ui-landing.png" alt="AI Visibility Audit live interface showing Notion scorecard and competitor breakdown">
+          <figcaption><strong>Live App Dashboard</strong> &mdash; Real Notion multi-engine Share of Voice, Gemini vs. GPT vs. Perplexity split, and competitor rankings.<small>Click to enlarge full resolution &rarr;</small></figcaption>
+        </figure>
+        <figure data-full="assets/ui-report-top.png">
+          <img src="assets/ui-report-top.png" alt="AI Visibility Audit report showing content gaps, Source Gap domains, and 4-week plan">
+          <figcaption><strong>Actionable Audit Report</strong> &mdash; Prioritized content gaps, top cited 3rd-party domains, and the 4-week execution roadmap.<small>Click to enlarge full resolution &rarr;</small></figcaption>
+        </figure>
+      </div>
+    </div>
   </section>
 
-  <section class="card" id="crawlers">
-    <h2>2. Live-Verified 5-Brand AI Crawler Audit (<code>robots.txt</code> &amp; <code>/llms.txt</code>)</h2>
-    <p>Verified live on <strong>2026-11-20</strong> across five real SaaS productivity brands. Separating live AI search bots (<code>OAI-SearchBot</code>, <code>PerplexityBot</code>, <code>Claude-SearchBot</code>) from training crawlers (<code>GPTBot</code>, <code>ClaudeBot</code>) is a core upstream GEO governance check.</p>
+  <!-- INTERACTIVE 5-BRAND AI CRAWLER GOVERNANCE SWITCHER -->
+  <section class="block" id="crawlers">
+    <h2>2. Interactive 5-Brand AI Crawler Benchmark (Live-Verified 2026-11-20)</h2>
+    <p class="subhead">Before investing in GEO content, verify whether AI search bots (<code>OAI-SearchBot</code>, <code>PerplexityBot</code>, <code>Claude-SearchBot</code>) can actually crawl the site cleanly. Click any real SaaS brand below to inspect its live production <code>robots.txt</code> &amp; <code>/llms.txt</code> setup:</p>
+
+    <div class="brand-picker" id="brand-picker" role="group" aria-label="Benchmarked SaaS brands"></div>
+    <div class="crawler-panel" id="crawler-panel"></div>
+
     <div class="scroll">
       <table>
-        <thead>
-          <tr><th>Brand</th><th>Explicit AI Bot Rules</th><th>AI Search Access</th><th>UTM Params Blocked</th><th><code>/llms.txt</code></th><th>Operational Takeaway</th></tr>
-        </thead>
+        <thead><tr><th>Brand</th><th><code>robots.txt</code> Rules</th><th>Explicit AI Bot Policy</th><th>UTM Crawl Hygiene</th><th><code>/llms.txt</code></th><th>Standout Signal</th></tr></thead>
         <tbody>
-          <tr><td><strong>Asana</strong> (<code>asana.com</code>)</td><td><span class="badge ok">Yes &middot; 17 AI bots</span></td><td>Public pages open; gated ebooks blocked</td><td>No</td><td><span class="badge ok">200 OK</span> (24.7 KB)</td><td>Most mature explicit AI-agent governance in the set</td></tr>
-          <tr><td><strong>Notion</strong> (<code>notion.so</code>)</td><td><span class="badge warn">Partial</span> (blocks <code>Amazonbot</code>)</td><td>Open (11 sitemaps incl. <code>/md/sitemap.xml</code>)</td><td>No</td><td><span class="badge ok">200 OK</span> (6.8 KB)</td><td>Publishes dedicated Markdown sitemap; blocks SEO scrapers</td></tr>
-          <tr><td><strong>ClickUp</strong> (<code>clickup.com</code>)</td><td>Wildcard (<code>*</code>)</td><td>Open</td><td><span class="badge ok">Yes</span> (<code>*utm_*</code>, <code>*fbclid=</code>)</td><td><span class="badge ok">200 OK</span> (8.8 KB)</td><td>Strong crawl-budget hygiene blocking paid-media parameters</td></tr>
-          <tr><td><strong>Airtable</strong> (<code>airtable.com</code>)</td><td>Wildcard (6 rules)</td><td>Open</td><td>No</td><td><span class="badge bad">404</span></td><td>Minimalist config without AI bot segmentation</td></tr>
-          <tr><td><strong>Coda</strong> (<code>coda.io</code>)</td><td>Wildcard (6 rules)</td><td>Open (blocks <code>/docs</code> workspaces)</td><td>No</td><td><span class="badge bad">404</span></td><td>Protects user docs; no explicit AI crawler policy</td></tr>
+          <tr><td><strong>Asana</strong></td><td>55</td><td><span class="pill ok">17 named AI bots</span></td><td>No</td><td><span class="pill ok">200 OK (24.7 KB)</span></td><td>Explicitly separates public pages vs. gated <code>/ebook/</code></td></tr>
+          <tr><td><strong>Notion</strong></td><td>34</td><td><span class="pill warn">Blocks Amazonbot</span></td><td>No</td><td><span class="pill ok">200 OK (6.8 KB)</span></td><td><strong>11 sitemaps</strong> incl. <code>/md/sitemap.xml</code>; blocks SEO scrapers</td></tr>
+          <tr><td><strong>ClickUp</strong></td><td>42</td><td>Wildcard (<code>*</code>)</td><td><span class="pill ok">Yes (*utm_*, fbclid)</span></td><td><span class="pill ok">200 OK (8.8 KB)</span></td><td>Strongest paid-media crawl-budget hygiene</td></tr>
+          <tr><td><strong>Airtable</strong></td><td>6</td><td>Wildcard (<code>*</code>)</td><td>No</td><td><span class="pill bad">404</span></td><td>Minimalist config (blocks <code>/studio/</code> &amp; <code>/api/</code>)</td></tr>
+          <tr><td><strong>Coda</strong></td><td>6</td><td>Wildcard (<code>*</code>)</td><td>No</td><td><span class="pill bad">404</span></td><td>Minimalist config (blocks <code>/docs</code> &amp; <code>/d/</code> workspaces)</td></tr>
         </tbody>
       </table>
     </div>
   </section>
 
-  <section class="card" id="methodology">
-    <h2>3. Measurement Pillars</h2>
+  <!-- ANTI-ROADMAP & TRANSPARENCY -->
+  <section class="block" id="anti-roadmap">
+    <h2>3. Measurement Honesty: What We Deliberately Refuse to Fake</h2>
+    <p class="subhead">GEO is full of inflated vanity scores. Four strict methodology guardrails keep every audit defensible in front of a CMO or CFO:</p>
     <div class="grid-2">
-      <div class="box">
-        <h3>Multi-Run &amp; Prompt-Variant Stability</h3>
-        <p>Grounded in <em>Variance-Aware LLM Annotation</em> (arXiv 2601.02370): repeating queries 2&ndash;3&times; and across intent paraphrases exposes wording-sensitive gaps instead of reporting noisy single-run scores.</p>
-      </div>
-      <div class="box">
-        <h3>Source Gap as Primary Action KPI</h3>
-        <p>Following Forrester's 2026 B2B buying research, buyers validate AI summaries on third-party sources. Mapping which external domains dominate citations directs Digital PR and review-platform work.</p>
-      </div>
-      <div class="box">
-        <h3>Server Logs Fill the GA4 Blind Spot</h3>
-        <p>AI bots do not execute JavaScript, so GA4 never sees them. Parsing Apache/Nginx or Cloudflare logs across 19 declared AI user-agents links crawling to citations and GA4 referral visits.</p>
-      </div>
-      <div class="box">
-        <h3>Transparent API Cost Ceiling</h3>
-        <p>Live search grounding fees (&euro;0.012&ndash;&euro;0.04/call), not tokens, drive audit cost. A decision-grade 3-run monthly baseline across 3&ndash;4 engines costs roughly &euro;1.80&ndash;&euro;4.80 in public list API fees.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="card" id="anti-roadmap">
-    <h2>4. What We Deliberately Refuse to Report (Anti-Roadmap)</h2>
-    <div class="grid-2">
-      <div class="box">
+      <div class="rule-card">
+        <span class="pill bad">Excluded by Design</span>
         <h3>No Fabricated "Prompt Volumes"</h3>
-        <p>AI vendors do not publish prompt search volume data. Any exact monthly prompt volume estimate is unverifiable guesswork and excluded by design.</p>
+        <p>AI platforms do not publish monthly prompt search volumes. Any tool claiming exact prompt volumes is guessing &mdash; we use real buyer intent clusters instead.</p>
       </div>
-      <div class="box">
-        <h3>No <code>llms.txt</code> Vanity Score</h3>
-        <p>Empirical studies (Ahrefs, June 2026) found ~97% of <code>llms.txt</code> files receive zero bot discovery requests; tracked as an informational signal only.</p>
+      <div class="rule-card">
+        <span class="pill warn">Info Signal Only</span>
+        <h3>No <code>/llms.txt</code> Vanity Score</h3>
+        <p>Empirical crawl studies (Ahrefs, June 2026) found ~97% of <code>/llms.txt</code> files receive zero autonomous AI bot requests. Prioritize clean sitemaps, pricing HTML &amp; Source Gap PR first.</p>
       </div>
-      <div class="box">
-        <h3>Human-Reviewed Editorial Briefs</h3>
-        <p>No autonomous AI CMS publishing. Audits output structured 4-week plans and factual content briefs for human review to protect B2B brand authority.</p>
+      <div class="rule-card">
+        <span class="pill ok">Human-in-the-Loop</span>
+        <h3>Zero Autonomous CMS Publishing</h3>
+        <p>Audits output structured editorial briefs and 4-week plans for human review &mdash; never auto-published AI filler that damages B2B authority.</p>
       </div>
-      <div class="box">
-        <h3>Explicit Measurement Boundaries</h3>
-        <p>GA4 AI referral traffic is always disclosed as a minimum floor (referrer stripping), and API search responses are distinguished from personalized consumer chat sessions.</p>
+      <div class="rule-card">
+        <span class="pill ok">Transparent Economics</span>
+        <h3>&euro;1.80&ndash;&euro;4.80 / Month Grounding Cost</h3>
+        <p>Live search grounding fees (&euro;0.012&ndash;&euro;0.04/call), not tokens, drive audit cost. A decision-grade 3-run monthly baseline across 3&ndash;4 engines costs under &euro;5 in list API fees.</p>
       </div>
     </div>
   </section>
 </main>
 
+<div class="modal" id="modal" role="dialog" aria-label="Enlarged screenshot">
+  <img id="modal-img" src="" alt="Enlarged view">
+</div>
+
 <footer><div class="wrap">
-  <p>Public methodology &amp; real-brand benchmark showcase by Riccardo Capanna. Application source code is maintained privately. Full documentation in <a href="https://github.com/errer441122/ai-visibility-audit-geo">github.com/errer441122/ai-visibility-audit-geo</a>.</p>
+  <p>Public GEO methodology &amp; real-brand benchmark showcase by Riccardo Capanna (application source code maintained privately) &mdash; <a href="https://github.com/errer441122/ai-visibility-audit-geo">inspect full repository on GitHub</a>.</p>
 </div></footer>
+
+<script>
+// Tabs for Live Notion Audit
+const tabBtns = document.querySelectorAll(".tab-btn");
+const tabPanels = document.querySelectorAll(".tab-panel");
+tabBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    tabBtns.forEach(b => b.setAttribute("aria-selected", String(b === btn)));
+    tabPanels.forEach(p => p.classList.toggle("active", p.id === btn.dataset.tab));
+  });
+});
+
+// Interactive 5-Brand Crawler Benchmark
+const BRANDS = [
+  {
+    name: "Asana", domain: "asana.com", tag: "Best AI Policy",
+    rules: "55 rules · 1 sitemap · Dedicated # AI Agents section",
+    lights: [
+      { k: "AI Search Bots", v: "Explicitly Allowed", d: "OAI-SearchBot, PerplexityBot, Claude-SearchBot open on public pages", c: "ok" },
+      { k: "AI Training Bots", v: "Explicitly Governed", d: "17 named AI agents; gated /ebook/ & /resources/thank-you blocked", c: "ok" },
+      { k: "UTM Crawl Hygiene", v: "Not Blocked", d: "No explicit *utm_* or click-ID parameter exclusions", c: "warn" },
+      { k: "/llms.txt Status", v: "200 OK (24.7 KB)", d: "Largest structured llms.txt file in the 5-brand cohort", c: "ok" }
+    ],
+    takeaway: "Gold standard for enterprise AI crawler transparency: names 17 bots explicitly (OpenAI, Anthropic, Perplexity, Google, Meta, Mistral, Apple, DuckDuckGo, Amazon, Common Crawl) so Legal & Marketing can toggle training vs. live search independently."
+  },
+  {
+    name: "Notion", domain: "notion.so", tag: "11 Sitemaps + MD",
+    rules: "34 rules · 11 segmented sitemaps (incl. /md/sitemap.xml)",
+    lights: [
+      { k: "AI Search Bots", v: "Allowed via *", d: "Open to OAI-SearchBot, PerplexityBot, Claude-SearchBot", c: "ok" },
+      { k: "Bot Filtering", v: "Selective Block", d: "Blocks Amazonbot + SEO scrapers (AhrefsBot, SemrushBot, BLEXBot)", c: "warn" },
+      { k: "UTM Crawl Hygiene", v: "Not Blocked", d: "No explicit *utm_* or click-ID rules in robots.txt", c: "warn" },
+      { k: "/llms.txt Status", v: "200 OK (6.8 KB)", d: "Published alongside a dedicated Markdown sitemap (/md/sitemap.xml)", c: "ok" }
+    ],
+    takeaway: "Strong technical discoverability: 11 segmented sitemaps including a dedicated Markdown sitemap make structured content easy to parse, while selectively blocking third-party SEO scrapers and Amazonbot."
+  },
+  {
+    name: "ClickUp", domain: "clickup.com", tag: "Best Crawl Hygiene",
+    rules: "42 rules · 1 sitemap · Strict paid-media parameter blocks",
+    lights: [
+      { k: "AI Search Bots", v: "Allowed via *", d: "All major AI retrieval bots allowed on public pages", c: "ok" },
+      { k: "AI Training Bots", v: "Allowed via *", d: "No explicit agent-level separation yet", c: "warn" },
+      { k: "UTM Crawl Hygiene", v: "Blocked Cleanly", d: "Disallows *utm_*, *fbclid=, *gclid=, *msclkid=, *mc_cid=", c: "ok" },
+      { k: "/llms.txt Status", v: "200 OK (8.8 KB)", d: "Published and live (HTTP 200)", c: "ok" }
+    ],
+    takeaway: "Strongest paid-media crawl hygiene: blocking UTM and ad click-ID parameters prevents paid campaigns from creating duplicate URLs that dilute canonical citations across search and AI engines."
+  },
+  {
+    name: "Airtable", domain: "airtable.com", tag: "Minimalist (6 rules)",
+    rules: "6 rules · 1 sitemap · Blocks /studio/, /api/, /sanity-documentation",
+    lights: [
+      { k: "AI Search Bots", v: "Allowed via *", d: "Public pages accessible via wildcard rule", c: "ok" },
+      { k: "AI Training Bots", v: "No Policy Split", d: "No named AI crawler rules in robots.txt", c: "warn" },
+      { k: "UTM Crawl Hygiene", v: "Not Blocked", d: "No marketing parameter exclusions", c: "warn" },
+      { k: "/llms.txt Status", v: "404 Not Found", d: "No /llms.txt file published as of 2026-11-20", c: "bad" }
+    ],
+    takeaway: "Minimalist technical baseline: protects internal CMS/API routes cleanly, but lacks explicit AI bot governance and paid-media UTM parameter hygiene."
+  },
+  {
+    name: "Coda", domain: "coda.io", tag: "Workspace Protected",
+    rules: "6 rules · 1 sitemap · Blocks /docs, /d/, /apis/, /embed/",
+    lights: [
+      { k: "AI Search Bots", v: "Allowed via *", d: "Marketing pages accessible via wildcard rule", c: "ok" },
+      { k: "AI Training Bots", v: "No Policy Split", d: "No named AI crawler rules in robots.txt", c: "warn" },
+      { k: "UTM Crawl Hygiene", v: "Not Blocked", d: "No marketing parameter exclusions", c: "warn" },
+      { k: "/llms.txt Status", v: "404 Not Found", d: "No /llms.txt file published as of 2026-11-20", c: "bad" }
+    ],
+    takeaway: "Prioritizes protecting private user workspaces (/docs, /d/, /embed/) from indexing, with room to adopt Asana's explicit AI bot rules and ClickUp's UTM hygiene."
+  }
+];
+
+const pickerEl = document.getElementById("brand-picker");
+const panelEl = document.getElementById("crawler-panel");
+
+function renderBrand(idx) {
+  const b = BRANDS[idx];
+  [...pickerEl.children].forEach((btn, i) => btn.setAttribute("aria-pressed", String(i === idx)));
+  const lightsHtml = b.lights.map(l => `
+    <div class="light ${l.c}">
+      <small>${l.k}</small>
+      <strong>${l.v}</strong>
+      <p>${l.d}</p>
+    </div>
+  `).join("");
+  panelEl.innerHTML = `
+    <div class="crawler-head">
+      <h3>${b.name} (<code>${b.domain}</code>)</h3>
+      <span style="font-size:13px;color:var(--muted)">${b.rules}</span>
+    </div>
+    <div class="lights">${lightsHtml}</div>
+    <div class="takeaway-box"><strong>Operational Takeaway:</strong> ${b.takeaway}</div>
+  `;
+}
+
+BRANDS.forEach((b, i) => {
+  const btn = document.createElement("button");
+  btn.type = "button"; btn.className = "br-btn";
+  btn.innerHTML = `<b>${b.name}</b><span>${b.tag}</span>`;
+  btn.addEventListener("click", () => renderBrand(i));
+  pickerEl.append(btn);
+});
+renderBrand(0);
+
+// Lightbox for live app screenshots
+const modal = document.getElementById("modal");
+const modalImg = document.getElementById("modal-img");
+document.querySelectorAll(".shots figure").forEach(fig => {
+  fig.addEventListener("click", () => {
+    modalImg.src = fig.dataset.full;
+    modal.classList.add("open");
+  });
+});
+modal.addEventListener("click", () => modal.classList.remove("open"));
+document.addEventListener("keydown", e => { if (e.key === "Escape") modal.classList.remove("open"); });
+</script>
 </body>
 </html>
