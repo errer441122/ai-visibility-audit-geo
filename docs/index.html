@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <title>AI Visibility Audit: GEO showcase</title>
-<meta name="description" content="A multi-engine GEO audit of Notion against ClickUp, Airtable and Coda, a robots.txt builder for AI crawlers, a live benchmark of five SaaS brands and the measurement rules behind them.">
+<meta name="description" content="Multi-engine GEO audit methodology for any company (with a real-brand benchmark example), an AI crawler robots.txt builder, a live 5-brand benchmark and measurement rules.">
 <link rel="preload" href="fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 @font-face { font-family: "Archivo"; src: url("fonts/archivo-latin-wdth-normal.woff2") format("woff2"); font-weight: 100 900; font-stretch: 62% 125%; font-style: normal; font-display: swap; }
@@ -45,24 +45,28 @@ code { font-family: var(--mono); font-size: .82em; background: var(--sunk); padd
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 .wrap { max-width: 1240px; margin: 0 auto; padding: 0 28px; }
 h1, h2, h3, p { margin: 0; }
-h2 { font-stretch: 112%; font-weight: 700; font-size: clamp(30px, 3.4vw, 46px); line-height: 1.06; letter-spacing: -0.035em; max-width: 20em; }
-.sub2 { color: var(--muted); max-width: 60ch; margin-top: 14px; }
+h2 { font-stretch: 112%; font-weight: 700; font-size: clamp(30px, 3.4vw, 46px); line-height: 1.06; letter-spacing: -0.035em; max-width: 22em; }
+.sub2 { color: var(--muted); max-width: 64ch; margin-top: 14px; }
 .eyebrow { font: 13px var(--mono); color: var(--accent); margin-bottom: 18px; }
 .num { font-variant-numeric: tabular-nums; }
 
 /* nav */
-.nav .wrap { display: flex; align-items: center; gap: 28px; height: 68px; }
+.nav .wrap { display: flex; align-items: center; gap: 22px; height: 68px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; font-stretch: 108%; font-weight: 700; font-size: 16px; letter-spacing: -0.01em; text-decoration: none; white-space: nowrap; }
 .brand i { width: 28px; height: 28px; border-radius: 8px; background: var(--accent); color: var(--accent-ink); font: 700 11px/28px var(--sans); text-align: center; font-style: normal; }
-.nav-links { display: flex; gap: 24px; margin-left: auto; font-size: 15px; white-space: nowrap; }
+.nav-links { display: flex; gap: 22px; margin-left: auto; font-size: 15px; white-space: nowrap; align-items: center; }
 .nav-links a { text-decoration: none; color: var(--ink-2); }
 .nav-links a:hover { color: var(--accent); }
+.lang-switch { display: inline-flex; background: var(--sunk); border: 1px solid var(--line); border-radius: 999px; padding: 3px; gap: 2px; flex-shrink: 0; }
+.lang-switch button { font: 600 12px var(--mono); color: var(--muted); background: none; border: 0; border-radius: 999px; padding: 4px 10px; cursor: pointer; transition: background-color .18s, color .18s; }
+.lang-switch button:hover { color: var(--ink); }
+.lang-switch button[aria-pressed="true"] { background: var(--panel); color: var(--accent); box-shadow: 0 1px 2px rgb(13 23 21 / .16); }
 
 /* hero */
 .hero { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 56px; align-items: center; padding-top: 64px; padding-bottom: 96px; }
 h1 { font-stretch: 104%; font-weight: 760; font-size: clamp(38px, 4.1vw, 54px); line-height: 1.04; letter-spacing: -0.045em; }
 h1 em { font-style: italic; font-weight: 640; color: var(--accent); padding-right: .04em; }
-.lede { font-size: 19px; color: var(--ink-2); max-width: 42ch; margin: 24px 0 34px; }
+.lede { font-size: 19px; color: var(--ink-2); max-width: 44ch; margin: 24px 0 34px; }
 .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
 .btn { display: inline-flex; align-items: center; height: 52px; padding: 0 24px; border-radius: 12px; font: 650 16px var(--sans); text-decoration: none; white-space: nowrap; background: var(--ink); color: var(--page); border: 1px solid var(--ink); transition: transform .25s cubic-bezier(.16,1,.3,1), background-color .25s, border-color .25s; }
 .btn:hover { color: var(--accent-ink); background: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
@@ -71,7 +75,7 @@ h1 em { font-style: italic; font-weight: 640; color: var(--accent); padding-righ
 .btn.ghost:hover { color: var(--accent); border-color: var(--accent-line); background: transparent; }
 
 .instrument { margin: 0; background: var(--panel); border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow); padding: 30px 32px 26px; }
-.ins-head { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; padding-bottom: 18px; border-bottom: 1px solid var(--line-soft); }
+.ins-head { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; padding-bottom: 18px; border-bottom: 1px solid var(--line-soft); flex-wrap: wrap; }
 .ins-head b { font-stretch: 106%; font-weight: 650; font-size: 17px; letter-spacing: -0.01em; }
 .ins-head span { font: 12.5px var(--mono); color: var(--muted); white-space: nowrap; }
 .eng { display: grid; grid-template-columns: 96px minmax(0, 1fr) 148px; gap: 14px; align-items: center; padding: 18px 0 14px; border-bottom: 1px solid var(--line-soft); }
@@ -90,7 +94,7 @@ section.band { padding-top: 120px; }
 .method .lead { font-stretch: 108%; font-weight: 650; font-size: clamp(24px, 2.4vw, 32px); line-height: 1.2; letter-spacing: -0.025em; margin-top: 20px; }
 .method .lead span { color: var(--accent); }
 .controls { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
-.controls li { display: grid; grid-template-columns: 176px minmax(0, 1fr); gap: 28px; padding: 24px 0; border-bottom: 1px solid var(--line); align-items: start; }
+.controls li { display: grid; grid-template-columns: 184px minmax(0, 1fr); gap: 28px; padding: 24px 0; border-bottom: 1px solid var(--line); align-items: start; }
 .controls h3 { font-stretch: 108%; font-weight: 700; font-size: 19px; letter-spacing: -0.015em; }
 .controls p { color: var(--ink-2); font-size: 16px; margin-top: 4px; }
 .glyph { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 4px; }
@@ -109,11 +113,12 @@ section.band { padding-top: 120px; }
 .board h3, .cites-h { font-stretch: 108%; font-weight: 700; font-size: 19px; letter-spacing: -0.015em; }
 .board .q { color: var(--muted); font-size: 15px; margin-top: 4px; }
 .rank { list-style: none; margin: 22px 0 0; padding: 0; }
-.rank li { display: grid; grid-template-columns: 22px 34px 92px minmax(0, 1fr) 54px 64px; gap: 12px; align-items: center; padding: 12px 0; border-top: 1px solid var(--line-soft); }
+.rank li { display: grid; grid-template-columns: 22px 34px 120px minmax(0, 1fr) 54px 64px; gap: 12px; align-items: center; padding: 12px 0; border-top: 1px solid var(--line-soft); }
 .rank .rk { font: 13px var(--mono); color: var(--muted); }
 .rank .badge { width: 34px; height: 34px; border-radius: 9px; background: var(--ink); color: var(--page); font: 700 14px/34px var(--sans); text-align: center; }
 .rank li.me .badge { background: var(--accent); color: var(--accent-ink); }
-.rank .bn { font-weight: 650; }
+.rank .bn { font-weight: 650; line-height: 1.2; }
+.rank .bn small { display: block; font: 400 11px var(--mono); color: var(--accent); }
 .rank .bar { height: 10px; width: calc(var(--v) / 53 * 100%); border-radius: 0 5px 5px 0; background: var(--quiet); transform-origin: left center; animation: grow 1s cubic-bezier(.16,1,.3,1) both; }
 .rank li.me .bar { background: var(--accent); }
 .rank .pct { font: 600 15px var(--mono); text-align: right; }
@@ -257,7 +262,7 @@ footer a:hover { color: var(--accent); }
   .instrument { padding: 22px 18px 20px; }
   .eng { grid-template-columns: 78px minmax(0, 1fr) 100px; gap: 10px; }
   .controls li { grid-template-columns: minmax(0, 1fr); gap: 10px; }
-  .rank li { grid-template-columns: 16px 30px 74px minmax(0, 1fr) 44px; gap: 8px; }
+  .rank li { grid-template-columns: 16px 30px 92px minmax(0, 1fr) 44px; gap: 8px; }
   .rank .pos, .rank .head span:last-child { display: none; }
   .rank .badge { width: 30px; height: 30px; line-height: 30px; }
   .weeks { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 28px; }
@@ -276,188 +281,198 @@ footer a:hover { color: var(--accent); }
 <header class="nav"><div class="wrap">
   <a class="brand" href="#top"><i aria-hidden="true">AI</i>Visibility Audit</a>
   <nav class="nav-links" aria-label="Projects">
-    <a class="proj" href="https://errer441122.github.io/ai-inbound-lead-router/">Lead router</a>
-    <a class="proj" href="https://errer441122.github.io/cx-crm-promo-guard/">CX promo guard</a>
-    <a class="proj" href="https://errer441122.github.io/lifecycle-automation-lab/">CRM pre-send QA</a>
-    <a href="https://github.com/errer441122/ai-visibility-audit-geo">GitHub repo</a>
+    <a class="proj" href="https://errer441122.github.io/ai-inbound-lead-router/" data-i18n="nav_lead">Lead router</a>
+    <a class="proj" href="https://errer441122.github.io/cx-crm-promo-guard/" data-i18n="nav_cx">CX promo guard</a>
+    <a class="proj" href="https://errer441122.github.io/lifecycle-automation-lab/" data-i18n="nav_qa">CRM pre-send QA</a>
+    <a href="https://github.com/errer441122/ai-visibility-audit-geo" data-i18n="nav_repo">GitHub repo</a>
   </nav>
+  <div class="lang-switch" role="group" aria-label="Language">
+    <button type="button" data-lang="en" aria-pressed="true">EN</button>
+    <button type="button" data-lang="it" aria-pressed="false">IT</button>
+  </div>
 </div></header>
 
 <main id="top">
   <section class="wrap hero">
     <div>
-      <p class="eyebrow">AI search visibility (GEO)</p>
-      <h1>Measure AI visibility, not one <em>lucky</em> answer.</h1>
-      <p class="lede">Unbranded buyer questions, asked more than once on Gemini, GPT, Perplexity and Claude, with the sources each answer cites.</p>
+      <p class="eyebrow" data-i18n="hero_eyebrow">AI search visibility (GEO)</p>
+      <h1 data-i18n-html="hero_h1">Measure your company's AI visibility, not one <em>lucky</em> answer.</h1>
+      <p class="lede" data-i18n="hero_lede">Ask the same unbranded buyer questions more than once on Gemini, GPT, Perplexity and Claude to see how often a company is recommended—and which third-party sources drive the answer.</p>
       <div class="ctas">
-        <a class="btn" href="#audit">See the Notion audit</a>
-        <a class="btn ghost" href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/methodology/geo-measurement-framework.md">Read the method</a>
+        <a class="btn" href="#audit" data-i18n="hero_cta1">See a real company audit</a>
+        <a class="btn ghost" href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/methodology/geo-measurement-framework.md" data-i18n="hero_cta2">Read the method</a>
       </div>
     </div>
     <figure class="instrument" aria-labelledby="ins-t">
-      <div class="ins-head"><b id="ins-t">Is Notion named in the answer?</b><span>live web search</span></div>
+      <div class="ins-head"><b id="ins-t" data-i18n="ins_title">Is the company named in the answer?</b><span data-i18n="ins_sub">real example: Notion · live search</span></div>
       <div class="eng" style="--v:75"><span class="name">Gemini</span><span class="bar"></span><b class="big num" data-v="75">75<small>%</small></b></div>
       <div class="eng" style="--v:50;--d:.12s"><span class="name">GPT</span><span class="bar"></span><b class="big num" data-v="50">50<small>%</small></b></div>
       <div class="eng" style="--v:33;--d:.24s"><span class="name">Perplexity</span><span class="bar"></span><b class="big num" data-v="33">33<small>%</small></b></div>
-      <figcaption class="ins-foot">Same brand, same unbranded questions. A team that checks only Gemini reports 75%; Perplexity says 33%.<span>unbranded questions only, Italian market, June 2026</span></figcaption>
+      <figcaption class="ins-foot" data-i18n-html="ins_foot">Same company, same generic buyer questions. A team checking only Gemini sees 75%; on Perplexity it drops to 33%.<span>unbranded questions only · live example on Notion, Italian market, June 2026</span></figcaption>
     </figure>
   </section>
 
   <section class="wrap band" id="method">
     <div class="method">
       <div>
-        <h2>One answer is not a measurement</h2>
-        <p class="lead">AI answers change with the engine, the day and the wording. <span>So every audit controls all three.</span></p>
+        <h2 data-i18n="method_h2">One answer is not a measurement</h2>
+        <p class="lead" data-i18n-html="method_lead">AI answers change with the engine, the day and the wording. <span>So every audit controls all three.</span></p>
       </div>
       <ol class="controls">
-        <li><div class="glyph" aria-hidden="true"><span class="qchip">quanto costa...</span><span class="qchip">come centralizzare...</span><span class="qchip">automazione...</span></div>
-          <div><h3>A locked set of questions</h3><p>Every month re-runs the exact same unbranded questions, so a change in the result is a change in the market, not in the prompt.</p></div></li>
-        <li><div class="glyph runs" aria-hidden="true"><i></i><i></i><i class="miss"></i><b>cited in 2 of 3</b></div>
-          <div><h3>Two to three runs per question</h3><p>Results read "cited in 2 of 3 runs", with a stability band on the trend, instead of a single pass or fail.</p></div></li>
-        <li><div class="glyph" aria-hidden="true"><span class="qchip">migliore wiki aziendale...</span><span class="qchip alt">wiki per il team...</span><span class="qchip no">recensioni Notion</span></div>
-          <div><h3>Paraphrases, and no brand names</h3><p>One to three wordings per intent flag answers that flip with the phrasing. Branded questions never count in share of voice.</p></div></li>
+        <li><div class="glyph" aria-hidden="true"><span class="qchip" data-i18n="chip_q1">how much does...</span><span class="qchip" data-i18n="chip_q2">how to centralise...</span><span class="qchip" data-i18n="chip_q3">automating tasks...</span></div>
+          <div><h3 data-i18n="m1_h">A locked set of questions</h3><p data-i18n="m1_p">Every month re-runs the exact same unbranded questions, so a change in the result reflects the market—not a changed prompt.</p></div></li>
+        <li><div class="glyph runs" aria-hidden="true"><i></i><i></i><i class="miss"></i><b data-i18n="chip_runs">cited in 2 of 3</b></div>
+          <div><h3 data-i18n="m2_h">Two to three runs per question</h3><p data-i18n="m2_p">Results read "cited in 2 of 3 runs", with a stability band on the trend, instead of a single pass or fail.</p></div></li>
+        <li><div class="glyph" aria-hidden="true"><span class="qchip" data-i18n="chip_p1">best team wiki...</span><span class="qchip alt" data-i18n="chip_p2">knowledge tool...</span><span class="qchip no" data-i18n="chip_p3">[Company] reviews</span></div>
+          <div><h3 data-i18n="m3_h">Paraphrases, and no company names</h3><p data-i18n="m3_p">One to three wordings per intent flag answers that flip with phrasing. Questions containing the company's own name never count in share of voice.</p></div></li>
       </ol>
     </div>
   </section>
 
   <section class="wrap band" id="audit">
-    <h2>Notion against ClickUp, Airtable and Coda</h2>
-    <p class="sub2">A live audit of the Italian productivity and knowledge-management category, with web search on, run with the AI Visibility Audit app.</p>
-    <div class="meta"><span>June 2026</span><span>Gemini, GPT, Perplexity</span><span>15 queries, 14 answered, 1 provider error flagged</span><span>5 per engine: a direction, not a precise measure</span></div>
+    <p class="eyebrow" data-i18n="audit_eyebrow">real benchmark example · works for any brand</p>
+    <h2 data-i18n="audit_h2">How an audit looks: Target Company vs. 3 competitors</h2>
+    <p class="sub2" data-i18n="audit_sub">The same method works for any B2B or e-commerce company. Below is a live example run in the Italian productivity category (using Notion as the target company against ClickUp, Airtable and Coda) with web search enabled.</p>
+    <div class="meta">
+      <span data-i18n="meta_1">June 2026</span>
+      <span>Gemini, GPT, Perplexity</span>
+      <span data-i18n="meta_2">15 queries, 14 answered, 1 provider error flagged</span>
+      <span data-i18n="meta_3">5 per engine: a direction, not a precise measure</span>
+    </div>
 
     <div class="split">
       <div>
       <div class="board">
-        <h3>Share of voice on unbranded questions</h3>
-        <p class="q">Each brand's share of the brand mentions in unbranded answers, and its average position when named.</p>
+        <h3 data-i18n="board_h">Share of voice on unbranded questions</h3>
+        <p class="q" data-i18n="board_q">Each company's share of total brand mentions in unbranded answers, and its average position when named.</p>
         <ol class="rank">
-          <li class="head" aria-hidden="true"><span></span><span></span><span>brand</span><span></span><span>share</span><span>position</span></li>
-          <li class="me" style="--v:53"><span class="rk">1</span><span class="badge" aria-hidden="true">N</span><span class="bn">Notion</span><span class="bar"></span><span class="pct">53%</span><span class="pos">1.4</span></li>
-          <li style="--v:27"><span class="rk">2</span><span class="badge" aria-hidden="true">C</span><span class="bn">ClickUp</span><span class="bar"></span><span class="pct">27%</span><span class="pos">2.1</span></li>
-          <li style="--v:15"><span class="rk">3</span><span class="badge" aria-hidden="true">A</span><span class="bn">Airtable</span><span class="bar"></span><span class="pct">15%</span><span class="pos">2.8</span></li>
-          <li style="--v:5"><span class="rk">4</span><span class="badge" aria-hidden="true">C</span><span class="bn">Coda</span><span class="bar"></span><span class="pct">5%</span><span class="pos">3.5</span></li>
+          <li class="head" aria-hidden="true"><span></span><span></span><span data-i18n="th_company">company</span><span></span><span data-i18n="th_share">share</span><span data-i18n="th_pos">position</span></li>
+          <li class="me" style="--v:53"><span class="rk">1</span><span class="badge" aria-hidden="true">A</span><span class="bn">Notion<small data-i18n="lbl_target">target company</small></span><span class="bar"></span><span class="pct">53%</span><span class="pos">1.4</span></li>
+          <li style="--v:27"><span class="rk">2</span><span class="badge" aria-hidden="true">C</span><span class="bn">ClickUp<small style="color:var(--muted)" data-i18n="lbl_comp">competitor</small></span><span class="bar"></span><span class="pct">27%</span><span class="pos">2.1</span></li>
+          <li style="--v:15"><span class="rk">3</span><span class="badge" aria-hidden="true">A</span><span class="bn">Airtable<small style="color:var(--muted)" data-i18n="lbl_comp">competitor</small></span><span class="bar"></span><span class="pct">15%</span><span class="pos">2.8</span></li>
+          <li style="--v:5"><span class="rk">4</span><span class="badge" aria-hidden="true">C</span><span class="bn">Coda<small style="color:var(--muted)" data-i18n="lbl_comp">competitor</small></span><span class="bar"></span><span class="pct">5%</span><span class="pos">3.5</span></li>
         </ol>
       </div>
       <div class="cites">
-      <h3 class="cites-h">Who the answers cite as sources</h3>
-      <p class="q" style="color:var(--muted);font-size:15px;margin-top:4px">One square per citation, across all answers.</p>
-      <div class="cites-row" role="img" aria-label="Citations: zapier.com 6, pcmag.com 4, techradar.com 3, g2.com 2, capterra.it 1, notion.so 2">
+      <h3 class="cites-h" data-i18n="cites_h">Which websites the AI engines actually cite</h3>
+      <p class="q" style="color:var(--muted);font-size:15px;margin-top:4px" data-i18n="cites_q">One square per citation, across all answers.</p>
+      <div class="cites-row" role="img" aria-label="Citations: zapier.com 6, pcmag.com 4, techradar.com 3, g2.com 2, capterra.it 1, target company site 2">
         <div class="cg"><div class="sqs"><i></i><i></i><i></i><i></i><i></i><i></i></div><span>zapier.com<b>6</b></span></div>
         <div class="cg"><div class="sqs"><i></i><i></i><i></i><i></i></div><span>pcmag.com<b>4</b></span></div>
         <div class="cg"><div class="sqs"><i></i><i></i><i></i></div><span>techradar.com<b>3</b></span></div>
         <div class="cg"><div class="sqs"><i></i><i></i></div><span>g2.com<b>2</b></span></div>
         <div class="cg"><div class="sqs"><i></i></div><span>capterra.it<b>1</b></span></div>
-        <div class="cg own"><div class="sqs"><i></i><i></i></div><span>notion.so<b>2, owned</b></span></div>
+        <div class="cg own"><div class="sqs"><i></i><i></i></div><span>notion.so<b data-i18n="cites_own">2, company site</b></span></div>
       </div>
-      <p class="cites-take"><b>16 of 18 citations go to other people's pages.</b> Comparison guides and review sites carry the consensus, so they are where the next month of work goes.</p>
+      <p class="cites-take" data-i18n-html="cites_take"><b>16 of 18 citations go to third-party websites.</b> Comparison guides and review sites carry the consensus, so they are where the next month of work goes.</p>
     </div>
 
       </div>
       <figure class="shot">
-        <button type="button" data-full="assets/ui-landing.png" aria-label="Open the full app screenshot"><img src="assets/app-result-card.png" alt="The result card in the AI Visibility Audit app: 53% AI share of voice, visibility by engine and the competitor ranking" width="538" height="720" loading="lazy"></button>
-        <figcaption>The same result in the app. Open it for the full screen.</figcaption>
+        <button type="button" data-full="assets/ui-landing.png" aria-label="Open the full app screenshot"><img src="assets/app-result-card.png" alt="Result card in the AI Visibility Audit app: 53% AI share of voice, visibility by engine and competitor ranking" width="538" height="720" loading="lazy"></button>
+        <figcaption data-i18n="shot1_cap">The same result inside the app (real example on Notion). Click to open full screen.</figcaption>
       </figure>
     </div>
 
     <div class="gaps">
       <div>
-        <h3 class="cites-h">Where Notion is missing</h3>
+        <h3 class="cites-h" data-i18n="gaps_h">Where the company is missing</h3>
         <div class="gap-list">
-          <div class="gap-item"><span class="pri">high priority: a competitor wins</span><p class="gq">come centralizzare le informazioni del team</p><p>Only ClickUp is named. Action: an Italian, answer-first team-wiki guide with real templates and a comparison table.</p></div>
-          <div class="gap-item"><span class="pri">high priority: nobody owns it</span><p class="gq">automazione task ripetitivi per team</p><p>None of the four brands is named. Action: a workflow-automation guide for team operations, first to the topic.</p></div>
-          <div class="gap-item"><span class="pri">medium priority: no price in the snippets</span><p class="gq">quanto costa un software di knowledge management</p><p>Pricing terms are missing from what the engines retrieve. Action: an Italian pricing page with <code>FAQPage</code> markup.</p></div>
+          <div class="gap-item"><span class="pri" data-i18n="g1_pri">high priority: a competitor wins</span><p class="gq">come centralizzare le informazioni del team</p><p data-i18n="g1_p">Only a competitor (ClickUp) is named. Action: publish an Italian, answer-first guide with real templates and a comparison table.</p></div>
+          <div class="gap-item"><span class="pri" data-i18n="g2_pri">high priority: nobody owns it</span><p class="gq">automazione task ripetitivi per team</p><p data-i18n="g2_p">None of the four companies is named. Action: create a workflow-automation guide and become the first trusted source on the topic.</p></div>
+          <div class="gap-item"><span class="pri" data-i18n="g3_pri">medium priority: no price in the snippets</span><p class="gq">quanto costa un software di knowledge management</p><p data-i18n-html="g3_p">Pricing terms are missing from what the engines retrieve. Action: publish a clear Italian pricing page with <code>FAQPage</code> markup.</p></div>
         </div>
       </div>
       <figure class="shot">
-        <button type="button" data-full="assets/ui-report-top.png" aria-label="Open the full report screenshot"><img src="assets/app-query-outcomes.png" alt="Per-question outcomes in the app's report: absent on automazione task ripetitivi per team, cited on migliore wiki aziendale per startup, branded questions excluded from share of voice, one provider error" width="532" height="222" loading="lazy"></button>
-        <figcaption>Per-question outcomes in the app's report, including the branded question left out of share of voice and the provider error.</figcaption>
+        <button type="button" data-full="assets/ui-report-top.png" aria-label="Open the full report screenshot"><img src="assets/app-query-outcomes.png" alt="Per-question outcomes in the app report" width="532" height="222" loading="lazy"></button>
+        <figcaption data-i18n="shot2_cap">Per-question outcomes in the report, showing the branded query excluded from share of voice and the flagged provider error.</figcaption>
       </figure>
     </div>
 
     <div class="weeks">
-      <div class="wk"><small>week 1, SEO and content</small><b>Answer-first FAQs and the wiki guide</b><p>Structured FAQs and schema on the key Italian pages.</p></div>
-      <div class="wk"><small>week 2, content</small><b>A clear pricing page</b><p>Answers the cost question in plain Italian.</p></div>
-      <div class="wk"><small>week 3, digital PR</small><b>Outreach to the cited domains</b><p>Updated comparisons on zapier.com, g2.com and capterra.it.</p></div>
-      <div class="wk"><small>week 4, marketing ops</small><b>Re-audit, same locked questions</b><p>Same questions on the same engines, for a real before and after.</p></div>
+      <div class="wk"><small data-i18n="w1_s">week 1, SEO and content</small><b data-i18n="w1_b">Answer-first FAQs and core guide</b><p data-i18n="w1_p">Structured FAQs and schema on the company's key pages.</p></div>
+      <div class="wk"><small data-i18n="w2_s">week 2, content</small><b data-i18n="w2_b">A clear pricing page</b><p data-i18n="w2_p">Answers buyer budget questions in plain language.</p></div>
+      <div class="wk"><small data-i18n="w3_s">week 3, digital PR</small><b data-i18n="w3_b">Outreach to the cited domains</b><p data-i18n="w3_p">Updated comparisons on top cited directories (e.g. zapier.com, g2.com, capterra.it).</p></div>
+      <div class="wk"><small data-i18n="w4_s">week 4, marketing ops</small><b data-i18n="w4_b">Re-audit, same locked questions</b><p data-i18n="w4_p">Re-run the exact same questions on the same engines for a real before and after.</p></div>
     </div>
   </section>
 
   <section class="wrap band" id="crawlers">
-    <p class="eyebrow">layer 1: can the engines read the site?</p>
-    <h2>Decide which AI crawlers may read your site</h2>
-    <p class="sub2">Search and user-fetch bots feed live answers; training bots feed future models. Blocking the first kind by accident removes a brand from AI answers. Set a policy and read the robots.txt it needs.</p>
+    <p class="eyebrow" data-i18n="cr_eyebrow">layer 1: can AI engines even read the company's website?</p>
+    <h2 data-i18n="cr_h2">Decide which AI crawlers may read your site</h2>
+    <p class="sub2" data-i18n="cr_sub">Search and user-fetch bots feed live answers; training bots feed future models. Blocking the first kind by accident removes a company from AI answers. Set a policy and read the robots.txt it needs.</p>
     <div class="builder">
       <div class="toggles" id="toggles">
-        <div class="tg" data-g="search"><h3>AI search</h3><p>OAI-SearchBot, Claude-SearchBot, PerplexityBot, DuckAssistBot, Google-CloudVertexBot</p><div class="seg" role="group" aria-label="AI search bots"><button type="button" data-v="allow" aria-pressed="true">Allow</button><button type="button" class="block" data-v="block" aria-pressed="false">Block</button></div></div>
-        <div class="tg" data-g="fetch"><h3>Live user fetch</h3><p>ChatGPT-User, Claude-User, Perplexity-User, Meta-ExternalFetcher, MistralAI-User</p><div class="seg" role="group" aria-label="User fetch bots"><button type="button" data-v="allow" aria-pressed="true">Allow</button><button type="button" class="block" data-v="block" aria-pressed="false">Block</button></div></div>
-        <div class="tg" data-g="train"><h3>Model training</h3><p>GPTBot, ClaudeBot, Google-Extended, Applebot-Extended, Meta-ExternalAgent, Amazonbot, Bytespider, CCBot</p><div class="seg" role="group" aria-label="Training bots"><button type="button" data-v="allow" aria-pressed="false">Allow</button><button type="button" class="block" data-v="block" aria-pressed="true">Block</button></div></div>
+        <div class="tg" data-g="search"><h3 data-i18n="tg_search_h">AI search</h3><p>OAI-SearchBot, Claude-SearchBot, PerplexityBot, DuckAssistBot, Google-CloudVertexBot</p><div class="seg" role="group" aria-label="AI search bots"><button type="button" data-v="allow" aria-pressed="true" data-i18n="btn_allow">Allow</button><button type="button" class="block" data-v="block" aria-pressed="false" data-i18n="btn_block">Block</button></div></div>
+        <div class="tg" data-g="fetch"><h3 data-i18n="tg_fetch_h">Live user fetch</h3><p>ChatGPT-User, Claude-User, Perplexity-User, Meta-ExternalFetcher, MistralAI-User</p><div class="seg" role="group" aria-label="User fetch bots"><button type="button" data-v="allow" aria-pressed="true" data-i18n="btn_allow">Allow</button><button type="button" class="block" data-v="block" aria-pressed="false" data-i18n="btn_block">Block</button></div></div>
+        <div class="tg" data-g="train"><h3 data-i18n="tg_train_h">Model training</h3><p>GPTBot, ClaudeBot, Google-Extended, Applebot-Extended, Meta-ExternalAgent, Amazonbot, Bytespider, CCBot</p><div class="seg" role="group" aria-label="Training bots"><button type="button" data-v="allow" aria-pressed="false" data-i18n="btn_allow">Allow</button><button type="button" class="block" data-v="block" aria-pressed="true" data-i18n="btn_block">Block</button></div></div>
         <div class="opts">
-          <label class="opt"><input type="checkbox" id="opt-gated" checked><span>Keep gated pages out<small>thank-you and download pages behind a form</small></span></label>
-          <label class="opt"><input type="checkbox" id="opt-utm" checked><span>Block campaign URLs<small>utm, gclid and fbclid links that duplicate pages</small></span></label>
+          <label class="opt"><input type="checkbox" id="opt-gated" checked><span><span data-i18n="opt_gated_h">Keep gated pages out</span><small data-i18n="opt_gated_s">thank-you and download pages behind a form</small></span></label>
+          <label class="opt"><input type="checkbox" id="opt-utm" checked><span><span data-i18n="opt_utm_h">Block campaign URLs</span><small data-i18n="opt_utm_s">utm, gclid and fbclid links that duplicate pages</small></span></label>
         </div>
       </div>
       <div class="out">
-        <div class="out-head"><span>robots.txt</span><button type="button" class="copy" id="copy">Copy</button></div>
+        <div class="out-head"><span>robots.txt</span><button type="button" class="copy" id="copy" data-i18n="btn_copy">Copy</button></div>
         <pre class="robots" id="robots" aria-live="polite"></pre>
         <ul class="effects" id="effects" aria-live="polite"></ul>
       </div>
     </div>
 
-    <h3 class="cites-h" style="margin-top:88px">What five SaaS brands chose, checked live on 2026-11-20</h3>
+    <h3 class="cites-h" style="margin-top:88px" data-i18n="brands_h">What five real SaaS companies chose, checked live on 2026-11-20</h3>
     <div class="brands" id="brands"><div class="skel"></div><div class="skel"></div><div class="skel"></div><div class="skel"></div><div class="skel"></div></div>
-    <p class="note"><span class="tag good">named</span> listed by name and allowed on public pages. <span class="tag">via *</span> allowed by the catch-all rule. Read from <a href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/case-studies/saas-ai-crawler-benchmark.csv"><code>case-studies/saas-ai-crawler-benchmark.csv</code></a>, checked with live HTTP requests to each production domain.</p>
+    <p class="note" data-i18n-html="brands_note"><span class="tag good">named</span> listed by name and allowed on public pages. <span class="tag">via *</span> allowed by the catch-all rule. Read from <a href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/case-studies/saas-ai-crawler-benchmark.csv"><code>case-studies/saas-ai-crawler-benchmark.csv</code></a>, checked with live HTTP requests to each production domain.</p>
   </section>
 
   <section class="wrap band" id="chain">
-    <h2>Crawled, cited, visited</h2>
-    <p class="sub2">The robots.txt check is the first of three layers. Each answers a different question, and each has a blind spot the reports state.</p>
+    <h2 data-i18n="ch_h2">Crawled, cited, visited</h2>
+    <p class="sub2" data-i18n="ch_sub">The robots.txt check is the first of three layers. Each answers a different question, and each has a blind spot the reports state openly.</p>
     <div class="chain">
-      <div class="layer"><small>server logs and robots.txt</small><h3>Can the engines read the page?</h3><p>AI crawlers run no JavaScript, so GA4 never sees them. Server logs are sorted into search, user-fetch and training bots by their declared user agent.</p></div>
-      <div class="layer"><small>multi-engine answers</small><h3>Do the answers name the brand?</h3><p>Unbranded questions on several engines, with repeat runs and paraphrases, plus the domains each answer cites.</p></div>
-      <div class="layer"><small>Search Console and GA4</small><h3>Do people arrive?</h3><p>AI referral traffic in GA4 is a floor, because many AI apps strip the referrer. Search Console sits beside it with the same branded and unbranded split.</p></div>
+      <div class="layer"><small data-i18n="l1_s">server logs and robots.txt</small><h3 data-i18n="l1_h">Can AI engines read the page?</h3><p data-i18n="l1_p">AI crawlers run no JavaScript, so GA4 never sees them. Server logs are sorted into search, user-fetch and training bots by their declared user agent.</p></div>
+      <div class="layer"><small data-i18n="l2_s">multi-engine answers</small><h3 data-i18n="l2_h">Do the answers name the company?</h3><p data-i18n="l2_p">Unbranded questions on several engines, with repeat runs and paraphrases, plus the third-party domains each answer cites.</p></div>
+      <div class="layer"><small data-i18n="l3_s">Search Console and GA4</small><h3 data-i18n="l3_h">Do people actually visit the site?</h3><p data-i18n="l3_p">AI referral traffic in GA4 is a minimum floor, because many AI apps strip the referrer. Search Console sits beside it with the same branded vs. unbranded split.</p></div>
     </div>
 
     <div class="costs">
       <div>
-        <h3 class="sec">What an audit costs</h3>
+        <h3 class="sec" data-i18n="cost_h">What an audit costs</h3>
         <div class="cost-table">
-          <div class="cost-row"><b>Standard baseline</b><span class="eur num">&euro;0.60-1.60</span><small>15 questions, 1 run</small></div>
-          <div class="cost-row pick"><b>Decision-grade</b><span class="eur num">&euro;1.80-4.80</span><small>15 questions, 3 runs, stability checked</small></div>
-          <div class="cost-row"><b>Deep competitive</b><span class="eur num">&euro;2.40-6.40</span><small>30 questions, 2 runs</small></div>
+          <div class="cost-row"><b data-i18n="c1_b">Standard baseline</b><span class="eur num">&euro;0.60-1.60</span><small data-i18n="c1_s">15 questions, 1 run</small></div>
+          <div class="cost-row pick"><b data-i18n="c2_b">Decision-grade</b><span class="eur num">&euro;1.80-4.80</span><small data-i18n="c2_s">15 questions, 3 runs, stability checked</small></div>
+          <div class="cost-row"><b data-i18n="c3_b">Deep competitive</b><span class="eur num">&euro;2.40-6.40</span><small data-i18n="c3_s">30 questions, 2 runs</small></div>
         </div>
-        <p class="formula">engines x questions x runs. The search fee per call, not the tokens, drives the cost. Ceiling at public list prices, 3 or 4 engines. <a href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/methodology/api-unit-economics.md">Unit economics</a></p>
+        <p class="formula" data-i18n-html="cost_formula">engines x questions x runs. The search fee per call, not the tokens, drives the cost. Ceiling at public list prices, 3 or 4 engines. <a href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/methodology/api-unit-economics.md">Unit economics</a></p>
       </div>
       <div>
-        <h3 class="sec">What the reports refuse to fake</h3>
+        <h3 class="sec" data-i18n="ref_h">What the reports refuse to fake</h3>
         <div class="refuse">
-          <div><h3><s>Prompt volume</s></h3><p>No AI platform publishes how often a question is asked. Tools that show a number are guessing.</p></div>
-          <div><h3><s>An llms.txt score</s></h3><p>Ahrefs found about 97% of llms.txt files get no bot requests (June 2026). It is a note, not a KPI.</p></div>
-          <div><h3><s>Auto-published AI articles</s></h3><p>The output is an editorial brief and a four-week plan for people to review.</p></div>
-          <div><h3><s>API answers equal chat answers</s></h3><p>API search reflects real sources, but consumer chats add personalisation and memory. Every report says so.</p></div>
+          <div><h3><s data-i18n="r1_h">Prompt volume</s></h3><p data-i18n="r1_p">No AI platform publishes how often a question is asked. Tools that show an exact number are guessing.</p></div>
+          <div><h3><s data-i18n="r2_h">An llms.txt score</s></h3><p data-i18n="r2_p">Ahrefs found about 97% of llms.txt files get no bot requests (June 2026). It is a note, not a KPI.</p></div>
+          <div><h3><s data-i18n="r3_h">Auto-published AI articles</s></h3><p data-i18n="r3_p">The output is an editorial brief and a four-week plan for people to review—never unreviewed AI spam.</p></div>
+          <div><h3><s data-i18n="r4_h">API answers equal chat answers</s></h3><p data-i18n="r4_p">API search reflects real sources, but consumer chats add personalisation and memory. Every report states this clearly.</p></div>
         </div>
       </div>
     </div>
   </section>
 
   <section class="wrap band" id="files">
-    <h2>The files</h2>
+    <h2 data-i18n="files_h">The files</h2>
     <div class="files">
-      <a href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/methodology/geo-measurement-framework.md"><span class="p">methodology/geo-measurement-framework.md</span><span class="go">open</span><span class="d">Variance controls, the crawler taxonomy, the GA4 and Search Console layer</span></a>
-      <a href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/methodology/api-unit-economics.md"><span class="p">methodology/api-unit-economics.md</span><span class="go">open</span><span class="d">Cost per audit at public list prices</span></a>
-      <a href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/case-studies/notion-live-audit-summary.md"><span class="p">case-studies/notion-live-audit-summary.md</span><span class="go">open</span><span class="d">The full Notion readout and the four-week plan</span></a>
-      <a href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/case-studies/saas-ai-crawler-benchmark.md"><span class="p">case-studies/saas-ai-crawler-benchmark.md</span><span class="go">open</span><span class="d">The robots.txt and llms.txt audit, with the raw CSV</span></a>
+      <a href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/methodology/geo-measurement-framework.md"><span class="p">methodology/geo-measurement-framework.md</span><span class="go" data-i18n="open">open</span><span class="d" data-i18n="f1_d">Variance controls, the crawler taxonomy, the GA4 and Search Console layer</span></a>
+      <a href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/methodology/api-unit-economics.md"><span class="p">methodology/api-unit-economics.md</span><span class="go" data-i18n="open">open</span><span class="d" data-i18n="f2_d">Cost per audit at public list prices</span></a>
+      <a href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/case-studies/notion-live-audit-summary.md"><span class="p">case-studies/notion-live-audit-summary.md</span><span class="go" data-i18n="open">open</span><span class="d" data-i18n="f3_d">Full real-company benchmark readout (Notion) and four-week plan</span></a>
+      <a href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/case-studies/saas-ai-crawler-benchmark.md"><span class="p">case-studies/saas-ai-crawler-benchmark.md</span><span class="go" data-i18n="open">open</span><span class="d" data-i18n="f4_d">Live 5-company robots.txt and llms.txt audit, with the raw CSV</span></a>
     </div>
-    <p class="note">The app's source code is private. This repository holds the method, the case studies and the screenshots.</p>
+    <p class="note" data-i18n="files_note">The app's source code is private. This repository holds the method, the real-brand benchmarks and the screenshots.</p>
   </section>
 </main>
 
-<dialog id="lightbox"><img id="lightbox-img" src="" alt=""><button type="button" id="lightbox-close">Close</button></dialog>
+<dialog id="lightbox"><img id="lightbox-img" src="" alt=""><button type="button" id="lightbox-close" data-i18n="btn_close">Close</button></dialog>
 
 <footer><div class="wrap">
   <span class="who">Riccardo Capanna</span>
-  <a href="https://errer441122.github.io/ai-inbound-lead-router/">Lead router</a>
-  <a href="https://errer441122.github.io/cx-crm-promo-guard/">CX promo guard</a>
-  <a href="https://errer441122.github.io/lifecycle-automation-lab/">CRM pre-send QA</a>
+  <a href="https://errer441122.github.io/ai-inbound-lead-router/" data-i18n="nav_lead">Lead router</a>
+  <a href="https://errer441122.github.io/cx-crm-promo-guard/" data-i18n="nav_cx">CX promo guard</a>
+  <a href="https://errer441122.github.io/lifecycle-automation-lab/" data-i18n="nav_qa">CRM pre-send QA</a>
   <a href="https://github.com/errer441122">GitHub</a>
   <a href="https://www.linkedin.com/in/riccardo-capanna-039a43415/">LinkedIn</a>
 </div></footer>
@@ -469,6 +484,194 @@ const BASE = location.hostname.endsWith("github.io")
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// ---- i18n (EN / IT) ----
+const I18N = {
+  en: {
+    page_title: "AI Visibility Audit: GEO showcase",
+    nav_lead: "Lead router", nav_cx: "CX promo guard", nav_qa: "CRM pre-send QA", nav_repo: "GitHub repo",
+    hero_eyebrow: "AI search visibility (GEO)",
+    hero_h1: "Measure your company's AI visibility, not one <em>lucky</em> answer.",
+    hero_lede: "Ask the same unbranded buyer questions more than once on Gemini, GPT, Perplexity and Claude to see how often a company is recommended—and which third-party sources drive the answer.",
+    hero_cta1: "See a real company audit", hero_cta2: "Read the method",
+    ins_title: "Is the company named in the answer?", ins_sub: "real example: Notion · live search",
+    ins_foot: "Same company, same generic buyer questions. A team checking only Gemini sees 75%; on Perplexity it drops to 33%.<span>unbranded questions only · live example on Notion, Italian market, June 2026</span>",
+    method_h2: "One answer is not a measurement",
+    method_lead: "AI answers change with the engine, the day and the wording. <span>So every audit controls all three.</span>",
+    chip_q1: "how much does...", chip_q2: "how to centralise...", chip_q3: "automating tasks...",
+    m1_h: "A locked set of questions", m1_p: "Every month re-runs the exact same unbranded questions, so a change in the result reflects the market—not a changed prompt.",
+    chip_runs: "cited in 2 of 3",
+    m2_h: "Two to three runs per question", m2_p: "Results read \"cited in 2 of 3 runs\", with a stability band on the trend, instead of a single pass or fail.",
+    chip_p1: "best team wiki...", chip_p2: "knowledge tool...", chip_p3: "[Company] reviews",
+    m3_h: "Paraphrases, and no company names", m3_p: "One to three wordings per intent flag answers that flip with phrasing. Questions containing the company's own name never count in share of voice.",
+    audit_eyebrow: "real benchmark example · works for any brand",
+    audit_h2: "How an audit looks: Target Company vs. 3 competitors",
+    audit_sub: "The same method works for any B2B or e-commerce company. Below is a live example run in the Italian productivity category (using Notion as the target company against ClickUp, Airtable and Coda) with web search enabled.",
+    meta_1: "June 2026", meta_2: "15 queries, 14 answered, 1 provider error flagged", meta_3: "5 per engine: a direction, not a precise measure",
+    board_h: "Share of voice on unbranded questions",
+    board_q: "Each company's share of total brand mentions in unbranded answers, and its average position when named.",
+    th_company: "company", th_share: "share", th_pos: "position",
+    lbl_target: "target company", lbl_comp: "competitor",
+    cites_h: "Which websites the AI engines actually cite", cites_q: "One square per citation, across all answers.",
+    cites_own: "2, company site",
+    cites_take: "<b>16 of 18 citations go to third-party websites.</b> Comparison guides and review sites carry the consensus, so they are where the next month of work goes.",
+    shot1_cap: "The same result inside the app (real example on Notion). Click to open full screen.",
+    gaps_h: "Where the company is missing",
+    g1_pri: "high priority: a competitor wins", g1_p: "Only a competitor (ClickUp) is named. Action: publish an Italian, answer-first guide with real templates and a comparison table.",
+    g2_pri: "high priority: nobody owns it", g2_p: "None of the four companies is named. Action: create a workflow-automation guide and become the first trusted source on the topic.",
+    g3_pri: "medium priority: no price in the snippets", g3_p: "Pricing terms are missing from what the engines retrieve. Action: publish a clear Italian pricing page with <code>FAQPage</code> markup.",
+    shot2_cap: "Per-question outcomes in the report, showing the branded query excluded from share of voice and the flagged provider error.",
+    w1_s: "week 1, SEO and content", w1_b: "Answer-first FAQs and core guide", w1_p: "Structured FAQs and schema on the company's key pages.",
+    w2_s: "week 2, content", w2_b: "A clear pricing page", w2_p: "Answers buyer budget questions in plain language.",
+    w3_s: "week 3, digital PR", w3_b: "Outreach to the cited domains", w3_p: "Updated comparisons on top cited directories (e.g. zapier.com, g2.com, capterra.it).",
+    w4_s: "week 4, marketing ops", w4_b: "Re-audit, same locked questions", w4_p: "Re-run the exact same questions on the same engines for a real before and after.",
+    cr_eyebrow: "layer 1: can AI engines even read the company's website?",
+    cr_h2: "Decide which AI crawlers may read your site",
+    cr_sub: "Search and user-fetch bots feed live answers; training bots feed future models. Blocking the first kind by accident removes a company from AI answers. Set a policy and read the robots.txt it needs.",
+    tg_search_h: "AI search", tg_fetch_h: "Live user fetch", tg_train_h: "Model training",
+    btn_allow: "Allow", btn_block: "Block", btn_copy: "Copy", btn_copied: "Copied", btn_selcopy: "Select and copy", btn_close: "Close",
+    opt_gated_h: "Keep gated pages out", opt_gated_s: "thank-you and download pages behind a form",
+    opt_utm_h: "Block campaign URLs", opt_utm_s: "utm, gclid and fbclid links that duplicate pages",
+    brands_h: "What five real SaaS companies chose, checked live on 2026-11-20",
+    brands_note: '<span class="tag good">named</span> listed by name and allowed on public pages. <span class="tag">via *</span> allowed by the catch-all rule. Read from <a href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/case-studies/saas-ai-crawler-benchmark.csv"><code>case-studies/saas-ai-crawler-benchmark.csv</code></a>, checked with live HTTP requests to each production domain.',
+    ch_h2: "Crawled, cited, visited", ch_sub: "The robots.txt check is the first of three layers. Each answers a different question, and each has a blind spot the reports state openly.",
+    l1_s: "server logs and robots.txt", l1_h: "Can AI engines read the page?", l1_p: "AI crawlers run no JavaScript, so GA4 never sees them. Server logs are sorted into search, user-fetch and training bots by their declared user agent.",
+    l2_s: "multi-engine answers", l2_h: "Do the answers name the company?", l2_p: "Unbranded questions on several engines, with repeat runs and paraphrases, plus the third-party domains each answer cites.",
+    l3_s: "Search Console and GA4", l3_h: "Do people actually visit the site?", l3_p: "AI referral traffic in GA4 is a minimum floor, because many AI apps strip the referrer. Search Console sits beside it with the same branded vs. unbranded split.",
+    cost_h: "What an audit costs",
+    c1_b: "Standard baseline", c1_s: "15 questions, 1 run",
+    c2_b: "Decision-grade", c2_s: "15 questions, 3 runs, stability checked",
+    c3_b: "Deep competitive", c3_s: "30 questions, 2 runs",
+    cost_formula: 'engines x questions x runs. The search fee per call, not the tokens, drives the cost. Ceiling at public list prices, 3 or 4 engines. <a href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/methodology/api-unit-economics.md">Unit economics</a>',
+    ref_h: "What the reports refuse to fake",
+    r1_h: "Prompt volume", r1_p: "No AI platform publishes how often a question is asked. Tools that show an exact number are guessing.",
+    r2_h: "An llms.txt score", r2_p: "Ahrefs found about 97% of llms.txt files get no bot requests (June 2026). It is a note, not a KPI.",
+    r3_h: "Auto-published AI articles", r3_p: "The output is an editorial brief and a four-week plan for people to review—never unreviewed AI spam.",
+    r4_h: "API answers equal chat answers", r4_p: "API search reflects real sources, but consumer chats add personalisation and memory. Every report states this clearly.",
+    files_h: "The files", open: "open",
+    f1_d: "Variance controls, the crawler taxonomy, the GA4 and Search Console layer",
+    f2_d: "Cost per audit at public list prices",
+    f3_d: "Full real-company benchmark readout (Notion) and four-week plan",
+    f4_d: "Live 5-company robots.txt and llms.txt audit, with the raw CSV",
+    files_note: "The app's source code is private. This repository holds the method, the real-brand benchmarks and the screenshots.",
+    lbl_search: "AI search: feeds live answers and their citations",
+    lbl_fetch: "Live user fetch: a person asked an assistant to open a page",
+    lbl_train: "Model training: feeds future models",
+    lbl_other: "Everyone else, including Googlebot",
+    fx_s_block: "Search bots blocked: the company drops out of live AI answers and their source lists.",
+    fx_s_allow: "Search bots can read public pages, so the company can be named and cited in live answers.",
+    fx_f_block: "User fetch blocked: when someone asks an assistant to open a page, it cannot.",
+    fx_t_block_split: "Training blocked, search open: the company can still be cited in live answers. Naming agents one by one, as Asana does, makes this split possible.",
+    fx_t_block: "Training blocked: future models learn less from the site.",
+    fx_t_allow: "Training open: the site can end up in future model training data.",
+    fx_utm: "Campaign links do not create duplicate pages that split citations, as ClickUp does.",
+    fx_group: "Every named group repeats the extra rules: a bot that finds its own group ignores the catch-all one.",
+    b_agents: "AI agents named", b_search: "Search bots", b_train: "Training bots", b_amz: "Amazonbot", b_utm: "Campaign URLs blocked", b_rules: "robots.txt rules",
+    b_yes: "yes", b_no: "no", b_none: "none", b_only: "only", b_blocked: "blocked", b_named: "named", b_via: "via *",
+    csv_err: 'The CSV did not load. <a href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/case-studies/saas-ai-crawler-benchmark.csv">Open it on GitHub</a>.',
+    verdict: {
+      Asana: ["Names 17 AI agents one by one", "Training and live search can be allowed or blocked separately; gated pages such as /ebook/ stay out."],
+      Notion: ["Blocks Amazonbot, publishes 11 sitemaps", "One sitemap is in Markdown; SEO scrapers are blocked too."],
+      ClickUp: ["Keeps campaign URLs out", "utm, fbclid, gclid, msclkid and mc_cid links are disallowed, so paid traffic does not split citations."],
+      Airtable: ["Six rules, no AI policy", "Protects /studio/ and /api/; no AI-agent rules and no llms.txt."],
+      Coda: ["Six rules, no AI policy", "Keeps user documents (/docs, /d/) out; no AI-agent rules and no llms.txt."],
+    },
+  },
+  it: {
+    page_title: "AI Visibility Audit: metodo e caso reale (GEO)",
+    nav_lead: "Smistamento lead", nav_cx: "Pausa promo CX", nav_qa: "Controllo email QA", nav_repo: "Repo GitHub",
+    hero_eyebrow: "Visibilità nelle risposte AI (GEO)",
+    hero_h1: "Misura la visibilità AI della tua azienda, non una risposta <em>fortunata</em>.",
+    hero_lede: "Fai le stesse domande generiche più volte su Gemini, GPT, Perplexity e Claude per scoprire quanto spesso un'azienda viene consigliata—e quali siti esterni influenzano la risposta.",
+    hero_cta1: "Guarda un audit su azienda reale", hero_cta2: "Leggi il metodo",
+    ins_title: "Il nome dell'azienda compare nella risposta?", ins_sub: "esempio reale: Notion · ricerca live",
+    ins_foot: "Stessa azienda, stesse domande generiche dei clienti. Chi guarda solo Gemini vede 75%; su Perplexity scende al 33%.<span>solo domande senza nome azienda · esempio live su Notion, mercato Italia, giugno 2026</span>",
+    method_h2: "Una singola risposta non è una misura",
+    method_lead: "Le risposte AI cambiano con il motore, il giorno e come formuli la domanda. <span>Per questo ogni audit controlla tutti e tre.</span>",
+    chip_q1: "quanto costa...", chip_q2: "come centralizzare...", chip_q3: "automazione task...",
+    m1_h: "Un set fisso di domande", m1_p: "Ogni mese si ripetono esattamente le stesse domande senza nome azienda: così se il numero cambia, è cambiato il mercato e non il prompt.",
+    chip_runs: "citata 2 volte su 3",
+    m2_h: "Due o tre esecuzioni per domanda", m2_p: "I risultati indicano \"citata 2 volte su 3\" con una fascia di stabilità, invece di un singolo sì o no casuale.",
+    chip_p1: "migliore wiki aziendale...", chip_p2: "strumento per il team...", chip_p3: "recensioni [Nome azienda]",
+    m3_h: "Parafrasi, e zero nomi aziendali", m3_p: "Da 1 a 3 formulazioni per intento segnalano le risposte instabili. Le domande che contengono il nome dell'azienda non entrano mai nella Share of Voice.",
+    audit_eyebrow: "esempio reale · applicabile a qualsiasi azienda",
+    audit_h2: "Come appare un audit: Nome azienda vs. 3 competitor",
+    audit_sub: "Lo stesso metodo vale per qualsiasi azienda B2B o e-commerce. Qui sotto vedi un audit reale nella categoria produttività in Italia (usando Notion come azienda analizzata contro ClickUp, Airtable e Coda) con ricerca web attiva.",
+    meta_1: "Giugno 2026", meta_2: "15 query, 14 risposte, 1 errore provider segnalato", meta_3: "5 per motore: una direzione, non una misura definitiva",
+    board_h: "Share of Voice sulle domande senza nome azienda",
+    board_q: "Quota di citazioni di ciascuna azienda sul totale delle menzioni, e posizione media quando viene nominata.",
+    th_company: "azienda", th_share: "quota", th_pos: "posizione",
+    lbl_target: "azienda analizzata", lbl_comp: "competitor",
+    cites_h: "Quali siti citano davvero i motori AI come fonti", cites_q: "Un quadrato per ogni citazione, su tutte le risposte.",
+    cites_own: "2, sito aziendale",
+    cites_take: "<b>16 citazioni su 18 vanno a siti di terze parti.</b> Guide comparative e siti di recensioni guidano il consenso: è lì che si concentra il lavoro del mese successivo.",
+    shot1_cap: "Lo stesso risultato dentro l'app (esempio reale su Notion). Clicca per aprire a schermo intero.",
+    gaps_h: "Dove l'azienda non compare",
+    g1_pri: "alta priorità: vince un competitor", g1_p: "Viene nominato solo un competitor (ClickUp). Azione: pubblicare una guida pratica in italiano con template reali e tabella comparativa.",
+    g2_pri: "alta priorità: spazio libero", g2_p: "Nessuna delle quattro aziende viene citata. Azione: creare una guida sull'automazione dei flussi di lavoro per presidiare il tema per primi.",
+    g3_pri: "media priorità: prezzi assenti negli snippet", g3_p: "I prezzi non compaiono nei testi letti dai motori. Azione: pagina prezzi trasparente in italiano con markup <code>FAQPage</code>.",
+    shot2_cap: "Esito per singola domanda nel report, inclusa la domanda col nome azienda esclusa dalla quota e l'errore provider segnalato.",
+    w1_s: "settimana 1, SEO e contenuti", w1_b: "FAQ dirette e guida principale", w1_p: "FAQ strutturate e schema sulle pagine chiave del sito aziendale.",
+    w2_s: "settimana 2, contenuti", w2_b: "Pagina prezzi chiara", w2_p: "Risponde alle domande di budget dei clienti in italiano semplice.",
+    w3_s: "settimana 3, digital PR", w3_b: "Contatto verso i domini citati", w3_p: "Aggiornamento confronti e recensioni sui siti più citati (es. zapier.com, g2.com, capterra.it).",
+    w4_s: "settimana 4, marketing ops", w4_b: "Nuovo audit, stesse domande", w4_p: "Si rilanciano le stesse identiche domande sugli stessi motori per misurare il prima e dopo.",
+    cr_eyebrow: "livello 1: i motori AI riescono a leggere il sito dell'azienda?",
+    cr_h2: "Decidi quali bot AI possono leggere il tuo sito",
+    cr_sub: "I bot di ricerca e lettura live alimentano le risposte in tempo reale; i bot di addestramento i modelli futuri. Bloccare i primi per errore fa sparire l'azienda dalle risposte AI. Scegli la policy e genera il robots.txt.",
+    tg_search_h: "Ricerca AI (live)", tg_fetch_h: "Lettura su richiesta utente", tg_train_h: "Addestramento modelli",
+    btn_allow: "Consenti", btn_block: "Blocca", btn_copy: "Copia", btn_copied: "Copiato", btn_selcopy: "Seleziona e copia", btn_close: "Chiudi",
+    opt_gated_h: "Escludi pagine protette", opt_gated_s: "pagine thank-you e download dietro form",
+    opt_utm_h: "Blocca URL di campagna", opt_utm_s: "link utm, gclid e fbclid che duplicano le pagine",
+    brands_h: "Cosa hanno scelto 5 aziende SaaS reali, verificato live il 20/11/2026",
+    brands_note: '<span class="tag good">nominati</span> elencati per nome e consentiti sulle pagine pubbliche. <span class="tag">via *</span> consentiti dalla regola generica. Dati letti da <a href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/case-studies/saas-ai-crawler-benchmark.csv"><code>case-studies/saas-ai-crawler-benchmark.csv</code></a>, verificati via HTTP sui domini reali.',
+    ch_h2: "Scansionato, citato, visitato", ch_sub: "Il controllo robots.txt è il primo di tre livelli. Ognuno risponde a una domanda diversa, e ogni report dichiara apertamente i limiti di ciascun dato.",
+    l1_s: "log server e robots.txt", l1_h: "I motori AI possono leggere la pagina?", l1_p: "I bot AI non eseguono JavaScript, quindi GA4 non li vede mai. I log del server li separano in bot di ricerca, lettura utente e addestramento.",
+    l2_s: "risposte multi-motore", l2_h: "Le risposte citano l'azienda?", l2_p: "Domande senza nome azienda su più motori, ripetute più volte e con parafrasi, tracciando i siti esterni citati come fonti.",
+    l3_s: "Search Console e GA4", l3_h: "Le persone arrivano davvero sul sito?", l3_p: "Il traffico referral AI su GA4 è un minimo garantito (molte app AI rimuovono il referrer). Search Console lo affianca con la stessa divisione brand / non-brand.",
+    cost_h: "Quanto costa un audit",
+    c1_b: "Base standard", c1_s: "15 domande, 1 esecuzione",
+    c2_b: "Decisionale (consigliato)", c2_s: "15 domande, 3 esecuzioni, stabilità verificata",
+    c3_b: "Competitivo esteso", c3_s: "30 domande, 2 esecuzioni",
+    cost_formula: 'motori x domande x esecuzioni. Il costo dipende dalla tariffa di ricerca live per chiamata, non dai token. Tetto massimo a listino pubblico (3 o 4 motori). <a href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/methodology/api-unit-economics.md">Analisi costi</a>',
+    ref_h: "Cosa i report rifiutano di inventare",
+    r1_h: "Volume dei prompt", r1_p: "Nessuna piattaforma AI pubblica quante volte viene fatta una domanda. Gli strumenti che mostrano un numero esatto stanno tirando a indovinare.",
+    r2_h: "Punteggio llms.txt", r2_p: "Ahrefs ha rilevato che circa il 97% dei file llms.txt non riceve richieste dai bot (giugno 2026). È una nota informativa, non un KPI.",
+    r3_h: "Articoli AI autopubblicati", r3_p: "Il risultato è un brief editoriale e un piano di 4 settimane rivisto da persone—mai spam AI pubblicato in automatico.",
+    r4_h: "Risposte API uguali alla chat", r4_p: "La ricerca API riflette le fonti reali, ma le chat consumer aggiungono personalizzazione e memoria. Ogni report lo dichiara.",
+    files_h: "I file del progetto", open: "apri",
+    f1_d: "Controlli di varianza, tassonomia bot AI, livello GA4 e Search Console",
+    f2_d: "Costo per audit a prezzi di listino pubblici",
+    f3_d: "Report completo sull'azienda di esempio (Notion) e piano di 4 settimane",
+    f4_d: "Audit live robots.txt e llms.txt su 5 aziende, con file CSV",
+    files_note: "Il codice sorgente dell'applicazione è privato. Questo repository contiene il metodo, i benchmark reali e gli screenshot.",
+    lbl_search: "Ricerca AI: alimenta le risposte live e le fonti citate",
+    lbl_fetch: "Lettura live utente: una persona chiede all'assistente di aprire la pagina",
+    lbl_train: "Addestramento modelli: alimenta i modelli futuri",
+    lbl_other: "Tutti gli altri bot, incluso Googlebot",
+    fx_s_block: "Bot di ricerca bloccati: l'azienda sparisce dalle risposte AI live e dalle fonti citate.",
+    fx_s_allow: "I bot di ricerca leggono le pagine pubbliche: l'azienda può essere consigliata e citata in tempo reale.",
+    fx_f_block: "Lettura utente bloccata: se qualcuno chiede a un assistente di aprire una pagina, non riesce.",
+    fx_t_block_split: "Addestramento bloccato, ricerca aperta: l'azienda resta citabile nelle risposte live. Nominare i bot uno per uno, come fa Asana, rende possibile questa separazione.",
+    fx_t_block: "Addestramento bloccato: i modelli futuri imparano meno dal sito.",
+    fx_t_allow: "Addestramento aperto: il sito può entrare nei dati di addestramento dei modelli futuri.",
+    fx_utm: "I link di campagna non creano pagine duplicate che dividono le citazioni, come fa ClickUp.",
+    fx_group: "Ogni gruppo nominato ripete le regole extra: un bot che trova il proprio blocco ignora la regola generica (*).",
+    b_agents: "Bot AI nominati", b_search: "Bot ricerca", b_train: "Bot training", b_amz: "Amazonbot", b_utm: "URL campagna bloccati", b_rules: "Regole robots.txt",
+    b_yes: "sì", b_no: "no", b_none: "nessuno", b_only: "solo", b_blocked: "bloccato", b_named: "nominato", b_via: "via *",
+    csv_err: 'Il file CSV non è stato caricato. <a href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/case-studies/saas-ai-crawler-benchmark.csv">Aprilo su GitHub</a>.',
+    verdict: {
+      Asana: ["Nomina 17 bot AI uno per uno", "Training e ricerca live gestibili separatamente; le pagine protette come /ebook/ restano fuori."],
+      Notion: ["Blocca Amazonbot, pubblica 11 sitemap", "Una sitemap è dedicata al Markdown; bloccati anche gli scraper SEO."],
+      ClickUp: ["Tiene fuori gli URL di campagna", "Parametri utm, fbclid, gclid, msclkid e mc_cid bloccati per non disperdere le citazioni."],
+      Airtable: ["Sei regole, nessuna policy AI", "Protegge /studio/ e /api/; nessuna regola sui bot AI e nessun llms.txt."],
+      Coda: ["Sei regole, nessuna policy AI", "Tiene fuori i documenti utente (/docs, /d/); nessuna regola sui bot AI e nessun llms.txt."],
+    },
+  },
+};
+
+let LANG = new URLSearchParams(location.search).get("lang") || localStorage.getItem("portfolio_lang") || "en";
+if (!I18N[LANG]) LANG = "en";
+const T = (k) => I18N[LANG][k] ?? I18N.en[k] ?? k;
 
 // Count the hero numbers up once, in step with the bars.
 if (!still) {
@@ -490,10 +693,10 @@ const BOTS = {
   fetch: ["ChatGPT-User", "Claude-User", "Perplexity-User", "Meta-ExternalFetcher", "MistralAI-User"],
   train: ["GPTBot", "ClaudeBot", "Google-Extended", "Applebot-Extended", "Meta-ExternalAgent", "Amazonbot", "Bytespider", "CCBot"],
 };
-const LABEL = { search: "AI search: feeds live answers and their citations", fetch: "Live user fetch: a person asked an assistant to open a page", train: "Model training: feeds future models" };
 const policy = { search: "allow", fetch: "allow", train: "block" };
 
 function robots() {
+  const LABEL = { search: T("lbl_search"), fetch: T("lbl_fetch"), train: T("lbl_train") };
   const extra = [];
   if ($("#opt-gated").checked) extra.push("/thank-you/", "/download/");
   if ($("#opt-utm").checked) extra.push("/*utm_", "/*gclid=", "/*fbclid=");
@@ -505,19 +708,19 @@ function robots() {
     else { lines.push(["k", "Allow: /"]); extra.forEach((p) => lines.push(["d", "Disallow: " + p])); }
     lines.push(["", ""]);
   }
-  lines.push(["c", "# Everyone else, including Googlebot"]);
+  lines.push(["c", "# " + T("lbl_other")]);
   lines.push(["k", "User-agent: *"]);
   if (extra.length) extra.forEach((p) => lines.push(["d", "Disallow: " + p])); else lines.push(["k", "Allow: /"]);
   $("#robots").innerHTML = lines.map(([c, t]) => (c ? `<span class="${c}">${esc(t)}</span>` : esc(t))).join("\n");
 
   const fx = [];
-  if (policy.search === "block") fx.push(["warn", "Search bots blocked: the site drops out of live AI answers and their source lists."]);
-  else fx.push(["", "Search bots can read public pages, so the brand can be named and cited in live answers."]);
-  if (policy.fetch === "block") fx.push(["warn", "User fetch blocked: when someone asks an assistant to open a page, it cannot."]);
-  if (policy.train === "block") fx.push(["", policy.search === "allow" ? "Training blocked, search open: the brand can still be cited in live answers. Naming agents one by one, as Asana does, is what makes this split possible." : "Training blocked: future models learn less from the site."]);
-  else fx.push(["", "Training open: the site can end up in future model training data."]);
-  if ($("#opt-utm").checked) fx.push(["", "Campaign links do not create duplicate pages that split citations, as ClickUp does."]);
-  fx.push(["", "Every named group repeats the extra rules: a bot that finds its own group ignores the catch-all one."]);
+  if (policy.search === "block") fx.push(["warn", T("fx_s_block")]);
+  else fx.push(["", T("fx_s_allow")]);
+  if (policy.fetch === "block") fx.push(["warn", T("fx_f_block")]);
+  if (policy.train === "block") fx.push(["", policy.search === "allow" ? T("fx_t_block_split") : T("fx_t_block")]);
+  else fx.push(["", T("fx_t_allow")]);
+  if ($("#opt-utm").checked) fx.push(["", T("fx_utm")]);
+  fx.push(["", T("fx_group")]);
   $("#effects").innerHTML = fx.map(([c, t]) => `<li class="${c}">${esc(t)}</li>`).join("");
 }
 document.querySelectorAll(".tg").forEach((tg) => tg.addEventListener("click", (e) => {
@@ -528,45 +731,54 @@ document.querySelectorAll(".tg").forEach((tg) => tg.addEventListener("click", (e
 }));
 ["#opt-gated", "#opt-utm"].forEach((id) => $(id).addEventListener("change", robots));
 $("#copy").addEventListener("click", async () => {
-  try { await navigator.clipboard.writeText($("#robots").innerText); $("#copy").textContent = "Copied"; }
-  catch { $("#copy").textContent = "Select and copy"; }
-  setTimeout(() => ($("#copy").textContent = "Copy"), 1600);
+  try { await navigator.clipboard.writeText($("#robots").innerText); $("#copy").textContent = T("btn_copied"); }
+  catch { $("#copy").textContent = T("btn_selcopy"); }
+  setTimeout(() => ($("#copy").textContent = T("btn_copy")), 1600);
 });
-robots();
 
 // ---- five brands, read from the CSV ----
-const VERDICT = {
-  Asana: ["Names 17 AI agents one by one", "Training and live search can be allowed or blocked separately; gated pages such as /ebook/ stay out."],
-  Notion: ["Blocks Amazonbot, publishes 11 sitemaps", "One sitemap is in Markdown; SEO scrapers are blocked too."],
-  ClickUp: ["Keeps campaign URLs out", "utm, fbclid, gclid, msclkid and mc_cid links are disallowed, so paid traffic does not split citations."],
-  Airtable: ["Six rules, no AI policy", "Protects /studio/ and /api/; no AI-agent rules and no llms.txt."],
-  Coda: ["Six rules, no AI policy", "Keeps user documents (/docs, /d/) out; no AI-agent rules and no llms.txt."],
-};
-const access = (v) => v === "disallow" ? '<span class="tag block">blocked</span>' : v === "allow_public" ? '<span class="tag good">named</span>' : '<span class="tag">via *</span>';
+let BRAND_ROWS = null;
+const access = (v) => v === "disallow" ? `<span class="tag block">${esc(T("b_blocked"))}</span>` : v === "allow_public" ? `<span class="tag good">${esc(T("b_named"))}</span>` : `<span class="tag">${esc(T("b_via"))}</span>`;
 function parseCSV(text) {
   const [head, ...rows] = text.trim().split(/\r?\n/).map((l) => l.split(","));
   return rows.map((r) => Object.fromEntries(head.map((h, i) => [h, r[i] || ""])));
 }
 function drawBrands(rows) {
+  BRAND_ROWS = rows;
+  const V = I18N[LANG].verdict;
   $("#brands").innerHTML = rows.map((r) => {
-    const [verdict, take] = VERDICT[r.brand] || ["", ""];
+    const [verdict, take] = V[r.brand] || ["", ""];
     const named = r.explicit_ai_agent_rules.startsWith("yes") ? `<span class="tag good">${esc(r.explicit_ai_agent_rules.replace(/^yes \((.*)\)$/, "$1"))}</span>`
-      : r.explicit_ai_agent_rules.startsWith("partial") ? `<span class="tag">${esc(r.explicit_ai_agent_rules.replace(/^partial \((.*)\)$/, "only $1"))}</span>` : '<span class="tag none">none</span>';
+      : r.explicit_ai_agent_rules.startsWith("partial") ? `<span class="tag">${esc(T("b_only") + " " + r.explicit_ai_agent_rules.replace(/^partial \((.*)\)$/, "$1"))}</span>` : `<span class="tag none">${esc(T("b_none"))}</span>`;
     return `<article class="bcard"><h3>${esc(r.brand)}<small>${esc(r.domain)}</small></h3><p class="verdict">${esc(verdict)}</p>
-      <dl><dt>AI agents named</dt><dd>${named}</dd>
-      <dt>Search bots</dt><dd>${access(r.oai_searchbot)}</dd>
-      <dt>Training bots</dt><dd>${access(r.gptbot)}</dd>
-      <dt>Amazonbot</dt><dd>${access(r.amazonbot)}</dd>
-      <dt>Campaign URLs blocked</dt><dd>${r.utm_params_blocked === "yes" ? '<span class="tag good">yes</span>' : '<span class="tag none">no</span>'}</dd>
+      <dl><dt>${esc(T("b_agents"))}</dt><dd>${named}</dd>
+      <dt>${esc(T("b_search"))}</dt><dd>${access(r.oai_searchbot)}</dd>
+      <dt>${esc(T("b_train"))}</dt><dd>${access(r.gptbot)}</dd>
+      <dt>${esc(T("b_amz"))}</dt><dd>${access(r.amazonbot)}</dd>
+      <dt>${esc(T("b_utm"))}</dt><dd>${r.utm_params_blocked === "yes" ? `<span class="tag good">${esc(T("b_yes"))}</span>` : `<span class="tag none">${esc(T("b_no"))}</span>`}</dd>
       <dt>/llms.txt</dt><dd>${r.llms_txt_status === "200" ? `<span class="tag">${(Number(r.llms_txt_bytes) / 1000).toFixed(1)} KB</span>` : `<span class="tag none">${esc(r.llms_txt_status)}</span>`}</dd>
-      <dt>robots.txt rules</dt><dd class="num">${esc(r.robots_rule_count)}</dd></dl>
+      <dt>${esc(T("b_rules"))}</dt><dd class="num">${esc(r.robots_rule_count)}</dd></dl>
       <p class="take">${esc(take)}</p></article>`;
   }).join("");
 }
+
+function applyLang(lang) {
+  LANG = I18N[lang] ? lang : "en";
+  localStorage.setItem("portfolio_lang", LANG);
+  document.documentElement.lang = LANG;
+  document.title = T("page_title");
+  document.querySelectorAll(".lang-switch button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.lang === LANG)));
+  document.querySelectorAll("[data-i18n]").forEach((el) => { el.textContent = T(el.dataset.i18n); });
+  document.querySelectorAll("[data-i18n-html]").forEach((el) => { el.innerHTML = T(el.dataset.i18nHtml); });
+  robots();
+  if (BRAND_ROWS) drawBrands(BRAND_ROWS);
+}
+document.querySelectorAll(".lang-switch button").forEach((b) => b.addEventListener("click", () => applyLang(b.dataset.lang)));
+
 fetch(BASE + "case-studies/saas-ai-crawler-benchmark.csv")
   .then((r) => (r.ok ? r.text() : Promise.reject(new Error("HTTP " + r.status))))
   .then((t) => drawBrands(parseCSV(t)))
-  .catch(() => { $("#brands").innerHTML = `<p class="note">The CSV did not load. <a href="https://github.com/errer441122/ai-visibility-audit-geo/blob/main/case-studies/saas-ai-crawler-benchmark.csv">Open it on GitHub</a>.</p>`; });
+  .catch(() => { $("#brands").innerHTML = `<p class="note">${T("csv_err")}</p>`; });
 
 // ---- lightbox ----
 const box = $("#lightbox"), boxImg = $("#lightbox-img");
@@ -575,6 +787,8 @@ document.querySelectorAll("[data-full]").forEach((b) => b.addEventListener("clic
 }));
 $("#lightbox-close").addEventListener("click", () => box.close());
 box.addEventListener("click", (e) => { if (e.target === box) box.close(); });
+
+applyLang(LANG);
 </script>
 </body>
 </html>
