@@ -667,8 +667,22 @@ const I18N = {
   },
 };
 
-let LANG = new URLSearchParams(location.search).get("lang") || localStorage.getItem("portfolio_lang") || "en";
-if (!I18N[LANG]) LANG = "en";
+// Language: ?lang= in the link, then the choice saved on any of my pages, then the browser's language.
+function saveLang(lang) { try { localStorage.setItem("portfolio_lang", lang); } catch {} }
+function startLang() {
+  const asked = new URLSearchParams(location.search).get("lang");
+  if (asked === "en" || asked === "it") { saveLang(asked); return asked; }
+  try { const saved = localStorage.getItem("portfolio_lang"); if (saved === "en" || saved === "it") return saved; } catch {}
+  for (const l of navigator.languages || [navigator.language || ""]) { const x = String(l).slice(0, 2).toLowerCase(); if (x === "en" || x === "it") return x; }
+  return "en";
+}
+function chooseLang(lang) {
+  saveLang(lang);
+  const u = new URL(location.href);
+  if (u.searchParams.has("lang")) { u.searchParams.set("lang", lang); history.replaceState(null, "", u); }
+  applyLang(lang);
+}
+let LANG = startLang();
 const T = (k) => I18N[LANG][k] ?? I18N.en[k] ?? k;
 
 // Count the hero numbers up once, in step with the bars.
@@ -762,7 +776,6 @@ function drawBrands(rows) {
 
 function applyLang(lang) {
   LANG = I18N[lang] ? lang : "en";
-  localStorage.setItem("portfolio_lang", LANG);
   document.documentElement.lang = LANG;
   document.title = T("page_title");
   document.querySelectorAll(".lang-switch button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.lang === LANG)));
@@ -771,7 +784,7 @@ function applyLang(lang) {
   robots();
   if (BRAND_ROWS) drawBrands(BRAND_ROWS);
 }
-document.querySelectorAll(".lang-switch button").forEach((b) => b.addEventListener("click", () => applyLang(b.dataset.lang)));
+document.querySelectorAll(".lang-switch button").forEach((b) => b.addEventListener("click", () => chooseLang(b.dataset.lang)));
 
 fetch(BASE + "case-studies/saas-ai-crawler-benchmark.csv")
   .then((r) => (r.ok ? r.text() : Promise.reject(new Error("HTTP " + r.status))))

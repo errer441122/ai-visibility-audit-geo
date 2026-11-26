@@ -1,5 +1,7 @@
 # AI Visibility Audit — GEO Methodology & Real-Brand Case Studies
 
+🇮🇹 **In italiano:** misura quanto spesso Gemini, GPT, Perplexity e Claude consigliano un marchio e quali fonti citano, con un audit reale su Notion. [Apri la pagina in italiano](https://errer441122.github.io/ai-visibility-audit-geo/?lang=it)
+
 > **Public Methodology & Case Study Showcase.** The full multi-tenant application behind this work is maintained in a private repository for commercial use. This repository documents the measurement framework, anti-roadmap, live product outputs, and verifiable real-brand AI search benchmarks.
 
 **[Explore the interactive showcase page](https://errer441122.github.io/ai-visibility-audit-geo/)**
